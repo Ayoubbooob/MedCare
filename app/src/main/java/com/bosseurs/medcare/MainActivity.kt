@@ -11,7 +11,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.bosseurs.medcare.ui.shared.CustomButton
+import com.bosseurs.medcare.ui.theme.BlueButton
 import com.bosseurs.medcare.ui.theme.MedCareTheme
+import com.bosseurs.medcare.ui.theme.TextForBlueButton
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +23,7 @@ class MainActivity : ComponentActivity() {
             MedCareTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    Greeting("CONTINUE")
                 }
             }
         }
@@ -28,20 +31,20 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Ls(){
-    Column() {
-        Text(text = "SS")
-    }
-}
-@Composable
 fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+    Column() {
+        CustomButton(text = "$name", onClick = {}, color = BlueButton, textColor = TextForBlueButton)
+        Text(text = "Tout savoir sur l'obésité", style = MaterialTheme.typography.h1)
+        Text(text = "Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.",
+            style = MaterialTheme.typography.caption)
+
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    MedCareTheme {
-        Greeting("Android")
-    }
+
+        Greeting("CONTINUE")
+
 }
