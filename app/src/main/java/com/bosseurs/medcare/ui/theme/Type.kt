@@ -2,12 +2,10 @@ package com.bosseurs.medcare.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.unit.sp
 import com.bosseurs.medcare.R
 
@@ -50,4 +48,14 @@ val Typography = Typography(
         color = Color(0XFFc0c2d0)
     )
 
+)
+
+val arial = FontFamily(
+    Font(R.font.arial)
+)
+val labelTextStyle = TextStyle(
+    fontFamily = arial,
+    color = labelTextColor,
+    fontSize = 20.sp,
+    fontWeight = FontWeight.W400
 )

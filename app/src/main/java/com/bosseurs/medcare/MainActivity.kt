@@ -10,11 +10,13 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import com.bosseurs.medcare.ui.shared.CustomButton
-import com.bosseurs.medcare.ui.theme.BlueButton
+import com.bosseurs.medcare.ui.shared.CustomTextField
+import com.bosseurs.medcare.ui.theme.BlueButtonColor
 import com.bosseurs.medcare.ui.theme.MedCareTheme
-import com.bosseurs.medcare.ui.theme.TextForBlueButton
+import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +35,17 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String) {
     Column() {
-        CustomButton(text = "$name", onClick = {}, color = BlueButton, textColor = TextForBlueButton)
+        CustomButton(textId = R.string.CONTINUE, onClick = {}, color = BlueButtonColor, textColor = TextForBlueButtonColor)
         Text(text = "Tout savoir sur l'obésité", style = MaterialTheme.typography.h1)
         Text(text = "Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.",
             style = MaterialTheme.typography.caption)
+        CustomTextField(
+            labelText = R.string.username,
+            leadingIconId = R.drawable.person_icon,
+            iconDescription = "Person Icon" ,
+            keyboardType = KeyboardType.Text,
+            trailingIconId = null
+            )
 
     }
 }

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MedCare</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+
+    <string name="CONTINUE">CONTINUE</string>
+
+
 </resources>
