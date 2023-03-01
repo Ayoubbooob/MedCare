@@ -15,6 +15,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.bosseurs.medcare.ui.utils.BottomNavItem
 
+//Exemple d'utilisation
+//FooterBarInstance()
+
 
 @Composable
 fun FooterBarInstance(){

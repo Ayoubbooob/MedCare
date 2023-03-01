@@ -7,6 +7,9 @@ import androidx.compose.runtime.Composable
 import com.bosseurs.medcare.ui.utils.ImageModel
 
 
+//ImageContainer(image)
+//image est de type ImageModel dont vous pouvez voir la structure dans utils
+
 @Composable
 fun ImageContainer(image: ImageModel){
     Row(modifier = image.modifier) {
