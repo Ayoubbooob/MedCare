@@ -2,8 +2,23 @@
     <string name="app_name">MedCare</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-
     <string name="CONTINUE">CONTINUE</string>
-
-
+    <string name="title_description_obesity">Tout savoir sur l\'obésité</string>
+    <string name="title_description_imc">Calculez votre IMC</string>
+    <string name="title_description_medecin">Prendre rendez-vous avec un médecin</string>
+    <string name="description_obesity">Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.</string>
+    <string name="description_imc">second imc metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.</string>
+    <string name="description_medecin">Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.</string>
+    <string name="button_skip">Skip</string>
+    <string name="button_next">Next</string>
+    <string name="connexion_btn">Connexion</string>
+    <string name="sign_up_txt">Don\'t have an account? Sign Up</string>
+    <string name="login_welcome">Content de vous revoir !</string>
+    <string name="new_compte_txt">Creez Votre Compte</string>
+    <string name="new_compte_btn">CREER UN COMPTE</string>
+    <string name="name_field">Your Name</string>
+    <string name="mail_field">Email</string>
+    <string name="pass_field">Password</string>
+    <string name="mobile_number_field">Mobile Number</string>
+    <string name="login_txt">Already have account? Login</string>
 </resources>
