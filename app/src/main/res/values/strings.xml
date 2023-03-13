@@ -21,4 +21,21 @@
     <string name="pass_field">Password</string>
     <string name="mobile_number_field">Mobile Number</string>
     <string name="login_txt">Already have account? Login</string>
+
+    <string name="Choose_language">Choisissez la langue</string>
+    <string name="language_1">French</string>
+    <string name="language_2">Arabic</string>
+    <string name="language_3">English</string>
+    <string name="continue_label">CONTINUE</string>
+    <string name="register_email">S\'INSCRIRE AVEC UN E-MAIL</string>
+    <string name="register_gmail">CONTINUER AVEC GMAIL</string>
+    <string name="continue_without_connexion">CONTINUER SANS CONNEXION</string>
+    <string name="message_bienvenue">Bienvenue à MedCare</string>
+    <string name="sous_message_bienvenue">Voulez-vous de l\'aide pour améliorer votre santé et avoir une meilleure qualité de vie ?</string>
+    <string name="phone_verified">Phone Number Verified</string>
+    <string name="phone_verified_details">Congratulations, your phone number has been verified. You can start using the app</string>
+    <string name="cat_principale">Catégories Principales</string>
+    <string name="greeting_homescreen">Bonjour Oumar</string>
+    <string name="welcome_homescreen">Bienvenue sur MedCare</string>
+    <string name="search_bar_text">Recherchez un élement</string>
 </resources>
