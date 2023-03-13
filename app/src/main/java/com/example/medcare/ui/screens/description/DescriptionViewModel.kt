@@ -1,7 +1,7 @@
 package com.example.medcare.ui.screens.description
 
 import androidx.lifecycle.ViewModel
-import com.example.medcare.R
+import com.bosseurs.medcare.R
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

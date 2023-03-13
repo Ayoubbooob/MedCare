@@ -17,8 +17,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.medcare.R
-import com.example.medcare.ui.theme.MedCareTheme
+import com.bosseurs.medcare.R
+import com.bosseurs.medcare.ui.theme.MedCareTheme
 
 
 @Composable

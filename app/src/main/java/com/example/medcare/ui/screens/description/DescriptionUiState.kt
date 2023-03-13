@@ -1,6 +1,6 @@
 package com.example.medcare.ui.screens.description
 
-import com.example.medcare.R
+import com.bosseurs.medcare.R
 
 
 data class DescriptionUiState(
