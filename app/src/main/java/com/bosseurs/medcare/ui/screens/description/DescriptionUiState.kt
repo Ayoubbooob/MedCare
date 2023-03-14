@@ -1,4 +1,4 @@
-package com.example.medcare.ui.screens.description
+package com.bosseurs.medcare.ui.screens.description
 
 import com.bosseurs.medcare.R
 

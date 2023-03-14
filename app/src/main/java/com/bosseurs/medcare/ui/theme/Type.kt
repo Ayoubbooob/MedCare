@@ -1,5 +1,3 @@
-package com.bosseurs.medcare.ui.theme
-
 import androidx.compose.material.Typography
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -8,29 +6,35 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.bosseurs.medcare.R
+import com.bosseurs.medcare.ui.theme.labelTextColor
 
 
 val Overpass = FontFamily(
-        Font(R.font.overpass_regular),
+    Font(R.font.overpass_regular),
 //        Font(R.font.overpass_bold)
 )
 
 // Set of Material typography styles to start with
 val Typography = Typography(
-        Overpass, //This is font has been used for all components in figma
-        //You have to specify h1, h2, ... , it depends on your need
-        h1 = TextStyle(
-                fontFamily = FontFamily.Default,
-                fontWeight = FontWeight.W700,                      /* This is For Big text, in our app like the title" Tout savoir sur l'obésité " */
-                fontSize = 32.sp,
-                color = Color(0XFF090F47)
-        ),
-
-        body1 = TextStyle(
-                fontFamily = FontFamily.Default,
-                fontWeight = FontWeight.Normal,
-                fontSize = 16.sp
-        ),
+    Overpass, //This is font has been used for all components in figma
+    //You have to specify h1, h2, ... , it depends on your need
+    h1 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W700,                      /* This is For Big text, in our app like the title" Tout savoir sur l'obésité " */
+        fontSize = 30.sp,
+        color = Color(0XFF090F47)
+    ),
+    h2 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W700,                      /* This is For Big text, in our app like the title" Tout savoir sur l'obésité " */
+        fontSize = 30.sp,
+        color = Color(0XFF090F47)
+    ),
+    body1 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp
+    ),
 
 
 

@@ -15,10 +15,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.theme.LeadingIconColor
 import com.bosseurs.medcare.ui.theme.TextFieldBorderColor
-import com.bosseurs.medcare.ui.theme.labelTextStyle
+import com.bosseurs.medcare.R
+import labelTextStyle
 
 @Composable
 fun CustomTextField(

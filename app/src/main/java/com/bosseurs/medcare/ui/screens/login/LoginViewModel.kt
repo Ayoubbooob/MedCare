@@ -1,10 +1,10 @@
-package com.example.medcare.ui.screens.login
+package com.bosseurs.medcare.ui.screens.login
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.medcare.ui.screens.description.DescriptionUiState
+import com.bosseurs.medcare.ui.screens.description.DescriptionUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

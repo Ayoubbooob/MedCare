@@ -29,7 +29,7 @@ fun SearchBare(CustumText : String ) {
         mutableStateOf("")
     }
     Row(modifier = Modifier
-        .fillMaxWidth(fraction = 1f)) {
+        .fillMaxWidth(fraction = 0.8f)) {
         TextField(value = query.value ,
             onValueChange ={
                 query.value = it
@@ -42,7 +42,7 @@ fun SearchBare(CustumText : String ) {
                 color = Color(red = 9, blue = 15, green = 71, alpha = 45)
             ) } ,
             modifier = Modifier
-                .fillMaxWidth(fraction = 1f)
+                .fillMaxWidth(fraction = 0.8f)
                 .clip(CircleShape) ,
             leadingIcon = {
                 Icon(imageVector = Icons.Filled.Search, contentDescription = "this is the image lead icon" )

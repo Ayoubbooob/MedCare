@@ -1,4 +1,4 @@
-package com.example.medcare.ui.screens.description
+package com.bosseurs.medcare.ui.screens.description
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme

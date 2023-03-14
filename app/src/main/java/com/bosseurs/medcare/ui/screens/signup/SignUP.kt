@@ -1,4 +1,4 @@
-package com.example.medcare.ui.screens.signup
+package com.bosseurs.medcare.ui.screens.signup
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
@@ -16,10 +16,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.theme.MedCareTheme
-import com.example.medcare.ui.shared.CustomButton
-import com.example.medcare.ui.shared.CustomTextField
-import com.example.medcare.ui.theme.BlueButtonColor
-import com.example.medcare.ui.theme.TextForBlueButtonColor
+import com.bosseurs.medcare.ui.shared.CustomButton
+import com.bosseurs.medcare.ui.shared.CustomTextField
+import com.bosseurs.medcare.ui.theme.BlueButtonColor
+import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
