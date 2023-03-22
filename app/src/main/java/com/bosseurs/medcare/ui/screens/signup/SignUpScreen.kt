@@ -14,17 +14,19 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.theme.MedCareTheme
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomTextField
 import com.bosseurs.medcare.ui.theme.BlueButtonColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
+import com.bosseurs.medcare.ui.utils.Screen
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun SignUpScreen(){
+fun SignUpScreen(navController: NavController){
     Scaffold(
         topBar = {
             TopAppBar(backgroundColor = Color.White, modifier = Modifier.wrapContentWidth(align = Alignment.Start))
@@ -74,7 +76,11 @@ fun SignUpScreen(){
             keyboardType = KeyboardType.Text,
             trailingIconId = null
         )
-            CustomButton(textId = R.string.new_compte_btn, onClick = {}, color = BlueButtonColor, textColor = TextForBlueButtonColor, modifier = Modifier.fillMaxWidth())
+            CustomButton(textId = R.string.new_compte_btn,
+                onClick = {
+                          navController.navigate(Screen.LoginScreen.route)
+
+            }, color = BlueButtonColor, textColor = TextForBlueButtonColor, modifier = Modifier.fillMaxWidth())
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
                 Text(
                     text = stringResource(id = R.string.login_txt),
@@ -86,10 +92,10 @@ fun SignUpScreen(){
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun Launch() {
-    MedCareTheme {
-        SignUpScreen()
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun Launch() {
+//    MedCareTheme {
+//        SignUpScreen()
+//    }
+//}

@@ -1,3 +1,5 @@
+package com.bosseurs.medcare.ui.theme
+
 import androidx.compose.material.Typography
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -6,7 +8,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.bosseurs.medcare.R
-import com.bosseurs.medcare.ui.theme.labelTextColor
 
 
 val Overpass = FontFamily(
@@ -15,7 +16,7 @@ val Overpass = FontFamily(
 )
 
 // Set of Material typography styles to start with
-val Typography = Typography(
+val Typography1 = Typography(
     Overpass, //This is font has been used for all components in figma
     //You have to specify h1, h2, ... , it depends on your need
     h1 = TextStyle(
@@ -63,3 +64,4 @@ val labelTextStyle = TextStyle(
     fontSize = 20.sp,
     fontWeight = FontWeight.W400
 )
+

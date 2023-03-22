@@ -17,12 +17,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.theme.MedCareTheme
+import com.bosseurs.medcare.ui.utils.Screen
 
 
 @Composable
-fun DescriptionMedCare(
+fun DescriptionScreen(
+    navController: NavController,
     descriptionViewModel: DescriptionViewModel = viewModel()){
     val descriptionUiState by descriptionViewModel.uiState.collectAsState()
     Column(modifier = Modifier
@@ -65,21 +68,27 @@ fun DescriptionMedCare(
         Row(modifier = Modifier
             .weight(0.09f)
             .fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween){
-            OutlinedButton(onClick = { /*TODO*/ }) {
+            OutlinedButton(onClick = {
+//                navController.navigate(Screen.AuthScreen.route)
+            }) {
             Text(text = stringResource(id = R.string.button_skip))
             }
             Text(text = "...." , fontWeight = FontWeight.Bold)
-            OutlinedButton(onClick = {descriptionViewModel.updateDetailsInterface() }) {
+            OutlinedButton(
+                onClick = {
+                    descriptionViewModel.updateDetailsInterface(navController)
+                })
+            {
                 Text(text = stringResource(id = R.string.button_next))
             }
         }
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun Launch() {
-    MedCareTheme {
-        DescriptionMedCare()
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun Launch() {
+//    MedCareTheme {
+//        DescriptionScreen()
+//    }
+//}

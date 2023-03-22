@@ -22,13 +22,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
+import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.shared.SearchBare
 
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier){
+fun HomeScreen(navController: NavController,modifier: Modifier = Modifier){
         Column(
             modifier = modifier
                 .fillMaxSize(),
@@ -165,8 +166,8 @@ fun SearchBarContainer(){
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun HomeScreenPreview() {
-    HomeScreen()
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun HomeScreenPreview() {
+//    HomeScreen()
+//}

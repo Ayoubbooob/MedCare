@@ -2,11 +2,10 @@ package com.bosseurs.medcare.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Typography
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-
+//import com.bosseurs.medcare.ui.them
 private val DarkColorPalette = darkColors(
         primary = Purple200,
         primaryVariant = Purple700,
@@ -38,7 +37,7 @@ fun MedCareTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composabl
 
     MaterialTheme(
             colors = colors,
-            typography = Typography(),
+            typography = Typography1,
             shapes = Shapes,
             content = content
     )

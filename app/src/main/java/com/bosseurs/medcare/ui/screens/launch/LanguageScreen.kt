@@ -14,13 +14,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.theme.BlueButtonColor
+import com.bosseurs.medcare.ui.theme.MedCareTheme
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
+import com.bosseurs.medcare.ui.theme.Typography1
+import com.bosseurs.medcare.ui.utils.Screen
 
 @Composable
-fun LanguageScreen(modifier: Modifier = Modifier) {
+fun LanguageScreen(navController: NavController,modifier: Modifier = Modifier) {
     val lang1 = painterResource(R.drawable.flag_ar )
     val lang2 = painterResource(R.drawable.flag_fr )
     val lang3 = painterResource(R.drawable.flag_en )
@@ -47,7 +51,9 @@ fun LanguageScreen(modifier: Modifier = Modifier) {
         }
         CustomButton(textId = R.string.continue_label ,
             color = BlueButtonColor, textColor = TextForBlueButtonColor,
-            onClick = { /*TODO*/ }
+            onClick = {
+                navController.navigate(Screen.DescriptionScreen.route)
+            }
         )
     }
 }
@@ -65,12 +71,17 @@ fun LangImage(image: Painter, text: String, modifier: Modifier = Modifier) {
             modifier = modifier
                 .size(150.dp)
         )
-        Text(text = text, style = MaterialTheme.typography.h4)
+         Text(text = text, style = Typography1.h1)
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun LanguageScreenPreview() {
-    LanguageScreen()
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun LanguageScreenPreview() {
+//    MedCareTheme {
+//        // A surface container using the 'background' color from the theme
+//            LanguageScreen(navController = NavController(context = ))
+//
+//    }
+//
+//}

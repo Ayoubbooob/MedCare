@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.bosseurs.medcare.ui.theme.LeadingIconColor
 import com.bosseurs.medcare.ui.theme.TextFieldBorderColor
 import com.bosseurs.medcare.R
-import labelTextStyle
+import com.bosseurs.medcare.ui.theme.labelTextStyle
 
 @Composable
 fun CustomTextField(

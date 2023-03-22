@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import com.bosseurs.medcare.ui.navigation.Navigation
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomTextField
 import com.bosseurs.medcare.ui.theme.BlueButtonColor
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
             MedCareTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Greeting("CONTINUE")
+                    Navigation()
                 }
             }
         }

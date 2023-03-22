@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomButtonIcons
@@ -20,9 +21,10 @@ import com.bosseurs.medcare.ui.theme.BlueButtonColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 import com.bosseurs.medcare.ui.theme.TextForWhiteButtonColor
 import com.bosseurs.medcare.ui.theme.WhiteButtonColor
+import com.bosseurs.medcare.ui.utils.Screen
 
 @Composable
-fun AuthScreen(modifier: Modifier = Modifier) {
+fun AuthScreen(navController: NavController,modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.welcome_img )
     Column(
         modifier = modifier
@@ -45,7 +47,9 @@ fun AuthScreen(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(horizontal = 20.dp)
         )
         CustomButton(textId = R.string.register_email, color = BlueButtonColor, textColor = TextForBlueButtonColor,
-            onClick = { /*TODO*/ }
+            onClick = {
+                navController.navigate(Screen.SignUpScreen.route)
+            }
         )
         CustomButtonIcons(textId = R.string.register_gmail, icon = icon, color = WhiteButtonColor, textColor = TextForWhiteButtonColor,
             onClick = { /*TODO*/ }

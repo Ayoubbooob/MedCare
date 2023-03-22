@@ -16,13 +16,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.theme.BlueButtonColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
+import com.bosseurs.medcare.ui.utils.Screen
 
 @Composable
-fun PhoneVerified(modifier: Modifier = Modifier) {
+fun PhoneVerified(navController: NavController,modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.tick_icon )
     Column(
         modifier = modifier
@@ -62,13 +64,15 @@ fun PhoneVerified(modifier: Modifier = Modifier) {
 
         CustomButton(textId = R.string.continue_label,
             color = BlueButtonColor, textColor = TextForBlueButtonColor,
-            onClick = { /*TODO*/ }
+            onClick = {
+                navController.navigate(Screen.HomeScreen.route)
+            }
         )
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun PhoneVerifiedPreview() {
-    PhoneVerified()
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun PhoneVerifiedPreview() {
+//    PhoneVerified()
+//}
