@@ -10,7 +10,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bosseurs.medcare.R
-import com.bosseurs.medcare.ui.theme.BlueButtonColor
+import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.CustomShape
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 
@@ -67,5 +67,5 @@ fun CustomButtonIcons(
 @Preview(showBackground = true)
 @Composable
 fun CustomButtonPreview(){
-    CustomButton(textId = R.string.CONTINUE, onClick = {}, color = BlueButtonColor, textColor = TextForBlueButtonColor)
+    CustomButton(textId = R.string.CONTINUE, onClick = {}, color = BlueColor, textColor = TextForBlueButtonColor)
 }

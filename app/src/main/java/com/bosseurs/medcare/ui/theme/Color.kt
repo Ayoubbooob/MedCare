@@ -8,11 +8,11 @@ val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
 /* Use this for Blue Button */
-val BlueButtonColor = Color(0XFF4157FF)
+val BlueColor = Color(0XFF4157FF)
 val TextForBlueButtonColor = Color(0XFFFFFFFF)
 
 /* Use this for White Button */
-val WhiteButtonColor = Color(0XFFFFFFFF)
+val WhiteColor = Color(0XFFFFFFFF)
 val TextForWhiteButtonColor = Color(0XFF4157FF)
 
 val labelTextColor = Color(0XFFa5a7bc)

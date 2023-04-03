@@ -16,15 +16,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
-import com.bosseurs.medcare.ui.theme.MedCareTheme
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomTextField
-import com.bosseurs.medcare.ui.theme.BlueButtonColor
+import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 import com.bosseurs.medcare.ui.utils.Screen
 
@@ -78,7 +76,7 @@ fun LoginScreen(
                         onClick = {
                                   navController.navigate(Screen.PhoneVerifiedScreen.route)
                         },
-                        color = BlueButtonColor,
+                        color = BlueColor,
                         textColor = TextForBlueButtonColor,
                         modifier = Modifier.fillMaxWidth()
                     )

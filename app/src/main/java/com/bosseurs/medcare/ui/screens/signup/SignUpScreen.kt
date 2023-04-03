@@ -12,14 +12,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
-import com.bosseurs.medcare.ui.theme.MedCareTheme
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomTextField
-import com.bosseurs.medcare.ui.theme.BlueButtonColor
+import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 import com.bosseurs.medcare.ui.utils.Screen
 
@@ -80,7 +78,7 @@ fun SignUpScreen(navController: NavController){
                 onClick = {
                           navController.navigate(Screen.LoginScreen.route)
 
-            }, color = BlueButtonColor, textColor = TextForBlueButtonColor, modifier = Modifier.fillMaxWidth())
+            }, color = BlueColor, textColor = TextForBlueButtonColor, modifier = Modifier.fillMaxWidth())
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
                 Text(
                     text = stringResource(id = R.string.login_txt),

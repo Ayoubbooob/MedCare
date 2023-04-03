@@ -13,3 +13,7 @@ val Shapes = Shapes(
 val CustomShape = Shapes(
         large = RoundedCornerShape(56.dp)
 )
+
+val CustomDayShape = Shapes(
+        large = RoundedCornerShape(15.dp)
+)

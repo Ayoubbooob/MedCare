@@ -17,10 +17,10 @@ import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomButtonIcons
-import com.bosseurs.medcare.ui.theme.BlueButtonColor
+import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 import com.bosseurs.medcare.ui.theme.TextForWhiteButtonColor
-import com.bosseurs.medcare.ui.theme.WhiteButtonColor
+import com.bosseurs.medcare.ui.theme.WhiteColor
 import com.bosseurs.medcare.ui.utils.Screen
 
 @Composable
@@ -46,22 +46,22 @@ fun AuthScreen(navController: NavController,modifier: Modifier = Modifier) {
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = 20.dp)
         )
-        CustomButton(textId = R.string.register_email, color = BlueButtonColor, textColor = TextForBlueButtonColor,
+        CustomButton(textId = R.string.register_email, color = BlueColor, textColor = TextForBlueButtonColor,
             onClick = {
                 navController.navigate(Screen.SignUpScreen.route)
             }
         )
-        CustomButtonIcons(textId = R.string.register_gmail, icon = icon, color = WhiteButtonColor, textColor = TextForWhiteButtonColor,
+        CustomButtonIcons(textId = R.string.register_gmail, icon = icon, color = WhiteColor, textColor = TextForWhiteButtonColor,
             onClick = { /*TODO*/ }
         )
-        CustomButton(textId = R.string.continue_without_connexion, color = WhiteButtonColor, textColor = TextForWhiteButtonColor,
+        CustomButton(textId = R.string.continue_without_connexion, color = WhiteColor, textColor = TextForWhiteButtonColor,
             onClick = { /*TODO*/ }
         )
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun AuthScreenPreview() {
-    AuthScreen()
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun AuthScreenPreview() {
+//    AuthScreen()
+//}
