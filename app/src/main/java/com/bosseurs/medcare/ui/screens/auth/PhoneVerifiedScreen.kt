@@ -14,12 +14,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.CustomButton
-import com.bosseurs.medcare.ui.theme.BlueButtonColor
+import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 import com.bosseurs.medcare.ui.utils.Screen
 
@@ -63,7 +62,7 @@ fun PhoneVerified(navController: NavController,modifier: Modifier = Modifier) {
         }
 
         CustomButton(textId = R.string.continue_label,
-            color = BlueButtonColor, textColor = TextForBlueButtonColor,
+            color = BlueColor, textColor = TextForBlueButtonColor,
             onClick = {
                 navController.navigate(Screen.HomeScreen.route)
             }
