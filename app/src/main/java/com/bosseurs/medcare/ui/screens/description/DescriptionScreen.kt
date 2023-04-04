@@ -25,7 +25,7 @@ import com.bosseurs.medcare.ui.utils.Screen
 
 @Composable
 fun DescriptionScreen(
-    //njarbo had modif nadi
+    //njarbo had modif nadi jjjh
     navController: NavController,
     descriptionViewModel: DescriptionViewModel = viewModel()){
     val descriptionUiState by descriptionViewModel.uiState.collectAsState()
