@@ -51,4 +51,7 @@
     <string name="Dimanche">Dim</string>
     <string name="eight">8:00</string>
     <string name="treize">13:00</string>
+
+    <string name="Rendez_vous"> Rendez-vous </string>
+    <string name="Mars">Mars</string>
 </resources>

@@ -27,7 +27,7 @@ fun DayShape(
     modifier: Modifier = Modifier,
     color: Color = BlueColor,
     isSelected : Boolean = false,
-    onClick : () -> Unit,
+    onClick : () -> Unit = {},
 ){
         Card(
             elevation = 30.dp,

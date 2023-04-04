@@ -65,3 +65,19 @@ val labelTextStyle = TextStyle(
     fontWeight = FontWeight.W400
 )
 
+val poppins = FontFamily(
+    Font(R.font.poppins),
+)
+val AppBarTextStyle = TextStyle(
+    fontFamily = poppins,
+    color = TopAppBarTitleColor,
+    fontSize = 21.sp,
+    fontWeight = FontWeight.W500
+)
+
+val AppointmentBigTextStyle = TextStyle(
+    fontFamily = poppins,
+    color = Color.Black,
+    fontWeight = FontWeight.W600,
+    fontSize = 27.sp,
+)
