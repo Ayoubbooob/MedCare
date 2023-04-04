@@ -51,7 +51,8 @@ val Typography1 = Typography(
         fontWeight = FontWeight.W300,                  /* This is for description text */
         fontSize = 16.sp,
         color = Color(0XFFc0c2d0)
-    )
+    ),
+
 
 )
 
