@@ -74,7 +74,7 @@ fun LoginScreen(
 //                    OutlinedTextField(value = loginViewModel.passwordGuess, onValueChange = {loginViewModel.updatePasswordGuess(it)} , label = {}, modifier = Modifier.fillMaxWidth())
                     CustomButton(textId = R.string.connexion_btn,
                         onClick = {
-                                  navController.navigate(Screen.PhoneVerifiedScreen.route)
+                                  navController.navigate(Screen.HomeScreen.route)
                         },
                         color = BlueColor,
                         textColor = TextForBlueButtonColor,

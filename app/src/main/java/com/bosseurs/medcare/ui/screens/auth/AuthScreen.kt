@@ -14,13 +14,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomButtonIcons
-import com.bosseurs.medcare.ui.theme.BlueColor
-import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
-import com.bosseurs.medcare.ui.theme.TextForWhiteButtonColor
-import com.bosseurs.medcare.ui.theme.WhiteColor
+import com.bosseurs.medcare.ui.theme.*
 import com.bosseurs.medcare.ui.utils.Screen
 
 @Composable
@@ -28,8 +26,7 @@ fun AuthScreen(navController: NavController,modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.welcome_img )
     Column(
         modifier = modifier
-            .fillMaxSize()
-            .padding(top = 100.dp),
+            .fillMaxSize(),
         verticalArrangement = Arrangement.SpaceAround,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -40,28 +37,52 @@ fun AuthScreen(navController: NavController,modifier: Modifier = Modifier) {
             contentScale = ContentScale.Fit,
             modifier = modifier
                 .size(200.dp)
+                .fillMaxHeight(0.4f)
         )
-        Text(text = stringResource(R.string.message_bienvenue), style = MaterialTheme.typography.h4)
-        Text(text = stringResource(R.string.sous_message_bienvenue),
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(horizontal = 20.dp)
-        )
-        CustomButton(textId = R.string.register_email, color = BlueColor, textColor = TextForBlueButtonColor,
-            onClick = {
-                navController.navigate(Screen.SignUpScreen.route)
-            }
-        )
-        CustomButtonIcons(textId = R.string.register_gmail, icon = icon, color = WhiteColor, textColor = TextForWhiteButtonColor,
-            onClick = { /*TODO*/ }
-        )
-        CustomButton(textId = R.string.continue_without_connexion, color = WhiteColor, textColor = TextForWhiteButtonColor,
-            onClick = { /*TODO*/ }
-        )
+        Column(
+            modifier = modifier
+                .fillMaxHeight(0.2f),
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(text = stringResource(R.string.message_bienvenue), style = Typography1.h1)
+            Text(
+                text = stringResource(R.string.sous_message_bienvenue),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(horizontal = 20.dp),
+                style = Typography1.caption
+            )
+        }
+
+        Column(
+            modifier = modifier
+                .fillMaxHeight(0.4f),
+            verticalArrangement = Arrangement.SpaceBetween,
+        ) {
+            CustomButton(textId = R.string.register_email,
+                color = BlueColor,
+                textColor = TextForBlueButtonColor,
+                onClick = {
+                    navController.navigate(Screen.SignUpScreen.route)
+                }
+            )
+            CustomButtonIcons(textId = R.string.register_gmail,
+                icon = icon,
+                color = WhiteColor,
+                textColor = TextForWhiteButtonColor,
+                onClick = { /*TODO*/ }
+            )
+            CustomButton(textId = R.string.continue_without_connexion,
+                color = WhiteColor,
+                textColor = TextForWhiteButtonColor,
+                onClick = { /*TODO*/ }
+            )
+        }
     }
 }
 
-//@Preview(showBackground = true, showSystemUi = true)
-//@Composable
-//fun AuthScreenPreview() {
-//    AuthScreen()
-//}
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun AuthScreenPreview() {
+    AuthScreen( rememberNavController())
+}

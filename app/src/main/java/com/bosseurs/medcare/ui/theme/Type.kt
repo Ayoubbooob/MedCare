@@ -28,7 +28,7 @@ val Typography1 = Typography(
     h2 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.W700,                      /* This is For Big text, in our app like the title" Tout savoir sur l'obésité " */
-        fontSize = 30.sp,
+        fontSize = 20.sp,
         color = Color(0XFF090F47)
     ),
     body1 = TextStyle(
@@ -42,7 +42,7 @@ val Typography1 = Typography(
     button = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.W700,
-        fontSize = 21.sp,
+        fontSize = 18.sp,
     ),
 
 
@@ -51,8 +51,7 @@ val Typography1 = Typography(
         fontWeight = FontWeight.W300,                  /* This is for description text */
         fontSize = 16.sp,
         color = Color(0XFFc0c2d0)
-    ),
-
+    )
 
 )
 

@@ -32,7 +32,7 @@ fun LanguageScreen(navController: NavController,modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = stringResource(R.string.Choose_language),
-            style = MaterialTheme.typography.h4,
+            style = Typography1.h1,
             textAlign = TextAlign.Center
         )
         Column(

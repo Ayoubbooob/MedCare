@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -23,43 +24,71 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.shared.SearchBare
+import com.bosseurs.medcare.ui.theme.Typography1
 
 
 @Composable
-fun HomeScreen(navController: NavController,modifier: Modifier = Modifier){
+fun HomeScreen(navController: NavController = rememberNavController(),
+               modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
         Column(
-            modifier = modifier
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top,
         ) {
-            Column(
-                verticalArrangement = Arrangement.Top
+            Header()
+        }
+        Column() {
+            Text(
+                text = stringResource(R.string.cat_principale),
+                style = Typography1.h2,
+                modifier = modifier
+                    .align(Alignment.Start)
+                    .padding(10.dp)
+            )
+            LazyColumn(
+                modifier = Modifier.fillMaxHeight(0.8f),
             ) {
-                Header()
-                Text(
-                    text = stringResource(R.string.cat_principale),
-                    style = MaterialTheme.typography.h6,
-                    modifier = modifier
-                        .align(Alignment.Start)
-                        .padding(10.dp)
-                )
-                MyCard(
-                    backImage = painterResource(id = R.drawable.card_img1)
-                )
-                MyCard(
-                    backImage = painterResource(id = R.drawable.card_img2)
-                )
-                MyCard(
-                    backImage = painterResource(id = R.drawable.card_img2)
-                )
+                item {
+                    MyCard(
+                        backImage = painterResource(id = R.drawable.card_img1)
+                    )
+                }
+                item {
+                    MyCard(
+                        backImage = painterResource(id = R.drawable.card_img2)
+                    )
+                }
+                item {
+                    MyCard(
+                        backImage = painterResource(id = R.drawable.card_img2)
+                    )
+                }
+                item {
+                    MyCard(
+                        backImage = painterResource(id = R.drawable.card_img1)
+                    )
+                }
             }
+        }
+
+
+        Column(
+            verticalArrangement = Arrangement.Bottom,
+        ) {
             FooterBarInstance()
         }
+
     }
+}
+
 
 @Composable
 fun Header(modifier: Modifier = Modifier){
@@ -130,7 +159,7 @@ fun MyCard(modifier: Modifier = Modifier, backImage: Painter = painterResource(R
         modifier = modifier
             .fillMaxWidth()
             .height(150.dp)
-            .padding(horizontal = 30.dp, vertical = 6.dp)
+            .padding(horizontal = 14.dp, vertical = 6.dp)
     ) {
         Image(
             painter = backImage,
@@ -166,8 +195,8 @@ fun SearchBarContainer(){
     }
 }
 
-//@Preview(showBackground = true, showSystemUi = true)
-//@Composable
-//fun HomeScreenPreview() {
-//    HomeScreen()
-//}
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun HomeScreenPreview() {
+    HomeScreen()
+}
