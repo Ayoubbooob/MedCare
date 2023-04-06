@@ -1,8 +1,10 @@
 package com.bosseurs.medcare.ui.screens.main
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -18,28 +20,29 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.shared.SearchBare
 import com.bosseurs.medcare.ui.theme.Typography1
+import com.bosseurs.medcare.ui.utils.Screen
 
 
 @Composable
-fun HomeScreen(navController: NavController = rememberNavController(),
+fun HomeScreen(navController: NavController,
                modifier: Modifier = Modifier) {
-
+    val context = LocalContext.current
     Scaffold(
         topBar = {Header()},
         bottomBar = { FooterBarInstance()}
-    ) {
-        Column() {
+    ) {innerPadding ->
+        Column(modifier = Modifier.padding(innerPadding)) {
             Text(
                 text = stringResource(R.string.cat_principale),
                 style = Typography1.h2,
@@ -52,22 +55,40 @@ fun HomeScreen(navController: NavController = rememberNavController(),
             ) {
                 item {
                     MyCard(
-                        backImage = painterResource(id = R.drawable.card_img1)
+                        backImage = painterResource(id = R.drawable.card_img1),
+                        onClick = {
+                            Toast
+                                .makeText(context, "cette route n'est pas encore disponible", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     )
                 }
                 item {
                     MyCard(
-                        backImage = painterResource(id = R.drawable.card_img2)
+                        backImage = painterResource(id = R.drawable.card_img2),
+                        onClick = {
+                            navController.navigate(Screen.MenuInfoScreen.route)
+                        }
                     )
                 }
                 item {
                     MyCard(
-                        backImage = painterResource(id = R.drawable.card_img2)
+                        backImage = painterResource(id = R.drawable.card_img2),
+                        onClick = {
+                            Toast
+                                .makeText(context, "cette route n'est pas encore disponible", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     )
                 }
                 item {
                     MyCard(
-                        backImage = painterResource(id = R.drawable.card_img1)
+                        backImage = painterResource(id = R.drawable.card_img1),
+                        onClick = {
+                            Toast
+                                .makeText(context, "cette route n'est pas encore disponible", Toast.LENGTH_SHORT)
+                                .show()
+                        }
                     )
                 }
             }
@@ -136,20 +157,27 @@ fun Header(modifier: Modifier = Modifier){
 }
 
 @Composable
-fun MyCard(modifier: Modifier = Modifier, backImage: Painter = painterResource(R.drawable.card_img1)) {
-    //val image = painterResource(R.drawable.androidparty)
-    //Step 3 create a box to overlap image and texts
+fun MyCard(modifier: Modifier = Modifier,
+           backImage: Painter = painterResource(R.drawable.card_img1),
+           onClick: () -> Unit = {}
+) {
     Card(
         elevation = 10.dp,
         modifier = modifier
             .fillMaxWidth()
             .height(150.dp)
             .padding(horizontal = 14.dp, vertical = 6.dp)
+            .clickable(
+                enabled = true,
+                onClickLabel = "Clickable image",
+                onClick = onClick
+            ),
     ) {
         Image(
             painter = backImage,
             contentDescription = null,
-            contentScale = ContentScale.FillBounds
+            contentScale = ContentScale.FillBounds,
+            modifier = Modifier
         )
         /*Box {
             Image(
@@ -180,8 +208,8 @@ fun SearchBarContainer(){
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun HomeScreenPreview() {
-    HomeScreen()
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun HomeScreenPreview() {
+//    HomeScreen()
+//}
