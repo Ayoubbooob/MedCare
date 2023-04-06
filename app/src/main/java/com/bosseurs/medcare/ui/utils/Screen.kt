@@ -9,4 +9,7 @@ sealed class Screen(val route : String){
     object PhoneVerifiedScreen : Screen("phone_verified_screen")
     object HomeScreen : Screen("home_screen")
 
+    object InfoObesityScreen: Screen("info_obesity_screen")
+    object MenuInfoScreen: Screen("menu_info_screen")
+
 }

@@ -1,12 +1,14 @@
 package com.bosseurs.medcare.ui.screens.auth
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -25,39 +27,56 @@ import com.bosseurs.medcare.ui.utils.Screen
 fun AuthScreen(navController: NavController,modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.welcome_img )
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceAround,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val icon = painterResource(id = R.drawable.google_logo_icon)
-        Image(
-            painter = image,
-            contentDescription = "welcome image",
-            contentScale = ContentScale.Fit,
-            modifier = modifier
-                .size(200.dp)
-                .fillMaxHeight(0.4f)
+        Spacer(
+            modifier = Modifier
+                .weight(0.1f)
         )
         Column(
-            modifier = modifier
-                .fillMaxHeight(0.2f),
-            verticalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .weight(0.4f)
+                .fillMaxWidth()
+                .wrapContentWidth(align = Alignment.CenterHorizontally)
+                .fillMaxHeight()
+                .wrapContentHeight(align = Alignment.CenterVertically)
+        ) {
+            Image(
+                painter = image,
+                contentDescription = "welcome image",
+                modifier = Modifier.fillMaxSize(0.7f)
+            )
+        }
+
+        Column(
+            modifier = Modifier
+                .weight(0.15f)
+                .fillMaxSize(),
+            Arrangement.spacedBy(10.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = stringResource(R.string.message_bienvenue), style = Typography1.h1)
             Text(
                 text = stringResource(R.string.sous_message_bienvenue),
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = 20.dp),
+                modifier = Modifier.padding(horizontal = 40.dp),
                 style = Typography1.caption
             )
         }
+        Spacer(
+            modifier = Modifier
+                .weight(0.05f)
+        )
 
         Column(
-            modifier = modifier
-                .fillMaxHeight(0.4f),
-            verticalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .weight(0.3f)
+                .fillMaxSize(),
+            Arrangement.spacedBy(20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CustomButton(textId = R.string.register_email,
                 color = BlueColor,
