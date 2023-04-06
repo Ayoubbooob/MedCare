@@ -34,17 +34,11 @@ import com.bosseurs.medcare.ui.theme.Typography1
 @Composable
 fun HomeScreen(navController: NavController = rememberNavController(),
                modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceBetween,
-        horizontalAlignment = Alignment.CenterHorizontally,
+
+    Scaffold(
+        topBar = {Header()},
+        bottomBar = { FooterBarInstance()}
     ) {
-        Column(
-            verticalArrangement = Arrangement.Top,
-        ) {
-            Header()
-        }
         Column() {
             Text(
                 text = stringResource(R.string.cat_principale),
@@ -54,7 +48,7 @@ fun HomeScreen(navController: NavController = rememberNavController(),
                     .padding(10.dp)
             )
             LazyColumn(
-                modifier = Modifier.fillMaxHeight(0.8f),
+                modifier = Modifier.fillMaxSize(),
             ) {
                 item {
                     MyCard(
@@ -78,14 +72,6 @@ fun HomeScreen(navController: NavController = rememberNavController(),
                 }
             }
         }
-
-
-        Column(
-            verticalArrangement = Arrangement.Bottom,
-        ) {
-            FooterBarInstance()
-        }
-
     }
 }
 
@@ -149,7 +135,6 @@ fun Header(modifier: Modifier = Modifier){
     }
 }
 
-//val image = painterResource(R.drawable)
 @Composable
 fun MyCard(modifier: Modifier = Modifier, backImage: Painter = painterResource(R.drawable.card_img1)) {
     //val image = painterResource(R.drawable.androidparty)
