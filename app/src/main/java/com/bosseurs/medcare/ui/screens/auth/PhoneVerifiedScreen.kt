@@ -14,16 +14,19 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
+import com.bosseurs.medcare.ui.theme.Typography1
 import com.bosseurs.medcare.ui.utils.Screen
 
 @Composable
-fun PhoneVerified(navController: NavController,modifier: Modifier = Modifier) {
+fun PhoneVerified(navController: NavController = rememberNavController(),modifier: Modifier = Modifier) {
     val image = painterResource(R.drawable.tick_icon )
     Column(
         modifier = modifier
@@ -55,9 +58,10 @@ fun PhoneVerified(navController: NavController,modifier: Modifier = Modifier) {
                 modifier = modifier
                     .size(170.dp)
             )
-            Text(text = stringResource(R.string.phone_verified), style = MaterialTheme.typography.h4)
+            Text(text = stringResource(R.string.phone_verified), style = Typography1.h1)
             Text(text = stringResource(R.string.phone_verified_details),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                style = Typography1.caption
             )
         }
 
@@ -70,8 +74,8 @@ fun PhoneVerified(navController: NavController,modifier: Modifier = Modifier) {
     }
 }
 
-//@Preview(showBackground = true, showSystemUi = true)
-//@Composable
-//fun PhoneVerifiedPreview() {
-//    PhoneVerified()
-//}
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PhoneVerifiedPreview() {
+    PhoneVerified()
+}
