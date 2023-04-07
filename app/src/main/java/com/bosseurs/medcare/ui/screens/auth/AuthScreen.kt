@@ -52,7 +52,9 @@ fun AuthScreen(navController: NavController,modifier: Modifier = Modifier) {
             }
         )
         CustomButtonIcons(textId = R.string.register_gmail, icon = icon, color = WhiteColor, textColor = TextForWhiteButtonColor,
-            onClick = { /*TODO*/ }
+            onClick = {
+                navController.navigate(Screen.AppointmentScreen.route)
+            }
         )
         CustomButton(textId = R.string.continue_without_connexion, color = WhiteColor, textColor = TextForWhiteButtonColor,
             onClick = { /*TODO*/ }

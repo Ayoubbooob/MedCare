@@ -3,6 +3,7 @@ package com.bosseurs.medcare.ui.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.bosseurs.medcare.ui.screens.appointment.AppointmentScreen
 import com.bosseurs.medcare.ui.screens.auth.AuthScreen
 import com.bosseurs.medcare.ui.screens.description.DescriptionScreen
 import com.bosseurs.medcare.ui.screens.launch.LanguageScreen
@@ -37,6 +38,10 @@ fun Navigation() {
 
         composable(route = Screen.HomeScreen.route){
             HomeScreen(navController = navController)
+        }
+
+        composable(route = Screen.AppointmentScreen.route){
+            AppointmentScreen(navController = navController)
         }
 
     }

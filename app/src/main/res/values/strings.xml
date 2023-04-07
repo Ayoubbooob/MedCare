@@ -54,4 +54,5 @@
 
     <string name="Rendez_vous"> Rendez-vous </string>
     <string name="Mars">Mars</string>
+    <string name="demande_rdv"> Demander un rendez-vous </string>
 </resources>
