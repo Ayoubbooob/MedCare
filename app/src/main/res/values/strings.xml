@@ -1,3 +1,54 @@
 <resources>
     <string name="app_name">MedCare</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="CONTINUE">CONTINUE</string>
+    <string name="title_description_obesity">Tout savoir sur l\'obésité</string>
+    <string name="title_description_imc">Calculez votre IMC</string>
+    <string name="title_description_medecin">Prendre rendez-vous avec un médecin</string>
+    <string name="description_obesity">Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.</string>
+    <string name="description_imc">second imc metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.</string>
+    <string name="description_medecin">Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.</string>
+    <string name="button_skip">Skip</string>
+    <string name="button_next">Next</string>
+    <string name="connexion_btn">Connexion</string>
+    <string name="sign_up_txt">Don\'t have an account? Sign Up</string>
+    <string name="login_welcome">Content de vous revoir !</string>
+    <string name="new_compte_txt">Creez Votre Compte</string>
+    <string name="new_compte_btn">CREER UN COMPTE</string>
+    <string name="name_field">Your Name</string>
+    <string name="mail_field">Email</string>
+    <string name="pass_field">Password</string>
+    <string name="mobile_number_field">Mobile Number</string>
+    <string name="login_txt">Already have account? Login</string>
+
+    <string name="Choose_language">Choisissez la langue</string>
+    <string name="language_1">French</string>
+    <string name="language_2">Arabic</string>
+    <string name="language_3">English</string>
+    <string name="continue_label">CONTINUE</string>
+    <string name="register_email">S\'INSCRIRE AVEC UN E-MAIL</string>
+    <string name="register_gmail">CONTINUER AVEC GMAIL</string>
+    <string name="continue_without_connexion">CONTINUER SANS CONNEXION</string>
+    <string name="message_bienvenue">Bienvenue à MedCare</string>
+    <string name="sous_message_bienvenue">Voulez-vous de l\'aide pour améliorer votre santé et avoir une meilleure qualité de vie ?</string>
+    <string name="phone_verified">Phone Number Verified</string>
+    <string name="phone_verified_details">Congratulations, your phone number has been verified. You can start using the app</string>
+    <string name="cat_principale">Catégories Principales</string>
+    <string name="greeting_homescreen">Bonjour Oumar</string>
+    <string name="welcome_homescreen">Bienvenue sur MedCare</string>
+    <string name="search_bar_text">Recherchez un élement</string>
+    
+    
+    <string name="AM">AM</string>
+    <string name="PM">PM</string>
+    <string name="Lundi">Lun</string>
+    <string name="Mardi">Mar</string>
+    <string name="Mercredi">Mer</string>
+    <string name="Jeudi">Jeu</string>
+    <string name="Vendredi">Ven</string>
+    <string name="Samedi">Sam</string>
+    <string name="Dimanche">Dim</string>
+    <string name="eight">8:00</string>
+    <string name="treize">13:00</string>
 </resources>
