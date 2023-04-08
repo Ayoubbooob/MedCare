@@ -18,4 +18,4 @@ val TextForWhiteButtonColor = Color(0XFF4157FF)
 val labelTextColor = Color(0XFFa5a7bc)
 val TextFieldBorderColor = Color(0XFFe9eaef)
 val LeadingIconColor = Color(0XFF090F47)
-
+val TopAppBarTitleColor = Color(0XFF080C2F)

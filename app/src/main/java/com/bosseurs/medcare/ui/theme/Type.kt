@@ -28,7 +28,7 @@ val Typography1 = Typography(
     h2 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.W700,                      /* This is For Big text, in our app like the title" Tout savoir sur l'obésité " */
-        fontSize = 30.sp,
+        fontSize = 20.sp,
         color = Color(0XFF090F47)
     ),
     body1 = TextStyle(
@@ -42,7 +42,7 @@ val Typography1 = Typography(
     button = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.W700,
-        fontSize = 21.sp,
+        fontSize = 18.sp,
     ),
 
 
@@ -65,3 +65,19 @@ val labelTextStyle = TextStyle(
     fontWeight = FontWeight.W400
 )
 
+val poppins = FontFamily(
+    Font(R.font.poppins),
+)
+val AppBarTextStyle = TextStyle(
+    fontFamily = poppins,
+    color = TopAppBarTitleColor,
+    fontSize = 21.sp,
+    fontWeight = FontWeight.W500
+)
+
+val AppointmentBigTextStyle = TextStyle(
+    fontFamily = poppins,
+    color = Color.Black,
+    fontWeight = FontWeight.W600,
+    fontSize = 27.sp,
+)

@@ -3,8 +3,11 @@ package com.bosseurs.medcare.ui.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.bosseurs.medcare.ui.screens.appointment.AppointmentScreen
 import com.bosseurs.medcare.ui.screens.auth.AuthScreen
 import com.bosseurs.medcare.ui.screens.description.DescriptionScreen
+import com.bosseurs.medcare.ui.screens.information.InfoObesityScreen
+import com.bosseurs.medcare.ui.screens.information.MenuInfoScreen
 import com.bosseurs.medcare.ui.screens.launch.LanguageScreen
 import com.bosseurs.medcare.ui.screens.login.LoginScreen
 import com.bosseurs.medcare.ui.screens.main.HomeScreen
@@ -28,15 +31,25 @@ fun Navigation() {
         composable(route = Screen.AuthScreen.route){
             AuthScreen(navController = navController)
         }
-        composable(route = Screen.LoginScreen.route){
-            LoginScreen(navController = navController)
-        }
         composable(route = Screen.SignUpScreen.route){
             SignUpScreen(navController = navController)
+        }
+        composable(route = Screen.LoginScreen.route){
+            LoginScreen(navController = navController)
         }
 
         composable(route = Screen.HomeScreen.route){
             HomeScreen(navController = navController)
+        }
+        composable(route = Screen.InfoObesityScreen.route){
+            InfoObesityScreen(navController = navController)
+        }
+        composable(route = Screen.MenuInfoScreen.route){
+            MenuInfoScreen(navController = navController)
+        }
+
+        composable(route = Screen.AppointmentScreen.route){
+            AppointmentScreen(navController = navController)
         }
 
     }
