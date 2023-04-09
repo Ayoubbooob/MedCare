@@ -4,14 +4,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.bosseurs.medcare.ui.utils.BottomNavItem
 
@@ -28,19 +26,24 @@ fun FooterBarInstance(){
             icon = Icons.Default.Home ,
         ) ,
         BottomNavItem(
-            name = "Home" ,
-            route = "home_route" ,
+            name = "NOTIFICATION" ,
+            route = "notification_route" ,
             icon = Icons.Default.Notifications ,
         ) ,
         BottomNavItem(
-            name = "Home" ,
-            route = "home_route" ,
-            icon = Icons.Default.ArrowDropDown ,
+            name = "MORE" ,
+            route = "more_route" ,
+            icon = Icons.Default.Menu ,
         ) ,
         BottomNavItem(
-            name = "Home" ,
-            route = "home_route" ,
-            icon = Icons.Default.AccountBox ,
+            name = "OBESITE" ,
+            route = "obesite_route" ,
+            icon = Icons.Default.Check ,
+        ) ,
+        BottomNavItem(
+            name = "PROFILE" ,
+            route = "profile_route" ,
+            icon = Icons.Default.Person ,
         )
     ))
 }

@@ -7,6 +7,11 @@ val Purple500 = Color(0xFF6200EE)
 val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
+/*Use this the shadow box color*/
+val BoxColor = Color(0xF9FBFC)
+val ShadowColor = Color(0xA7B1B7)
+val ObesiteGenreColor = Color(0xE5E5E5)
+
 /* Use this for Blue Button */
 val BlueColor = Color(0XFF4157FF)
 val TextForBlueButtonColor = Color(0XFFFFFFFF)

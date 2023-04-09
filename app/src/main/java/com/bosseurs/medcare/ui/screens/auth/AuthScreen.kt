@@ -1,15 +1,10 @@
 package com.bosseurs.medcare.ui.screens.auth
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -20,7 +15,9 @@ import androidx.navigation.compose.rememberNavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomButtonIcons
+import com.bosseurs.medcare.ui.shared.ImageContainer
 import com.bosseurs.medcare.ui.theme.*
+import com.bosseurs.medcare.ui.utils.ImageModel
 import com.bosseurs.medcare.ui.utils.Screen
 
 @Composable
@@ -45,11 +42,13 @@ fun AuthScreen(navController: NavController,modifier: Modifier = Modifier) {
                 .fillMaxHeight()
                 .wrapContentHeight(align = Alignment.CenterVertically)
         ) {
-            Image(
-                painter = image,
-                contentDescription = "welcome image",
-                modifier = Modifier.fillMaxSize(0.7f)
+            val imageModelInstance = ImageModel(
+                path = image ,
+                size = 200 ,
+                contenteDescription = "welcome image" ,
             )
+            //you have to use image container however
+            ImageContainer(image = imageModelInstance )
         }
 
         Column(
