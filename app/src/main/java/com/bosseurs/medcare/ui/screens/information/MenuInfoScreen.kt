@@ -50,11 +50,7 @@ fun MenuInfoScreen(navController: NavController = rememberNavController(),
                 item {
                     MyCard(
                         backImage = painterResource(id = R.drawable.card_img2),
-                        onClick = {
-                            Toast
-                                .makeText(context, "cette route n'est pas encore disponible", Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                        onClick = { navController.navigate(Screen.InfoDiabeteScreen.route) }
                     )
                 }
             }

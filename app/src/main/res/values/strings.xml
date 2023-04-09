@@ -56,4 +56,5 @@
     <string name="Mars">Mars</string>
     <string name="info_gererales">Informations Générales</string>
     <string name="titre_info_obesite">C\'est quoi l\'Obésité</string>
+    <string name="titre_info_diabete">C\'est quoi le diabète?</string>
 </resources>

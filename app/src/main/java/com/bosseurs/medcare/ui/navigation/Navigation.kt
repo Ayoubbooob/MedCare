@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.bosseurs.medcare.ui.screens.auth.AuthScreen
 import com.bosseurs.medcare.ui.screens.description.DescriptionScreen
+import com.bosseurs.medcare.ui.screens.information.InfoDiabeteScreen
 import com.bosseurs.medcare.ui.screens.information.InfoObesityScreen
 import com.bosseurs.medcare.ui.screens.information.MenuInfoScreen
 import com.bosseurs.medcare.ui.screens.launch.LanguageScreen
@@ -42,6 +43,9 @@ fun Navigation() {
         }
         composable(route = Screen.InfoObesityScreen.route){
             InfoObesityScreen(navController = navController)
+        }
+        composable(route = Screen.InfoDiabeteScreen.route){
+            InfoDiabeteScreen(navController = navController)
         }
         composable(route = Screen.MenuInfoScreen.route){
             MenuInfoScreen(navController = navController)
