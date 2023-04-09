@@ -28,7 +28,7 @@ fun InfoObesityScreen(navController: NavController = rememberNavController(),
 ) {
     Scaffold(
         topBar = { Header() },
-        bottomBar = { FooterBarInstance() }
+        bottomBar = { FooterBarInstance(navController) }
     ) {innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
             Text(

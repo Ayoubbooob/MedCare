@@ -31,6 +31,12 @@ val Typography1 = Typography(
         fontSize = 20.sp,
         color = Color(0XFF090F47)
     ),
+    h3 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W700,                      /* This is For Big text, in our app like the title" Tout savoir sur l'obésité " */
+        fontSize = 15.sp,
+        color = Color(0XFF090F47)
+    ),
     body1 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,

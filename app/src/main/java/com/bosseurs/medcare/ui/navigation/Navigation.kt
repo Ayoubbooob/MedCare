@@ -11,6 +11,7 @@ import com.bosseurs.medcare.ui.screens.information.MenuInfoScreen
 import com.bosseurs.medcare.ui.screens.launch.LanguageScreen
 import com.bosseurs.medcare.ui.screens.login.LoginScreen
 import com.bosseurs.medcare.ui.screens.main.HomeScreen
+import com.bosseurs.medcare.ui.screens.profile.ProfileScreen
 import com.bosseurs.medcare.ui.screens.signup.SignUpScreen
 import com.bosseurs.medcare.ui.utils.Screen
 import androidx.navigation.compose.rememberNavController as rememberNavController
@@ -24,6 +25,9 @@ fun Navigation() {
     ) {
         composable(route = Screen.LanguageScreen.route){
             LanguageScreen(navController = navController)
+        }
+        composable(route = Screen.ProfileScreen.route){
+            ProfileScreen(navController = navController)
         }
         composable(route = Screen.DescriptionScreen.route){
             DescriptionScreen(navController = navController)
