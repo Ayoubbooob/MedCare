@@ -10,6 +10,7 @@
     <string name="description_imc">second imc metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.</string>
     <string name="description_medecin">Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.</string>
     <string name="button_skip">Skip</string>
+    <string name="profile">Mon PROFIL</string>
     <string name="button_next">Next</string>
     <string name="connexion_btn">Connexion</string>
     <string name="sign_up_txt">Don\'t have an account? Sign Up</string>
@@ -59,4 +60,5 @@
 
     <string name="info_gererales">Informations Générales</string>
     <string name="titre_info_obesite">C\'est quoi l\'Obésité</string>
+    <string name="welcome_profile">Bonjour Oumar</string>
 </resources>

@@ -28,7 +28,7 @@ fun MenuInfoScreen(navController: NavController = rememberNavController(),
     val context = LocalContext.current
     Scaffold(
         topBar = { Header() },
-        bottomBar = { FooterBarInstance()}
+        bottomBar = { FooterBarInstance(navController)}
     ) {innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
             Text(
