@@ -47,15 +47,15 @@ fun Greeting(name: String) {
             iconDescription = "Person Icon" ,
             keyboardType = KeyboardType.Text,
             trailingIconId = null
-            )
+        )
 
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-
-        Greeting("CONTINUE")
-
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview() {
+//
+//    Greeting("CONTINUE")
+//
+//}

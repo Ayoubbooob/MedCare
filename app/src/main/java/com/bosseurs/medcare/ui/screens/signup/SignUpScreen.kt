@@ -62,23 +62,23 @@ fun SignUpScreen(navController: NavController){
             )
             CustomTextField(
                 labelText =R.string.mail_field,
-            leadingIconId = null ,
-            iconDescription =null ,
-            keyboardType = KeyboardType.Text,
-            trailingIconId = null
+                leadingIconId = null ,
+                iconDescription =null ,
+                keyboardType = KeyboardType.Text,
+                trailingIconId = null
             )
             CustomTextField(
-            labelText =R.string.pass_field,
-            leadingIconId = null ,
-            iconDescription =null ,
-            keyboardType = KeyboardType.Text,
-            trailingIconId = null
-        )
+                labelText =R.string.pass_field,
+                leadingIconId = null ,
+                iconDescription =null ,
+                keyboardType = KeyboardType.Text,
+                trailingIconId = null
+            )
             CustomButton(textId = R.string.new_compte_btn,
                 onClick = {
-                          navController.navigate(Screen.LoginScreen.route)
+                    navController.navigate(Screen.LoginScreen.route)
 
-            }, color = BlueColor, textColor = TextForBlueButtonColor, modifier = Modifier.fillMaxWidth())
+                }, color = BlueColor, textColor = TextForBlueButtonColor, modifier = Modifier.fillMaxWidth())
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
                 Text(
                     text = stringResource(id = R.string.login_txt),

@@ -48,50 +48,50 @@ fun LoginScreen(
             }
         }
     ) {
-            Column(modifier = Modifier
-                .padding(20.dp)
-                .verticalScroll(rememberScrollState())
-                ,Arrangement.spacedBy(15.dp),
+        Column(modifier = Modifier
+            .padding(20.dp)
+            .verticalScroll(rememberScrollState())
+            ,Arrangement.spacedBy(15.dp),
         ) {
-                    Text(
-                        text= stringResource(R.string.login_welcome),
-                        style = MaterialTheme.typography.h2,
-                    )
-                CustomTextField(
-                    labelText = R.string.username,
-                    leadingIconId = R.drawable.person_icon ,
-                    iconDescription ="Person Icon" ,
-                    keyboardType = KeyboardType.Text,
-                    trailingIconId = null
-                )
-                CustomTextField(
-                    labelText = R.string.password,
-                    leadingIconId = R.drawable.password_icon ,
-                    iconDescription = "Password Icon" ,
-                    keyboardType = KeyboardType.Password ,
-                    trailingIconId = null
-                )
+            Text(
+                text= stringResource(R.string.login_welcome),
+                style = MaterialTheme.typography.h2,
+            )
+            CustomTextField(
+                labelText = R.string.username,
+                leadingIconId = R.drawable.person_icon ,
+                iconDescription ="Person Icon" ,
+                keyboardType = KeyboardType.Text,
+                trailingIconId = null
+            )
+            CustomTextField(
+                labelText = R.string.password,
+                leadingIconId = R.drawable.password_icon ,
+                iconDescription = "Password Icon" ,
+                keyboardType = KeyboardType.Password ,
+                trailingIconId = null
+            )
 //                    OutlinedTextField(value = loginViewModel.userGuess, onValueChange = {loginViewModel.updateUserGuess(it)} , label = {}, modifier = Modifier.fillMaxWidth())
 //                    OutlinedTextField(value = loginViewModel.passwordGuess, onValueChange = {loginViewModel.updatePasswordGuess(it)} , label = {}, modifier = Modifier.fillMaxWidth())
-                    CustomButton(textId = R.string.connexion_btn,
-                        onClick = {
-                            navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
-                        },
-                        color = BlueColor,
-                        textColor = TextForBlueButtonColor,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
-                        Text(
-                            text = stringResource(id = R.string.sign_up_txt),
-                            textAlign = TextAlign.Center,
-                            style = MaterialTheme.typography.caption,
-                        )
-                    }
-                }
-
+            CustomButton(textId = R.string.connexion_btn,
+                onClick = {
+                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
+                },
+                color = BlueColor,
+                textColor = TextForBlueButtonColor,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
+                Text(
+                    text = stringResource(id = R.string.sign_up_txt),
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.caption,
+                )
             }
         }
+
+    }
+}
 
 //@Preview(showBackground = true)
 //@Composable
