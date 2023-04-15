@@ -26,16 +26,6 @@ class MenuInfoViewModel : ViewModel() {
             videoUri = "GUxg-MsE-y0",
             infoContentMarkdown = INFO_DIABETE
         )
-        val info3 = InfoDetail(
-            title = "C'est quoi le diabète?",
-            videoUri = "GUxg-MsE-y0",
-            infoContentMarkdown = INFO_DIABETE
-        )
-        val info4 = InfoDetail(
-            title = "C'est quoi l'obésité?",
-            videoUri = "vzQxzcBV8FM",
-            infoContentMarkdown = INFO_OBESITE
-        )
 
         _uiState.update { currentState ->
             currentState.copy(info_details = listOf(info1, info2))
