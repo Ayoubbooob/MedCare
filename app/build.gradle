@@ -75,4 +75,6 @@ dependencies {
     implementation 'io.coil-kt:coil:1.4.0'
     implementation "com.google.accompanist:accompanist-coil:0.15.0"
 
+    implementation 'com.google.code.gson:gson:2.8.6'
+
 }

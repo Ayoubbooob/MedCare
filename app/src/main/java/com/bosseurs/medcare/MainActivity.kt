@@ -18,6 +18,7 @@ import com.bosseurs.medcare.ui.shared.CustomTextField
 import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.MedCareTheme
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
+import com.bosseurs.medcare.ui.theme.Typography1
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +38,7 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String) {
     Column() {
         CustomButton(textId = R.string.CONTINUE, onClick = {}, color = BlueColor, textColor = TextForBlueButtonColor)
-        Text(text = "Tout savoir sur l'obésité", style = MaterialTheme.typography.h1)
+        Text(text = "Tout savoir sur l'obésité", style = Typography1.h1)
         Text(text = "Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.",
             style = MaterialTheme.typography.caption)
         CustomTextField(
@@ -46,15 +47,15 @@ fun Greeting(name: String) {
             iconDescription = "Person Icon" ,
             keyboardType = KeyboardType.Text,
             trailingIconId = null
-            )
+        )
 
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-
-        Greeting("CONTINUE")
-
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview() {
+//
+//    Greeting("CONTINUE")
+//
+//}

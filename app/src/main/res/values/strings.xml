@@ -36,11 +36,11 @@
     <string name="phone_verified">Phone Number Verified</string>
     <string name="phone_verified_details">Congratulations, your phone number has been verified. You can start using the app</string>
     <string name="cat_principale">Catégories Principales</string>
-    <string name="greeting_homescreen">Bonjour Oumar</string>
+    <string name="greeting_homescreen">Bonjour</string>
     <string name="welcome_homescreen">Bienvenue sur MedCare</string>
     <string name="search_bar_text">Recherchez un élement</string>
-    
-    
+
+
     <string name="AM">AM</string>
     <string name="PM">PM</string>
     <string name="Lundi">Lun</string>
@@ -59,6 +59,11 @@
     <string name="demande_rdv"> Demander un rendez-vous </string>
 
     <string name="info_gererales">Informations Générales</string>
-    <string name="titre_info_obesite">C\'est quoi l\'Obésité</string>
+    <string name="titre_info_obesite">C\'est quoi l\'Obésité?</string>
+    <string name="titre_info_diabete">C\'est quoi le diabète?</string>
     <string name="welcome_profile">Bonjour Oumar</string>
+    <string name="info_obesite_panel">Informations sur l\'obésité</string>
+    <string name="unite_chirurgie_panel">Unité de chirurgie bariatique</string>
+    <string name="calcul_imc_panel">Calculer son IMC</string>
+    <string name="rendez_vous_panel">Prendre un rendez-vous</string>
 </resources>
