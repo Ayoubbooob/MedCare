@@ -15,16 +15,22 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.bosseurs.medcare.R
+import com.bosseurs.medcare.ui.screens.main.HomeViewModel
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomButtonIcons
 import com.bosseurs.medcare.ui.theme.*
 import com.bosseurs.medcare.ui.utils.Screen
 
 @Composable
-fun AuthScreen(navController: NavController,modifier: Modifier = Modifier) {
+fun AuthScreen(
+    navController: NavController,
+    modifier: Modifier = Modifier,
+    homeViewModel: HomeViewModel = viewModel()
+) {
     val image = painterResource(R.drawable.welcome_img )
     Column(
         modifier = Modifier
@@ -36,6 +42,7 @@ fun AuthScreen(navController: NavController,modifier: Modifier = Modifier) {
             modifier = Modifier
                 .weight(0.1f)
         )
+
         Column(
             modifier = Modifier
                 .weight(0.4f)
@@ -85,16 +92,20 @@ fun AuthScreen(navController: NavController,modifier: Modifier = Modifier) {
                     navController.navigate(Screen.SignUpScreen.route)
                 }
             )
-            CustomButtonIcons(textId = R.string.register_gmail,
+            /*CustomButtonIcons(textId = R.string.register_gmail,
                 icon = icon,
                 color = WhiteColor,
                 textColor = TextForWhiteButtonColor,
-                onClick = { /*TODO*/ }
-            )
+                onClick = {
+                    navController.navigate(Screen.AppointmentScreen.route)
+                }
+            )*/
             CustomButton(textId = R.string.continue_without_connexion,
                 color = WhiteColor,
                 textColor = TextForWhiteButtonColor,
-                onClick = { /*TODO*/ }
+                onClick = {
+                    navController.navigate(Screen.HomeScreen.passArgs(false, " "))
+                }
             )
         }
     }
