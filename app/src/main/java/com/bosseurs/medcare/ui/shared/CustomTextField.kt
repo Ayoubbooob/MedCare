@@ -28,24 +28,24 @@ fun CustomTextField(
     keyboardType: KeyboardType,
     trailingIconId : Int?,
 
-){
+    ){
     var text by remember { mutableStateOf(TextFieldValue("")) }
 
     TextField(
         value = text,
         onValueChange = {
                 newText -> text = newText
-                        },
+        },
 
         label = {Text(stringResource(labelText), style = labelTextStyle)} ,
         leadingIcon = if(leadingIconId != null ){
             {Icon(
-            painter = painterResource(leadingIconId),
-            contentDescription = iconDescription,
-            modifier = Modifier.size(width = 25.dp, height = 25.dp)
-        )}
+                painter = painterResource(leadingIconId),
+                contentDescription = iconDescription,
+                modifier = Modifier.size(width = 25.dp, height = 25.dp)
+            )}
         }else{
-               null
+            null
         },
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType), // ex : keyboardType =  KeyboardType.Number,
         colors = TextFieldDefaults.textFieldColors(
@@ -65,7 +65,7 @@ fun CustomTextField(
             null
         },
 
-    )
+        )
 }
 
 @Preview(showBackground = true)
@@ -77,5 +77,5 @@ fun CustomTextFieldPreview(){
         iconDescription = "Person Icon" ,
         keyboardType = KeyboardType.Text,
         trailingIconId = null,
-        )
+    )
 }

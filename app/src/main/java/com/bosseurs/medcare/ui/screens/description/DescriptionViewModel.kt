@@ -32,8 +32,6 @@ class DescriptionViewModel : ViewModel(){
                     image = R.drawable.int5)
             }
             3 -> moveToAuthScreen(navController)
-
-
         }
     }
 
