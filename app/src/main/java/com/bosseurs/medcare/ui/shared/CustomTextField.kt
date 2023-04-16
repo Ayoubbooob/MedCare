@@ -13,11 +13,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bosseurs.medcare.ui.theme.LeadingIconColor
 import com.bosseurs.medcare.ui.theme.TextFieldBorderColor
-import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.theme.labelTextStyle
 
 @Composable
@@ -26,16 +24,13 @@ fun CustomTextField(
     leadingIconId:Int?,
     iconDescription: String?,
     keyboardType: KeyboardType,
-    trailingIconId : Int?,
-
-    ){
-    var text by remember { mutableStateOf(TextFieldValue("")) }
-
+    trailingIconId: Int?,
+    value: TextFieldValue,
+    onValueChange: (TextFieldValue) -> Unit
+){
     TextField(
-        value = text,
-        onValueChange = {
-                newText -> text = newText
-        },
+        value = value,
+        onValueChange = onValueChange,
 
         label = {Text(stringResource(labelText), style = labelTextStyle)} ,
         leadingIcon = if(leadingIconId != null ){
@@ -68,14 +63,14 @@ fun CustomTextField(
         )
 }
 
-@Preview(showBackground = true)
-@Composable
-fun CustomTextFieldPreview(){
-    CustomTextField(
-        labelText = R.string.username,
-        leadingIconId = R.drawable.person_icon,
-        iconDescription = "Person Icon" ,
-        keyboardType = KeyboardType.Text,
-        trailingIconId = null,
-    )
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun CustomTextFieldPreview(){
+//    CustomTextField(
+//        labelText = R.string.username,
+//        leadingIconId = R.drawable.person_icon,
+//        iconDescription = "Person Icon" ,
+//        keyboardType = KeyboardType.Text,
+//        trailingIconId = null,
+//        )
+//}

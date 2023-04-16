@@ -46,7 +46,7 @@ fun Navigation() {
         composable(route = Screen.LoginScreen.route){
             LoginScreen(navController = navController)
         }
-
+//        composable(route = Screen.HomeScreen.route)
         composable(
             route = Screen.HomeScreen.route,
             arguments = listOf(
