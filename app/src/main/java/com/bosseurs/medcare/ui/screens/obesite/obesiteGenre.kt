@@ -1,9 +1,9 @@
 package com.bosseurs.medcare.ui.screens.obesite
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,6 +21,7 @@ import com.bosseurs.medcare.ui.utils.ImageModel
 fun ObesiteGenre(
     //navController: NavController,
     //modifier : Modifier
+    //navController: NavController = rememberNavController()
 ){
 
     Scaffold(
@@ -52,6 +53,11 @@ fun ObesiteGenre(
             //modifier = Modifier
             //.weight(0.1f)
             //)
+            //Button(
+            //onClick = {
+                //navController.navigate(Screen.ObesiteGenreScreen.route)
+            //},
+            //) {
             val Man = painterResource(R.drawable.genre_homme )
             val ManImageModelInstance = ImageModel(
                 path = Man ,
@@ -66,6 +72,9 @@ fun ObesiteGenre(
             //modifier = Modifier
             //.weight(0.1f)
             //)
+            //Button(onClick = { /*TODO*/ }) {
+
+            //}
             val HumanImage = painterResource(R.drawable.genre_femme )
             val HumanImageModelInstance = ImageModel(
                 path = HumanImage ,
@@ -77,10 +86,10 @@ fun ObesiteGenre(
                 .width(297.dp)
                 .size(100.dp) , contente = HumanImageModelInstance)
         }
+
     }
-
-
 }
+
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

@@ -40,7 +40,8 @@
     <string name="search_bar_text">Recherchez un élement</string>
     <string name="genre_select_message">Selectionner Votre</string>
     <string name="gennre_bold">Genre</string>
-    
+    <string name="gennre_taille_bold">Taille</string>
+
     
     <string name="AM">AM</string>
     <string name="PM">PM</string>

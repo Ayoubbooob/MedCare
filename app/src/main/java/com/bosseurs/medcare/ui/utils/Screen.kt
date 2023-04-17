@@ -12,5 +12,6 @@ sealed class Screen(val route : String){
 
     object InfoObesityScreen: Screen("info_obesity_screen")
     object MenuInfoScreen: Screen("menu_info_screen")
+    object ObesiteGenreScreen: Screen("obesite_genre_screen")
 
 }

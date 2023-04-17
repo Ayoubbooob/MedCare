@@ -52,5 +52,9 @@ fun Navigation() {
             AppointmentScreen(navController = navController)
         }
 
+        composable(route = Screen.ObesiteGenreScreen.route){
+            AppointmentScreen(navController = navController)
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 package com.bosseurs.medcare.ui.shared
 
+import android.service.autofill.OnClickAction
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -20,7 +21,8 @@ import com.bosseurs.medcare.ui.utils.ImageModel
 fun ImageShadowContainer(
     modifier: Modifier = Modifier,
     color: Color,
-    contente : ImageModel
+    contente : ImageModel ,
+    //onClickAction: OnClickAction
     //symbol: String,
 ) {
     Box(

@@ -2,7 +2,6 @@ package com.bosseurs.medcare.ui.screens.launch
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,6 +11,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
@@ -73,13 +73,13 @@ fun LangImage(image: Painter, text: String, modifier: Modifier = Modifier) {
     }
 }
 
-//@Preview(showBackground = true, showSystemUi = true)
-//@Composable
-//fun LanguageScreenPreview() {
-//    MedCareTheme {
-//        // A surface container using the 'background' color from the theme
-//            LanguageScreen(navController = NavController(context = ))
-//
-//    }
-//
-//}
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun LanguageScreenPreview() {
+    CustomButton(textId = R.string.continue_label ,
+            color = BlueColor, textColor = TextForBlueButtonColor,
+            onClick = {
+                //navController.navigate(Screen.DescriptionScreen.route)
+            }
+        )
+}
