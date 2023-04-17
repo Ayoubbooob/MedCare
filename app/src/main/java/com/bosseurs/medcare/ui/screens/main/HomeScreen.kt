@@ -33,6 +33,7 @@ import androidx.navigation.compose.rememberNavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.theme.BlueColor
+import com.bosseurs.medcare.ui.theme.MedCareTheme
 import com.bosseurs.medcare.ui.theme.Typography1
 import com.bosseurs.medcare.ui.utils.Screen
 import com.google.gson.Gson
@@ -84,9 +85,13 @@ fun HomeScreen(
                         title = stringResource(R.string.unite_chirurgie_panel),
                         backImage = painterResource(id = R.drawable.cat1),
                         onClick = {
-                            Toast
-                                .makeText(context, "cette route n'est pas encore disponible", Toast.LENGTH_SHORT)
-                                .show()
+//                            Toast
+//                                .makeText(context, "cette route n'est pas encore disponible", Toast.LENGTH_SHORT)
+//                                .show()
+
+                            navController.navigate(Screen.ProceduresScreen.route)
+
+
                         }
 
                     )
@@ -185,6 +190,7 @@ fun MyCard(modifier: Modifier = Modifier,
            onClick: () -> Unit = {}
 ) {
     Card(
+        backgroundColor = MaterialTheme.colors.onSurface, //Ayoub a ajoute cette ligne
         elevation = 10.dp,
         shape = RoundedCornerShape(18.dp),
         modifier = modifier
@@ -221,5 +227,7 @@ fun MyCard(modifier: Modifier = Modifier,
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen(navController = rememberNavController())
+    MedCareTheme() {
+        HomeScreen(navController = rememberNavController())
+    }
 }

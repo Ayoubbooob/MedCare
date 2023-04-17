@@ -15,6 +15,7 @@ import com.bosseurs.medcare.ui.screens.login.LoginScreen
 import com.bosseurs.medcare.ui.screens.main.HomeScreen
 import com.bosseurs.medcare.ui.screens.main.HomeUiState
 import com.bosseurs.medcare.ui.screens.main.HomeViewModel
+import com.bosseurs.medcare.ui.screens.procedures.ProceduresScreen
 import com.bosseurs.medcare.ui.screens.profile.ProfileScreen
 import com.bosseurs.medcare.ui.screens.signup.SignUpScreen
 import com.bosseurs.medcare.ui.utils.Screen
@@ -22,7 +23,7 @@ import com.google.gson.Gson
 import androidx.navigation.compose.rememberNavController as rememberNavController
 
 @Composable
-fun Navigation() {
+fun Navigation(toggleTheme : () -> Unit) {
     val navController = rememberNavController()
     NavHost(
     navController = navController,
@@ -89,6 +90,10 @@ fun Navigation() {
 
         composable(route = Screen.AppointmentScreen.route){
             AppointmentScreen(navController = navController)
+        }
+
+        composable(route = Screen.ProceduresScreen.route){
+            ProceduresScreen(navController = navController)
         }
 
     }

@@ -85,6 +85,7 @@ fun MyCard(modifier: Modifier = Modifier,
            onClick: () -> Unit = {}
 ) {
     Card(
+        backgroundColor = MaterialTheme.colors.onSurface, //Ayoub a ajoute cette ligne
         elevation = 10.dp,
         shape = RoundedCornerShape(18.dp),
         modifier = modifier
