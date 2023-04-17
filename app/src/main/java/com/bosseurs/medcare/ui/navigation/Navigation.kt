@@ -15,6 +15,7 @@ import com.bosseurs.medcare.ui.screens.login.LoginScreen
 import com.bosseurs.medcare.ui.screens.main.HomeScreen
 import com.bosseurs.medcare.ui.screens.main.HomeUiState
 import com.bosseurs.medcare.ui.screens.main.HomeViewModel
+import com.bosseurs.medcare.ui.screens.procedures.ProcedureDetails
 import com.bosseurs.medcare.ui.screens.procedures.ProceduresScreen
 import com.bosseurs.medcare.ui.screens.profile.ProfileScreen
 import com.bosseurs.medcare.ui.screens.signup.SignUpScreen
@@ -96,5 +97,17 @@ fun Navigation(toggleTheme : () -> Unit) {
             ProceduresScreen(navController = navController)
         }
 
+
+//        composable(route = Screen.ProcedureDetails.route) { backStackEntry ->
+//            val id = backStackEntry.arguments?.getInt("id") ?: return@composable
+//            ProcedureDetails(navController = navController, id = id)
+//        }
+
+        composable(Screen.ProcedureDetails.route + "/{id}") { backStackEntry ->
+            val id = backStackEntry.arguments?.getInt("id")
+            if (id != null) {
+                ProcedureDetails(navController, id)
+            }
+        }
     }
 }

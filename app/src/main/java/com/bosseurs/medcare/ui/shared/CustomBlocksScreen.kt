@@ -15,7 +15,7 @@ import com.bosseurs.medcare.ui.utils.BlockModel
 fun CustomBlocksScreen(
     navController: NavController,
     blocksList : List<BlockModel>,
-    toggleTheme: () -> Unit = {}
+    toggleTheme: () -> Unit = {},
 ){
     LazyColumn {
         item {
@@ -30,10 +30,12 @@ fun CustomBlocksScreen(
             blocksList.forEach {
                 BlockCard(
                     it,
-                    onItemClicked = {
-                        //TODO - when a block choosed
+                    onItemClicked =
+
+                    {
+//                        //TODO - when a block choosed
 //                            block ->
-//                        navController.navigate("details/${block.id}/${block.name}/${block.location}")
+                      block ->  navController.navigate("procedures_details/${block.id}")
                     }
                 )
             }

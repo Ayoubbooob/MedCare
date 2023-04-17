@@ -16,6 +16,7 @@
     <color name="green">#83EB57</color>
     <color name="yellow">#EBD257</color>
     <color name="text">#1E3054</color>
+    <color name="background">#FFFFFF</color>
 
 
 </resources>

@@ -8,7 +8,11 @@ import com.bosseurs.medcare.ui.shared.CustomBlocksScreen
 
 @Composable
 fun ProceduresScreen(navController: NavController) {
-    CustomBlocksScreen(navController = navController, blocksList = FakeBlockDatabase.proceduresBlocksList)
+    CustomBlocksScreen(
+        navController = navController,
+        blocksList = FakeBlockDatabase.proceduresBlocksList,
+
+        )
 }
 
 //@Composable
