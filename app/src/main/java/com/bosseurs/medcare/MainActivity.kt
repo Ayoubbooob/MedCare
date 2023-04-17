@@ -57,13 +57,13 @@ fun Greeting(name: String) {
         Text(text = "Tout savoir sur l'obésité", style = Typography1.h1)
         Text(text = "Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.",
             style = MaterialTheme.typography.caption)
-        CustomTextField(
-            labelText = R.string.username,
-            leadingIconId = R.drawable.person_icon,
-            iconDescription = "Person Icon" ,
-            keyboardType = KeyboardType.Text,
-            trailingIconId = null
-        )
+//        CustomTextField(
+//            labelText = R.string.username,
+//            leadingIconId = R.drawable.person_icon,
+//            iconDescription = "Person Icon" ,
+//            keyboardType = KeyboardType.Text,
+//            trailingIconId = null
+//        )
 
     }
 }
