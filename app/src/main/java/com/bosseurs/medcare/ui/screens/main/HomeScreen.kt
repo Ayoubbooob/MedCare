@@ -101,9 +101,7 @@ fun HomeScreen(
                         title = stringResource(R.string.calcul_imc_panel),
                         backImage = painterResource(id = R.drawable.balance),
                         onClick = {
-                            Toast
-                                .makeText(context, "cette route n'est pas encore disponible", Toast.LENGTH_SHORT)
-                                .show()
+                            navController.navigate(Screen.obesiteGenre.route)
                         }
                     )
                 }

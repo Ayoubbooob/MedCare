@@ -15,6 +15,7 @@ import com.bosseurs.medcare.ui.screens.login.LoginScreen
 import com.bosseurs.medcare.ui.screens.main.HomeScreen
 import com.bosseurs.medcare.ui.screens.main.HomeUiState
 import com.bosseurs.medcare.ui.screens.main.HomeViewModel
+import com.bosseurs.medcare.ui.screens.obesite.ObesiteGenre
 import com.bosseurs.medcare.ui.screens.procedures.ProcedureDetails
 import com.bosseurs.medcare.ui.screens.procedures.ProceduresScreen
 import com.bosseurs.medcare.ui.screens.profile.ProfileScreen
@@ -47,6 +48,9 @@ fun Navigation(toggleTheme : () -> Unit) {
         }
         composable(route = Screen.LoginScreen.route){
             LoginScreen(navController = navController)
+        }
+        composable(route = Screen.obesiteGenre.route){
+            ObesiteGenre(navController = navController)
         }
 //        composable(route = Screen.HomeScreen.route)
         composable(

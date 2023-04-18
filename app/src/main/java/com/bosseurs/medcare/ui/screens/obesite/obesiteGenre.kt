@@ -11,6 +11,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.shared.ImageShadowContainer
@@ -19,7 +20,7 @@ import com.bosseurs.medcare.ui.utils.ImageModel
 
 @Composable
 fun ObesiteGenre(
-    //navController: NavController,
+    navController: NavController,
     //modifier : Modifier
     //navController: NavController = rememberNavController()
 ){
@@ -27,7 +28,7 @@ fun ObesiteGenre(
     Scaffold(
         //backgroundColor = MaterialTheme.colors.onBackground ,
         bottomBar = {
-            //FooterBarInstance()
+            FooterBarInstance(navController)
         }
     ) {
         Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
@@ -67,7 +68,8 @@ fun ObesiteGenre(
             ImageShadowContainer(color = MaterialTheme.colors.onPrimary , modifier = Modifier
                 .height(232.dp)
                 .width(297.dp)
-                .size(100.dp) , contente = ManImageModelInstance)
+                .size(100.dp) , contente = ManImageModelInstance,
+            )
             //Spacer(
             //modifier = Modifier
             //.weight(0.1f)
@@ -94,5 +96,5 @@ fun ObesiteGenre(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun ObesiteGenreScreenPreview() {
-    ObesiteGenre()
+    //ObesiteGenre(N)
 }

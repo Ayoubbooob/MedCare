@@ -9,6 +9,7 @@ sealed class Screen(val route : String){
     object ProfileScreen : Screen("profile_screen")
     object SignUpScreen : Screen("signup_screen")
     object LoginScreen : Screen("login_screen")
+    object obesiteGenre : Screen("obesiteGenre_screen")
     object PhoneVerifiedScreen : Screen("phone_verified_screen")
     object HomeScreen : Screen("home_screen/{is_user_connected}/{username}"){
         fun passArgs(isUserConnected: Boolean, username: String = "") : String{

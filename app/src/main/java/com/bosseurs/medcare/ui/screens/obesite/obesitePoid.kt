@@ -1,96 +1,239 @@
 package com.bosseurs.medcare.ui.screens.obesite
 
-import androidx.compose.foundation.Canvas
+import android.graphics.Paint
+import android.graphics.Rect
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.semantics.Role.Companion.Button
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.min
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.rotate
+import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.text.drawText
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
+import com.bosseurs.medcare.ui.shared.PickerStyle
+import kotlinx.coroutines.delay
+import java.util.*
+import kotlin.math.*
 
 @Composable
-fun WeightPicker(
+fun Clock(
     modifier: Modifier = Modifier,
-    weight: Int,
-    onWeightChanged: (Int) -> Unit,
-    weightRange: IntRange = 0..150,
-    step: Int = 1
+    pickerStyle : PickerStyle,
+    time:()->Long,
+    circleRadius:Float,
+    outerCircleThickness:Float,
 ) {
-    var weightValue by remember { mutableStateOf(weight) }
 
+    var circleCenter by remember {
+        mutableStateOf(Offset.Zero)
+    }
+    var targetDistant by remember {
+        mutableStateOf(0f)
+    }
+
+    var startDragPointX by remember {
+        mutableStateOf(0f)
+    }
+    var startDragPointY by remember {
+        mutableStateOf(0f)
+    }
+
+    var oldDragPoint by remember {
+        mutableStateOf(0f)
+    }
+
+    var selectedWeight by remember {
+        mutableStateOf(0)
+    }
     Box(
         modifier = modifier
-            .size(200.dp)
-            .background(Color.LightGray, CircleShape)
-            .padding(16.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        BoxWithConstraints {
-            val diameter = min(maxWidth, maxHeight)
-            val radius = diameter / 2f
-            val center = Offset(radius , radius)
+    ){
+        Canvas(
+            modifier = Modifier
+                .fillMaxSize()
+                .pointerInput(Unit) {
+                    detectDragGestures(){ change, _ ->
 
-            val angleStep = 360f / weightRange.count()
-            val startAngle = 270f
-            val currentAngle = startAngle + (weightValue - weightRange.first) * angleStep
-
-            Canvas(
-                modifier = Modifier
-                    .size(diameter)
-            ) {
-                drawCircle(Color.White, radius, center)
-
-                // Draw weight range markers
-                for (i in weightRange) {
-                    val angle = startAngle + i * angleStep
-                    val markerRadius = diameter / 2f * 0.9f
-                    val x = kotlin.math.cos(angle.toRadians()) * markerRadius + center.x
-                    val y = kotlin.math.sin(angle.toRadians()) * markerRadius + center.y
-
-                    drawCircle(Color.LightGray, diameter / 30f, Offset(x, y))
+                    }
                 }
+        ){
+            val width = size.width
+            val height = size.height
+            circleCenter = Offset(x = width/2f, y = height/2f)
+            val date = Date(time())
+            val cal = Calendar.getInstance()
+            cal.time = date
+            val hours = cal.get(Calendar.HOUR_OF_DAY)
+            val minutes = cal.get(Calendar.MINUTE)
+            val seconds = cal.get(Calendar.SECOND)
 
-                // Draw current weight indicator
-                val weightIndicatorRadius = diameter / 2f * 0.7f
-                val indicatorX = kotlin.math.cos(currentAngle.toRadians()) * weightIndicatorRadius + center.x
-                val indicatorY = kotlin.math.sin(currentAngle.toRadians()) * weightIndicatorRadius + center.y
-                val indicatorSize = diameter / 20f
 
-                drawCircle(Color.Blue, indicatorSize, Offset(indicatorX, indicatorY))
+
+            drawCircle(
+                style = Stroke(
+                    width = outerCircleThickness
+                ),
+                brush = Brush.linearGradient(
+                    listOf(
+                        Color.White.copy(0.45f),
+                        Color.DarkGray.copy(0.35f)
+                    )
+                ),
+                radius = circleRadius+outerCircleThickness/2f,
+                center = circleCenter
+            )
+            drawCircle(
+                brush = Brush.radialGradient(
+                    listOf(
+                        Color.White.copy(0.45f),
+                        Color.DarkGray.copy(0.25f)
+                    )
+                ),
+                radius = circleRadius,
+                center = circleCenter
+            )
+            drawCircle(
+                color = Color.Gray,
+                radius = 15f,
+                center = circleCenter
+            )
+
+            val littleLineLength = circleRadius*0.1f
+            val largeLineLength = circleRadius*0.2f
+            for(weight in pickerStyle.minHeight..pickerStyle.maxHeight){
+                val angleInDegrees = weight*360f/60
+                val angleInRad = angleInDegrees * PI / 180f + PI /2f
+                val lineLength = if(weight%5 == 0)largeLineLength else littleLineLength
+                val lineThickness = if(weight%5 == 0) 4f else 1.5f
+
+                val start = Offset(
+                    x = (circleRadius * cos(angleInRad) + circleCenter.x).toFloat(),
+                    y = (circleRadius * sin(angleInRad) + circleCenter.y).toFloat()
+                )
+
+                val end = Offset(
+                    x = (circleRadius * cos(angleInRad) + circleCenter.x).toFloat(),
+                    y = (circleRadius * sin(angleInRad) + lineLength + circleCenter.y).toFloat()
+                )
+                rotate(
+                    angleInDegrees+180,
+                    pivot = start
+                ){
+                    drawContext.canvas.nativeCanvas.apply{
+                        if (lineLength == largeLineLength){
+                            drawText(
+                                abs(weight).toString(),
+                                end.x  ,
+                                end.y  ,
+                                Paint().apply {
+                                    this.textSize = 20.sp.toPx()
+                                    this.textAlign = Paint.Align.CENTER
+                                    this.color = android.graphics.Color.BLACK
+                                    this.style = Paint.Style.FILL
+                                    this.isAntiAlias = true })
+                        }
+
+                        drawLine(
+                            color = Color.Gray,
+                            start = start,
+                            end = end,
+                            strokeWidth = lineThickness.dp.toPx()
+                        )
+
+                    }
+
+
+                }
             }
 
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = diameter.dp / 2 + 16.dp),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Button(onClick = {
-                    if (weightValue > weightRange.first) {
-                        weightValue -= step
-                        onWeightChanged(weightValue)
+            val clockHands = listOf(ClockHands.Seconds,ClockHands.Minutes,ClockHands.Hours)
+
+            clockHands.forEach { clockHand ->
+                val angleInDegrees = when (clockHand) {
+                    ClockHands.Seconds -> {
+                        seconds * 360f/60f
                     }
-                }) {
-                    Text(text = "-")
-                }
-                Spacer(modifier = Modifier.width(16.dp))
-                Button(onClick = {
-                    if (weightValue < weightRange.last) {
-                        weightValue += step
-                        onWeightChanged(weightValue)
+                    ClockHands.Minutes -> {
+                        (minutes + seconds/60f) * 360f/60f
                     }
-                }) {
-                    Text(text = "+")
+                    ClockHands.Hours -> {
+                        (((hours%12)/12f*60f)+minutes/12f) * 360f/60f
+                    }
                 }
+
+                val lineLength = circleRadius * 0.8f
+                val lineThickness = 3f
+                val start = Offset(
+                    x = circleCenter.x,
+                    y = circleCenter.y
+                )
+
+                val end = Offset(
+                    x = circleCenter.x,
+                    y = lineLength + circleCenter.y
+                )
+                drawLine(
+                    color =  Color.Green ,
+                    start = start,
+                    end = end,
+                    strokeWidth = lineThickness.dp.toPx()
+                )
             }
         }
     }
 }
 
-private fun Float.toRadians(): Float = (this * PI / 180f).toFloat()
+enum class ClockHands {
+    Seconds,
+    Minutes,
+    Hours
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun Preview(){
+    var currentTimeInMs by remember {
+        mutableStateOf(System.currentTimeMillis())
+    }
+
+    LaunchedEffect(key1 = true){
+        while(true){
+            delay(200)
+            currentTimeInMs = System.currentTimeMillis()
+        }
+    }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+            ,
+            contentAlignment = Alignment.Center
+        ){
+            Clock(
+                modifier = Modifier
+                    .size(400.dp),
+                pickerStyle = PickerStyle(),
+                time = {
+                    currentTimeInMs
+                },
+                circleRadius = 600f,
+                outerCircleThickness = 50f
+            )
+        }
+
+    }

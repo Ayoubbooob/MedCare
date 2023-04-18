@@ -99,11 +99,11 @@ fun PickerScreen(pickerStyle: PickerStyle, onHeightChange: (Int) -> Unit = {}) {
 
     BoxWithConstraints(
         modifier = Modifier
-            .fillMaxHeight(0.94f)
+            .fillMaxHeight()
             .fillMaxWidth(0.49f)
     ) {
         Canvas(modifier = Modifier
-            .fillMaxHeight(0.90f)
+            .fillMaxHeight()
             .fillMaxWidth(0.49f)
             .align(Alignment.CenterEnd)
             .pointerInput(Unit) {
@@ -193,7 +193,7 @@ fun PickerScreen(pickerStyle: PickerStyle, onHeightChange: (Int) -> Unit = {}) {
                     )
 
 
-                    if (abs(middlePoint.x - degreeLineScaleY.roundToInt()) < 5) {
+                    if (abs(middlePoint.y - degreeLineScaleY.roundToInt()) < 5) {
                         selectedHeight = height
                         onHeightChange(selectedHeight)
                     }

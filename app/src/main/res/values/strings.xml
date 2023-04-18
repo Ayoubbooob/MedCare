@@ -62,6 +62,8 @@
     <string name="Mars">Mars</string>
 
     <string name="demande_rdv"> Demander un rendez-vous </string>
+    <string name="obesite_votre"> Votre</string>
+    <string name="obesite_result"> Resultat</string>
 
     <string name="info_gererales">Informations Générales</string>
     <string name="titre_info_obesite">C\'est quoi l\'Obésité?</string>
