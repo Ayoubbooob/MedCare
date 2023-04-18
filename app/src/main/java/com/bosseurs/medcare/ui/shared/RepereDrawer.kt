@@ -243,7 +243,7 @@ fun HeightPreview(){
            PickerScreen(pickerStyle = PickerStyle()) { height ->
                targetHeight = height
            }
-           Image(painter = painterResource(id = R.drawable.), contentDescription = )
+           Image(painter = painterResource(id = R.drawable.human_height_obseti), contentDescription ="this is a" )
        }
 
     }

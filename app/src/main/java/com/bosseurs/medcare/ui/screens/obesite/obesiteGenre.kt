@@ -27,7 +27,7 @@ fun ObesiteGenre(
     Scaffold(
         //backgroundColor = MaterialTheme.colors.onBackground ,
         bottomBar = {
-            FooterBarInstance()
+            //FooterBarInstance()
         }
     ) {
         Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier

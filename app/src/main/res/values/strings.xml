@@ -40,7 +40,6 @@
     <string name="greeting_homescreen">Bonjour</string>
     <string name="welcome_homescreen">Bienvenue sur MedCare</string>
     <string name="search_bar_text">Recherchez un élement</string>
-<<<<<<< HEAD
     <string name="genre_select_message">Selectionner Votre</string>
     <string name="gennre_bold">Genre</string>
     <string name="gennre_taille_bold">Taille</string>
