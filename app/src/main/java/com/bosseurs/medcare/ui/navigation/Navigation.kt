@@ -1,6 +1,7 @@
 package com.bosseurs.medcare.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,6 +16,7 @@ import com.bosseurs.medcare.ui.screens.login.LoginScreen
 import com.bosseurs.medcare.ui.screens.main.HomeScreen
 import com.bosseurs.medcare.ui.screens.main.HomeUiState
 import com.bosseurs.medcare.ui.screens.main.HomeViewModel
+import com.bosseurs.medcare.ui.screens.obesite.NumberPicker
 import com.bosseurs.medcare.ui.screens.obesite.ObesiteGenre
 import com.bosseurs.medcare.ui.screens.obesite.obsiteHeight
 import com.bosseurs.medcare.ui.screens.procedures.ProcedureDetails
@@ -55,6 +57,10 @@ fun Navigation(toggleTheme : () -> Unit) {
         }
         composable(route = Screen.obesiteTaille.route){
             obsiteHeight(navController = navController)
+        }
+        composable(route = Screen.obesitePoid.route){
+            val context = LocalContext.current
+            NumberPicker(navController = navController , context = context)
         }
 //        composable(route = Screen.HomeScreen.route)
         composable(

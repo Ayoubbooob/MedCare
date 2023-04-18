@@ -11,7 +11,7 @@ class obesiteModel : ViewModel() {
     private val _uiState = MutableStateFlow(obesiteState())
     val uiState: StateFlow<obesiteState> = _uiState.asStateFlow()
 
-    fun updateTaille(taille: Float) {
+    fun updateTaille(taille: Int) {
         _uiState.update { currentState ->
             currentState.copy(
                 taille = taille
@@ -25,7 +25,7 @@ class obesiteModel : ViewModel() {
             )
         }
     }
-    fun updatePoids(poids: Float) {
+    fun updatePoids(poids: Int) {
         _uiState.update { currentState ->
             currentState.copy(
                 poids = poids
