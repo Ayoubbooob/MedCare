@@ -1,22 +1,29 @@
 package com.bosseurs.medcare.ui.screens.obesite
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.shared.ImageShadowContainer
 import com.bosseurs.medcare.ui.theme.Typography1
 import com.bosseurs.medcare.ui.utils.ImageModel
+import com.bosseurs.medcare.ui.utils.Screen
+import com.bosseurs.medcare.ui.screens.obesite.obesiteModel as obesiteModel1
 
 @Composable
 fun ObesiteGenre(
@@ -31,6 +38,7 @@ fun ObesiteGenre(
             FooterBarInstance(navController)
         }
     ) {
+        var obesiteModel : obesiteModel1 = viewModel()
         Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
             .fillMaxSize()
             .padding(6.dp)) {
@@ -65,10 +73,17 @@ fun ObesiteGenre(
                 size = 200 ,
                 contenteDescription = "Genre Image" ,
             )
-            ImageShadowContainer(color = MaterialTheme.colors.onPrimary , modifier = Modifier
-                .height(232.dp)
-                .width(297.dp)
-                .size(100.dp) , contente = ManImageModelInstance,
+            ImageShadowContainer(
+                color = MaterialTheme.colors.onPrimary,
+                modifier = Modifier
+                    .height(232.dp)
+                    .width(297.dp)
+                    .size(100.dp)
+                    .clickable(onClick = {
+                        obesiteModel.updateGenre(genre = true)
+                        navController.navigate(Screen.obesiteTaille.route)
+                    }),
+                contente = ManImageModelInstance,
             )
             //Spacer(
             //modifier = Modifier
@@ -86,7 +101,12 @@ fun ObesiteGenre(
             ImageShadowContainer(color = MaterialTheme.colors.onPrimary , modifier = Modifier
                 .height(232.dp)
                 .width(297.dp)
-                .size(100.dp) , contente = HumanImageModelInstance)
+                .size(100.dp)
+                .clickable(onClick =fun () {
+                    obesiteModel.updateGenre(genre = false)
+                    navController.navigate(Screen.obesiteTaille.route)
+
+                }) , contente = HumanImageModelInstance)
         }
 
     }
