@@ -8,7 +8,7 @@ import androidx.compose.ui.unit.dp
 
 data class PickerStyle(
     var modifier: Modifier = Modifier,
-    var pickerWidth: Dp = 150.dp,
+    var pickerWidth: Dp = 100.dp,
     var minHeight:Int =100,
     var maxHeight:Int =400,
     var initialHeight:Int =100,
@@ -18,7 +18,7 @@ data class PickerStyle(
     var normalTypeLineHeight:Int=28,
     var tenTypeLineHeight:Int=50,
     var fiveTypeLineHeight:Int=38,
-    var spaceInterval:Int=36,
+    var spaceInterval:Int=40,
     var numberPadding:Int=28,
     var lineStroke:Float=6f
 )

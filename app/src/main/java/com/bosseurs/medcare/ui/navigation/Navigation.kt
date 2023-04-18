@@ -93,10 +93,6 @@ fun Navigation(toggleTheme : () -> Unit) {
             AppointmentScreen(navController = navController)
         }
 
-        composable(route = Screen.ObesiteGenreScreen.route){
-            AppointmentScreen(navController = navController)
-        }
-
         composable(route = Screen.ProceduresScreen.route){
             ProceduresScreen(navController = navController)
         }

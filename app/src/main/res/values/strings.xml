@@ -29,6 +29,7 @@
     <string name="language_2">Arabic</string>
     <string name="language_3">English</string>
     <string name="continue_label">CONTINUE</string>
+    <string name="retourner_label">RETOURNER</string>
     <string name="register_email">S\'INSCRIRE AVEC UN E-MAIL</string>
     <string name="register_gmail">CONTINUER AVEC GMAIL</string>
     <string name="continue_without_connexion">CONTINUER SANS CONNEXION</string>
@@ -44,11 +45,7 @@
     <string name="gennre_bold">Genre</string>
     <string name="gennre_taille_bold">Taille</string>
 
-    
-=======
 
-
->>>>>>> 8d9eee7a9c08b3bea4070ec941504817d1181d3d
     <string name="AM">AM</string>
     <string name="PM">PM</string>
     <string name="Lundi">Lun</string>

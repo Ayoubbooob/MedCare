@@ -16,6 +16,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -23,6 +24,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bosseurs.medcare.R
+import com.bosseurs.medcare.ui.theme.BlueColor
+import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
+import com.bosseurs.medcare.ui.theme.Typography1
 import kotlin.math.abs
 import kotlin.math.roundToInt
 import androidx.compose.ui.graphics.Color as ComposeColor
@@ -36,18 +40,18 @@ fun SelectHeightScreen(targetHeight: Int) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            modifier = Modifier
-                .fillMaxWidth(),
-            text = "Select Your Height :",
-            color = ComposeColor.Black,
-            textAlign = TextAlign.Center,
-            fontSize = 26.sp,
-            fontWeight = FontWeight.Bold,
-            fontStyle = FontStyle.Italic
-        )
+        Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
+            .fillMaxWidth()
+            .padding(6.dp)) {
+            Column() {
+                Text(text = stringResource(R.string.genre_select_message), style = Typography1.subtitle1)
+            }
+            Spacer(modifier = Modifier.padding(6.dp))
+            Column() {
+                Text(text = stringResource(R.string.gennre_taille_bold), style = Typography1.h1)
+            }
 
-        Spacer(modifier = Modifier.height(36.dp))
+        }
 
         Row {
             Text(
@@ -96,11 +100,11 @@ fun PickerScreen(pickerStyle: PickerStyle, onHeightChange: (Int) -> Unit = {}) {
     BoxWithConstraints(
         modifier = Modifier
             .fillMaxHeight(0.94f)
-            .fillMaxWidth(0.49f),
-        contentAlignment = Alignment.BottomCenter,
+            .fillMaxWidth(0.49f)
     ) {
         Canvas(modifier = Modifier
-            .fillMaxSize()
+            .fillMaxHeight(0.90f)
+            .fillMaxWidth(0.49f)
             .align(Alignment.CenterEnd)
             .pointerInput(Unit) {
                 detectDragGestures(
@@ -239,12 +243,24 @@ fun HeightPreview(){
 
         //Spacer(modifier = Modifier.height(68.dp))
  
-       Row() {
+       Row(modifier = Modifier.fillMaxWidth()) {
+           Image(modifier = Modifier
+               .width(200.dp)
+               .fillMaxHeight(0.94f) ,
+               painter = painterResource(id = R.drawable.human_height_obseti),
+               contentDescription ="this is a" )
+           Spacer(modifier = Modifier.width(30.dp))
            PickerScreen(pickerStyle = PickerStyle()) { height ->
                targetHeight = height
            }
-           Image(painter = painterResource(id = R.drawable.human_height_obseti), contentDescription ="this is a" )
        }
+        Spacer(modifier = Modifier.height(5.dp))
+        Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Bottom) {
+            CustomButtonObesite(
+                textId = R.string.retourner_label, onClick = {}, color = BlueColor, textColor = TextForBlueButtonColor , CustomWidth = 176  , CustomHeight = 50)
+
+            CustomButtonObesite(textId = R.string.CONTINUE, onClick = {}, color = BlueColor, textColor = TextForBlueButtonColor , CustomWidth = 176  , CustomHeight = 50)
+        }
 
     }
 }

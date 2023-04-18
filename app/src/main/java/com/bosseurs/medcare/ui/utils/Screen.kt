@@ -30,13 +30,4 @@ sealed class Screen(val route : String){
     object ProceduresScreen : Screen("procedures_screen")
     object ProcedureDetails : Screen("procedures_details")
 
-
-
-<<<<<<< HEAD
-    object InfoObesityScreen: Screen("info_obesity_screen")
-    object MenuInfoScreen: Screen("menu_info_screen")
-    object ObesiteGenreScreen: Screen("obesite_genre_screen")
-=======
->>>>>>> 8d9eee7a9c08b3bea4070ec941504817d1181d3d
-
 }
