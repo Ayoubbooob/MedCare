@@ -51,6 +51,7 @@ fun LanguageScreen(navController: NavController,modifier: Modifier = Modifier) {
             color = BlueColor, textColor = TextForBlueButtonColor,
             onClick = {
                 navController.navigate(Screen.DescriptionScreen.route)
+//                navController.navigate(Screen.ProfileScreen.route)
             }
         )
     }

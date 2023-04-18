@@ -10,18 +10,20 @@
     <string name="description_imc">second imc metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.</string>
     <string name="description_medecin">Etiam mollis metus non purus faucibus sollicitudin. Pellentesque sagittis mi. Integer.</string>
     <string name="button_skip">Skip</string>
+    <string name="profile">Mon PROFIL</string>
     <string name="button_next">Next</string>
     <string name="connexion_btn">Connexion</string>
-    <string name="sign_up_txt">Don\'t have an account? Sign Up</string>
     <string name="login_welcome">Content de vous revoir !</string>
-    <string name="new_compte_txt">Creez Votre Compte</string>
-    <string name="new_compte_btn">CREER UN COMPTE</string>
     <string name="name_field">Your Name</string>
-    <string name="mail_field">Email</string>
-    <string name="pass_field">Password</string>
-    <string name="mobile_number_field">Mobile Number</string>
-    <string name="login_txt">Already have account? Login</string>
-
+    <string name="sign_up_txt">vous n\'avez pas de compte ? Inscrivez-vous</string>
+    <string name="new_compte_txt">Créez votre compte</string>
+    <string name="new_compte_btn">Créer un compte</string>
+    <string name="first_name_field">Prénom</string>
+    <string name="last_name_field">Nom</string>
+    <string name="cin_field">Cin</string>
+    <string name="pass_field">Mot de passe</string>
+    <string name="mobile_number_field">Numéro de téléphone</string>
+    <string name="login_txt">Vous avez déjà un compte? Connectez-vous</string>
     <string name="Choose_language">Choisissez la langue</string>
     <string name="language_1">French</string>
     <string name="language_2">Arabic</string>
@@ -35,14 +37,19 @@
     <string name="phone_verified">Phone Number Verified</string>
     <string name="phone_verified_details">Congratulations, your phone number has been verified. You can start using the app</string>
     <string name="cat_principale">Catégories Principales</string>
-    <string name="greeting_homescreen">Bonjour Oumar</string>
+    <string name="greeting_homescreen">Bonjour</string>
     <string name="welcome_homescreen">Bienvenue sur MedCare</string>
     <string name="search_bar_text">Recherchez un élement</string>
+<<<<<<< HEAD
     <string name="genre_select_message">Selectionner Votre</string>
     <string name="gennre_bold">Genre</string>
     <string name="gennre_taille_bold">Taille</string>
 
     
+=======
+
+
+>>>>>>> 8d9eee7a9c08b3bea4070ec941504817d1181d3d
     <string name="AM">AM</string>
     <string name="PM">PM</string>
     <string name="Lundi">Lun</string>
@@ -61,5 +68,11 @@
     <string name="demande_rdv"> Demander un rendez-vous </string>
 
     <string name="info_gererales">Informations Générales</string>
-    <string name="titre_info_obesite">C\'est quoi l\'Obésité</string>
+    <string name="titre_info_obesite">C\'est quoi l\'Obésité?</string>
+    <string name="titre_info_diabete">C\'est quoi le diabète?</string>
+    <string name="welcome_profile">Bonjour Oumar</string>
+    <string name="info_obesite_panel">Informations sur l\'obésité</string>
+    <string name="unite_chirurgie_panel">Unité de chirurgie bariatique</string>
+    <string name="calcul_imc_panel">Calculer son IMC</string>
+    <string name="rendez_vous_panel">Prendre un rendez-vous</string>
 </resources>

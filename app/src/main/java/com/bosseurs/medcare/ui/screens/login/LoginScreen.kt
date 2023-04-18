@@ -1,38 +1,54 @@
 package com.bosseurs.medcare.ui.screens.login
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.ui.unit.sp
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
+import com.bosseurs.medcare.ui.httpRequest.Patient
+import com.bosseurs.medcare.ui.httpRequest.RetrofitAPI
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomTextField
 import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 import com.bosseurs.medcare.ui.utils.Screen
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun LoginScreen(
     navController: NavController,
-    loginViewModel : LoginViewModel = viewModel()
 ){
-    val loginUiState by loginViewModel.uiState.collectAsState()
+    var cin by remember { mutableStateOf(TextFieldValue()) }
+    var password by remember { mutableStateOf(TextFieldValue()) }
+    val ctx = LocalContext.current
     Scaffold(
         topBar = {
             TopAppBar(backgroundColor = Color.White, modifier = Modifier.wrapContentWidth(align = Alignment.Start))
@@ -47,55 +63,99 @@ fun LoginScreen(
             }
         }
     ) {
-            Column(modifier = Modifier
-                .padding(20.dp)
-                .verticalScroll(rememberScrollState())
-                ,Arrangement.spacedBy(15.dp),
+        Column(modifier = Modifier
+            .padding(20.dp)
+            .verticalScroll(rememberScrollState())
+            ,Arrangement.spacedBy(15.dp),
         ) {
-                    Text(
-                        text= stringResource(R.string.login_welcome),
-                        style = MaterialTheme.typography.h2,
+            Text(
+                text= stringResource(R.string.login_welcome),
+                style = MaterialTheme.typography.h2,
+            )
+            CustomTextField(
+                labelText = R.string.cin_field,
+                leadingIconId = R.drawable.person_icon ,
+                iconDescription ="Person Icon" ,
+                keyboardType = KeyboardType.Text,
+                trailingIconId = null,
+                value = cin,
+                onValueChange = {cin = it}
+            )
+            CustomTextField(
+                labelText = R.string.password,
+                leadingIconId = R.drawable.password_icon ,
+                iconDescription = "Password Icon" ,
+                keyboardType = KeyboardType.Password ,
+                trailingIconId = null,
+                value = password,
+                onValueChange = {password=it}
+            )
+//
+            CustomButton(textId = R.string.connexion_btn,
+                onClick = {
+                    //for bruce and oumar comment this and work with the Comment line 100
+                    postLoginRetrofit(
+                        ctx,cin.text,password.text,navController
                     )
-                CustomTextField(
-                    labelText = R.string.username,
-                    leadingIconId = R.drawable.person_icon ,
-                    iconDescription ="Person Icon" ,
-                    keyboardType = KeyboardType.Text,
-                    trailingIconId = null
-                )
-                CustomTextField(
-                    labelText = R.string.password,
-                    leadingIconId = R.drawable.password_icon ,
-                    iconDescription = "Password Icon" ,
-                    keyboardType = KeyboardType.Password ,
-                    trailingIconId = null
-                )
-//                    OutlinedTextField(value = loginViewModel.userGuess, onValueChange = {loginViewModel.updateUserGuess(it)} , label = {}, modifier = Modifier.fillMaxWidth())
-//                    OutlinedTextField(value = loginViewModel.passwordGuess, onValueChange = {loginViewModel.updatePasswordGuess(it)} , label = {}, modifier = Modifier.fillMaxWidth())
-                    CustomButton(textId = R.string.connexion_btn,
-                        onClick = {
-                                  navController.navigate(Screen.HomeScreen.route)
-                        },
-                        color = BlueColor,
-                        textColor = TextForBlueButtonColor,
-                        modifier = Modifier.fillMaxWidth()
+//                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
+                },
+                color = BlueColor,
+                textColor = TextForBlueButtonColor,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
+                ClickableText(
+                    text = AnnotatedString(stringResource(id = R.string.sign_up_txt)),
+                    onClick = { /* your click action here */
+                        navController.navigate(Screen.SignUpScreen.route)
+                    },
+                    style = TextStyle(
+                        textAlign = TextAlign.Center,
+                        fontFamily = FontFamily.Default,
+                        fontWeight = FontWeight.W300,                  /* This is for description text */
+                        fontSize = 16.sp,
+                        color = Color(0XFFc0c2d0)
                     )
-                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
-                        Text(
-                            text = stringResource(id = R.string.sign_up_txt),
-                            textAlign = TextAlign.Center,
-                            style = MaterialTheme.typography.caption,
-                        )
-                    }
-                }
-
+                )
             }
         }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun Launch() {
-//    MedCareTheme {
-//        LoginScreen()
-//    }
-//}
+    }
+}
+
+fun postLoginRetrofit(
+    ctx: Context,
+    cin: String,
+    password: String,
+    navController: NavController
+) {
+    val url = "http://192.168.1.12:8000/api/"
+    val retrofit = Retrofit.Builder()
+        .baseUrl(url)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    val service = retrofit.create(RetrofitAPI::class.java)
+    val call = service.login(cin, password)
+
+    call!!.enqueue(object : Callback<Patient?> {
+        override fun onResponse(call: Call<Patient?>, response: Response<Patient?>) {
+            if (response.isSuccessful) {
+                // Login successful, navigate to the next screen
+
+                navController.navigate(Screen.HomeScreen.passArgs(true,"Oumar") )
+            } else {
+                // Login failed, show error message
+                Toast.makeText(ctx, "Login failed", Toast.LENGTH_SHORT).show()
+            }
+        }
+        override fun onFailure(call: Call<Patient?>, t: Throwable) {
+            // Handle network errors here
+            Toast.makeText(ctx, "Network error", Toast.LENGTH_SHORT).show()
+        }
+    })
+}
+
+//private fun NavController.navigate(route: String, : Bundle) {
+
+

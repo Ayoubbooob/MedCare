@@ -11,15 +11,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.bosseurs.medcare.ui.utils.BottomNavItem
+import com.bosseurs.medcare.ui.utils.Screen
 
 //Exemple d'utilisation
 //FooterBarInstance()
 
 
 @Composable
-fun FooterBarInstance(){
-    FooterBar(items = listOf(
+fun FooterBarInstance(navController: NavController){
+    FooterBar(navController=navController,items = listOf(
         BottomNavItem(
             name = "Home" ,
             route = "home_route" ,
@@ -49,14 +51,18 @@ fun FooterBarInstance(){
 }
 
 @Composable
-fun FooterBar(items:List<BottomNavItem>){
+fun FooterBar(items:List<BottomNavItem>, navController: NavController,){
     BottomNavigation(modifier = Modifier.fillMaxWidth() , backgroundColor = Color.White , elevation = 5.dp) {
         items.forEach {item->
             BottomNavigationItem(
                 selected = true,
                 selectedContentColor = Color.Blue,
                 unselectedContentColor = Color.White,
-                onClick = { /*TODO*/ } ,
+                onClick = {
+                    if (item.icon == Icons.Default.AccountBox) {
+                        navController.navigate(Screen.ProfileScreen.route)
+                    }
+                          } ,
                 icon = {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         if(item.badgeCount>0){
