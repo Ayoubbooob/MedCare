@@ -9,9 +9,9 @@ import androidx.compose.ui.unit.dp
 data class PickerStyle(
     var modifier: Modifier = Modifier,
     var pickerWidth: Dp = 150.dp,
-    var minHeight:Int =200,
-    var maxHeight:Int =300,
-    var initialHeight:Int =250,
+    var minHeight:Int =100,
+    var maxHeight:Int =400,
+    var initialHeight:Int =100,
     var normalTypeLineColor:Int=Color.LTGRAY,
     var tenTypeLineColor:Int=Color.BLACK,
     var fiveTypeLineColor:Int=Color.RED,

@@ -5,6 +5,7 @@ import android.graphics.Paint
 import android.graphics.Path
 import android.graphics.Rect
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
@@ -14,12 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bosseurs.medcare.R
 import kotlin.math.abs
 import kotlin.math.roundToInt
 import androidx.compose.ui.graphics.Color as ComposeColor
@@ -92,22 +95,23 @@ fun PickerScreen(pickerStyle: PickerStyle, onHeightChange: (Int) -> Unit = {}) {
 
     BoxWithConstraints(
         modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp)
+            .fillMaxHeight(0.94f)
+            .fillMaxWidth(0.49f),
+        contentAlignment = Alignment.BottomCenter,
     ) {
         Canvas(modifier = Modifier
             .fillMaxSize()
-            .align(Alignment.TopCenter)
+            .align(Alignment.CenterEnd)
             .pointerInput(Unit) {
                 detectDragGestures(
                     onDragStart = {
-                        startDragPoint = it.x
+                        startDragPoint = it.y
                     },
                     onDragEnd = {
                         oldDragPoint = targetDistant
                     }
                 ) { change, _ ->
-                    val newDistance = oldDragPoint + (change.position.x - startDragPoint)
+                    val newDistance = oldDragPoint + (change.position.y - startDragPoint)
                     targetDistant = newDistance.coerceIn(
                         minimumValue = ((pickerStyle.initialHeight) * pickerStyle.spaceInterval - pickerStyle.maxHeight * pickerStyle.spaceInterval).toFloat(),
                         maximumValue = ((pickerStyle.initialHeight) * pickerStyle.spaceInterval - pickerStyle.minHeight * pickerStyle.spaceInterval).toFloat()
@@ -120,12 +124,11 @@ fun PickerScreen(pickerStyle: PickerStyle, onHeightChange: (Int) -> Unit = {}) {
 
             drawContext.canvas.nativeCanvas.apply {
                 val pickerLinesPath = Path().apply {
-                    moveTo(0f, middlePoint.y - pickerStyle.pickerWidth.toPx() / 2)
-                    lineTo(constraints.maxWidth.toFloat(), middlePoint.y - pickerStyle.pickerWidth.toPx() / 2)
-                    moveTo(0f, middlePoint.y + pickerStyle.pickerWidth.toPx() / 2)
-                    lineTo(constraints.maxWidth.toFloat(), middlePoint.y + pickerStyle.pickerWidth.toPx() / 2)
+                    moveTo(middlePoint.x - pickerStyle.pickerWidth.toPx() / 2, 0f)
+                    lineTo(middlePoint.x - pickerStyle.pickerWidth.toPx() / 2, constraints.maxHeight.toFloat())
+                    moveTo(middlePoint.x + pickerStyle.pickerWidth.toPx() / 2, 0f)
+                    lineTo(middlePoint.x + pickerStyle.pickerWidth.toPx() / 2, constraints.maxHeight.toFloat())
                 }
-
 
                 drawPath(pickerLinesPath, Paint().apply {
                     this.style = Paint.Style.STROKE
@@ -136,10 +139,10 @@ fun PickerScreen(pickerStyle: PickerStyle, onHeightChange: (Int) -> Unit = {}) {
 
 
                 val indicator = Path().apply {
-                    moveTo(middlePoint.x, (middlePoint.y + 10f))
-                    lineTo((middlePoint.x - 2f), middlePoint.y + pickerStyle.pickerWidth.toPx() / 2)
-                    moveTo(middlePoint.x, (middlePoint.y + 10f))
-                    lineTo((middlePoint.x + 2f), middlePoint.y + pickerStyle.pickerWidth.toPx() / 2)
+                    moveTo((middlePoint.x+ 10f), middlePoint.y)
+                    lineTo((middlePoint.x + pickerStyle.pickerWidth.toPx() / 2), middlePoint.y- 2f)
+                    moveTo((middlePoint.x+ 10f ), middlePoint.y)
+                    lineTo((middlePoint.x + pickerStyle.pickerWidth.toPx() / 2), middlePoint.y+ 2f)
                     fillType = Path.FillType.EVEN_ODD
                 }
 
@@ -153,8 +156,8 @@ fun PickerScreen(pickerStyle: PickerStyle, onHeightChange: (Int) -> Unit = {}) {
 
 
                 for (height in pickerStyle.minHeight..pickerStyle.maxHeight) {
-                    val degreeLineScaleX =
-                        middlePoint.x + (pickerStyle.spaceInterval * (height - pickerStyle.initialHeight.toFloat()) + targetDistant)
+                    val degreeLineScaleY =
+                        middlePoint.y + (pickerStyle.spaceInterval * (height - pickerStyle.initialHeight.toFloat()) + targetDistant)
                     val lineType = when {
                         height % 10 == 0 -> DegreeLineType.TenTypeLine
                         height % 5 == 0 -> DegreeLineType.FiveTypeLine
@@ -173,10 +176,10 @@ fun PickerScreen(pickerStyle: PickerStyle, onHeightChange: (Int) -> Unit = {}) {
                         else -> pickerStyle.normalTypeLineHeight
                     }
 
-                    this.drawLine(degreeLineScaleX,
-                        middlePoint.y - pickerStyle.pickerWidth.toPx() / 2 + 4,
-                        degreeLineScaleX,
-                        middlePoint.y - pickerStyle.pickerWidth.toPx() / 2 + lineHeightSize * 2,
+                    this.drawLine(middlePoint.x - pickerStyle.pickerWidth.toPx() / 2 + 4 ,
+                        degreeLineScaleY,
+                        middlePoint.x - pickerStyle.pickerWidth.toPx() / 2 + lineHeightSize * 2,
+                        degreeLineScaleY,
                         Paint().apply {
                             this.style = Paint.Style.STROKE
                             this.strokeWidth = pickerStyle.lineStroke
@@ -186,7 +189,7 @@ fun PickerScreen(pickerStyle: PickerStyle, onHeightChange: (Int) -> Unit = {}) {
                     )
 
 
-                    if (abs(middlePoint.x - degreeLineScaleX.roundToInt()) < 5) {
+                    if (abs(middlePoint.x - degreeLineScaleY.roundToInt()) < 5) {
                         selectedHeight = height
                         onHeightChange(selectedHeight)
                     }
@@ -202,8 +205,8 @@ fun PickerScreen(pickerStyle: PickerStyle, onHeightChange: (Int) -> Unit = {}) {
 
                         drawText(
                             abs(height).toString(),
-                            (degreeLineScaleX) - textBound.width() / 2,
-                            middlePoint.y - pickerStyle.pickerWidth.toPx() / 2 + lineHeightSize * 2 + textBound.height() * 2 + pickerStyle.numberPadding,
+                            middlePoint.x - pickerStyle.pickerWidth.toPx() / 2 + lineHeightSize * 2 + textBound.height() * 2 + pickerStyle.numberPadding,
+                            (degreeLineScaleY) - textBound.width() / 2,
                             Paint().apply {
                                 this.textSize = 20.sp.toPx()
                                 this.textAlign = Paint.Align.CENTER
@@ -228,17 +231,20 @@ fun HeightPreview(){
 
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        //verticalArrangement = Arrangement.Center,
+        //horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         SelectHeightScreen(targetHeight)
 
-        Spacer(modifier = Modifier.height(68.dp))
+        //Spacer(modifier = Modifier.height(68.dp))
  
-        PickerScreen(pickerStyle = PickerStyle()) { height ->
-            targetHeight = height
-        }
+       Row() {
+           PickerScreen(pickerStyle = PickerStyle()) { height ->
+               targetHeight = height
+           }
+           Image(painter = painterResource(id = R.drawable.), contentDescription = )
+       }
 
     }
 }
