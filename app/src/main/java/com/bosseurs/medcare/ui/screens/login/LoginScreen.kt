@@ -94,10 +94,10 @@ fun LoginScreen(
             CustomButton(textId = R.string.connexion_btn,
                 onClick = {
                     //for bruce and oumar comment this and work with the Comment line 100
-                    postLoginRetrofit(
-                        ctx,cin.text,password.text,navController
-                    )
-//                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
+//                    postLoginRetrofit(
+//                        ctx,cin.text,password.text,navController
+//                    )
+                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
                 },
                 color = BlueColor,
                 textColor = TextForBlueButtonColor,

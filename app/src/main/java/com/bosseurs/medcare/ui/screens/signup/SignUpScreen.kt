@@ -116,10 +116,10 @@ fun SignUpScreen(navController: NavController) {
             )
             CustomButton(textId = R.string.new_compte_btn,
                 onClick = {
-                    postDataUsingRetrofit(
-                        ctx,first_name,last_name,num,cin,password,navController
-                    )
-//                    navController.navigate(Screen.LoginScreen.route)
+//                    postDataUsingRetrofit(
+//                        ctx,first_name,last_name,num,cin,password,navController
+//                    )
+                    navController.navigate(Screen.LoginScreen.route)
                 }
                 ,
                 color = BlueColor,

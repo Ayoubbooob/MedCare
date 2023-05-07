@@ -10,6 +10,9 @@ import com.bosseurs.medcare.ui.screens.auth.AuthScreen
 import com.bosseurs.medcare.ui.screens.description.DescriptionScreen
 import com.bosseurs.medcare.ui.screens.information.InfoDetailScreen
 import com.bosseurs.medcare.ui.screens.information.MenuInfoScreen
+import com.bosseurs.medcare.ui.screens.hospital.MenuInfoHospitalScreen
+import com.bosseurs.medcare.ui.screens.hospital.HospitalInfoScreen
+import com.bosseurs.medcare.ui.screens.hospital.BariaticServiceScreen
 import com.bosseurs.medcare.ui.screens.launch.LanguageScreen
 import com.bosseurs.medcare.ui.screens.login.LoginScreen
 import com.bosseurs.medcare.ui.screens.main.HomeScreen
@@ -108,6 +111,16 @@ fun Navigation(toggleTheme : () -> Unit) {
             if (id != null) {
                 ProcedureDetails(navController, id)
             }
+        }
+
+        composable(route = Screen.MenuInfoHospitalScreen.route){
+            MenuInfoHospitalScreen(navController = navController)
+        }
+        composable(route = Screen.HospitalInfoScreen.route){
+            HospitalInfoScreen(navController = navController)
+        }
+        composable(route = Screen.BariaticServiceScreen.route){
+            BariaticServiceScreen(navController = navController)
         }
     }
 }

@@ -38,6 +38,7 @@ import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.CustomTopAppBar
+import com.bosseurs.medcare.ui.utils.Screen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -53,7 +54,7 @@ fun ProfileScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         CustomTopAppBar(
-            onClick = {},
+            onClick = {navController.popBackStack(route = Screen.HomeScreen.route, inclusive = false)},
             title = stringResource(id = R.string.profile)
         )
         ProfileEcommerce()
