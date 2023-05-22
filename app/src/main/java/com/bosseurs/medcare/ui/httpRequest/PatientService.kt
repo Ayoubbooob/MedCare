@@ -1,6 +1,7 @@
 package com.bosseurs.medcare.ui.httpRequest
 
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface RetrofitAPI {
@@ -12,7 +13,7 @@ interface RetrofitAPI {
     fun login(
         @Field("cin") cin: String,
         @Field("password") password: String
-    ): Call<Patient?>?
+    ): Call<Patient?>
 }
 
 
