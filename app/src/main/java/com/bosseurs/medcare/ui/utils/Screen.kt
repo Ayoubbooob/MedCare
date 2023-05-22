@@ -34,4 +34,15 @@ sealed class Screen(val route : String){
     object ProceduresScreen : Screen("procedures_screen")
     object ProcedureDetails : Screen("procedures_details")
 
+<<<<<<< HEAD
+=======
+    object MenuInfoHospitalScreen : Screen("menu_info_hospital_screen")
+    object HospitalInfoScreen : Screen("hospital_info_screen")
+
+    object BariaticServiceScreen : Screen("bariatic_service_screen")
+
+
+
+
+>>>>>>> 54f04ee79efb2a531c29198da057f24352db8e53
 }

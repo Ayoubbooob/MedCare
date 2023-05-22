@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.bosseurs.medcare.ui.screens.main.HomeUiState
 import com.bosseurs.medcare.ui.utils.BottomNavItem
 import com.bosseurs.medcare.ui.utils.Screen
 
@@ -20,8 +21,10 @@ import com.bosseurs.medcare.ui.utils.Screen
 
 
 @Composable
-fun FooterBarInstance(navController: NavController){
-    FooterBar(navController=navController,items = listOf(
+fun FooterBarInstance(navController: NavController, homeUiState: HomeUiState = HomeUiState()){
+    FooterBar(navController=navController,
+        homeUiState = homeUiState,
+        items = listOf(
         BottomNavItem(
             name = "Home" ,
             route = "home_route" ,
@@ -51,7 +54,7 @@ fun FooterBarInstance(navController: NavController){
 }
 
 @Composable
-fun FooterBar(items:List<BottomNavItem>, navController: NavController,){
+fun FooterBar(items:List<BottomNavItem>, navController: NavController, homeUiState: HomeUiState = HomeUiState()){
     BottomNavigation(modifier = Modifier.fillMaxWidth() , backgroundColor = Color.White , elevation = 5.dp) {
         items.forEach {item->
             BottomNavigationItem(
@@ -60,7 +63,14 @@ fun FooterBar(items:List<BottomNavItem>, navController: NavController,){
                 unselectedContentColor = Color.White,
                 onClick = {
                     if (item.icon == Icons.Default.AccountBox) {
-                        navController.navigate(Screen.ProfileScreen.route)
+                        if(homeUiState.isUserConnected){
+                            navController.navigate(Screen.ProfileScreen.route)
+                        } else{
+                            navController.navigate(Screen.LoginScreen.route)
+                        }
+
+                    }else if(item.icon == Icons.Default.Home){
+                        navController.popBackStack(route = Screen.HomeScreen.route, inclusive = false)
                     }
                           } ,
                 icon = {

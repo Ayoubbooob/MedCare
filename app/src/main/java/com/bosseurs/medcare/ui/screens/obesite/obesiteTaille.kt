@@ -56,7 +56,7 @@ fun obsiteHeight(
             Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Bottom) {
                 CustomButtonObesite(
                     textId = R.string.retourner_label, onClick = {
-                        Text(text = "Votre resultat est ${targetHeight}" , color = Color.Blue , fontSize = 20.sp)
+                        //Text(text = "Votre resultat est ${targetHeight}" , color = Color.Blue , fontSize = 20.sp)
                         obesiteModel.updateTaille(taille = targetHeight)
                         navController.popBackStack()
                     },
