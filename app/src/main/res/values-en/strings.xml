@@ -21,7 +21,7 @@
     <string name="new_compte_btn">Create an account</string>
     <string name="first_name_field">First Name</string>
     <string name="last_name_field">Last Name</string>
-    <string name="cin_field">Cin</string>
+    <string name="ppr_field">PPR</string>
     <string name="pass_field">Password</string>
     <string name="mobile_number_field">Phone Number</string>
     <string name="login_txt">Already have an account? Login</string>

@@ -46,7 +46,7 @@ fun SignUpScreen(navController: NavController) {
     var first_name by remember { mutableStateOf(TextFieldValue()) }
     var last_name by remember { mutableStateOf(TextFieldValue()) }
     var num by remember { mutableStateOf(TextFieldValue()) }
-    var cin by remember { mutableStateOf(TextFieldValue()) }
+    var ppr by remember { mutableStateOf(TextFieldValue()) }
     var password by remember { mutableStateOf(TextFieldValue()) }
 
     Scaffold(
@@ -99,12 +99,12 @@ fun SignUpScreen(navController: NavController) {
                 onValueChange = { num = it }, trailingIconId = null
             )
             CustomTextField(
-                labelText = R.string.cin_field,
+                labelText = R.string.ppr_field,
                 leadingIconId = null,
                 iconDescription = null,
                 keyboardType = KeyboardType.Text,
-                value = cin,
-                onValueChange = { cin = it }, trailingIconId = null
+                value = ppr,
+                onValueChange = { ppr = it }, trailingIconId = null
             )
             CustomTextField(
                 labelText = R.string.pass_field,
@@ -149,7 +149,7 @@ fun postDataUsingRetrofit(
     firstName: TextFieldValue,
     lastName: TextFieldValue,
     num: TextFieldValue,
-    cin: TextFieldValue,
+    ppr: TextFieldValue,
     password: TextFieldValue,
     navController: NavController
 ) {
@@ -166,7 +166,7 @@ fun postDataUsingRetrofit(
     // below the line is to create an instance for our retrofit api class.
     val retrofitAPI = retrofit.create(RetrofitAPI::class.java)
     // passing data from our text fields to our model class.
-    val dataModel = Patient(firstName.text, lastName.text,cin.text,num.text,password.text)
+    val dataModel = Patient(firstName.text, lastName.text,ppr.text,num.text,password.text)
     // calling a method to create an update and passing our model class.
     val call: Call<Patient?>? = retrofitAPI.register(dataModel)
     // on below line we are executing our method.
