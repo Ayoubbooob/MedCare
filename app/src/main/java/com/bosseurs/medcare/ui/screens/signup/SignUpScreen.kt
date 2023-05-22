@@ -130,6 +130,7 @@ fun SignUpScreen(navController: NavController) {
                     text = AnnotatedString(stringResource(id = R.string.login_txt)),
                     onClick = { /* your click action here */
                         navController.navigate(Screen.LoginScreen.route)
+                        print("hello wo")
                     },
                     style = TextStyle(
                         textAlign = TextAlign.Center,
