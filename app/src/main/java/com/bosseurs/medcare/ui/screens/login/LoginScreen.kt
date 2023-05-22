@@ -48,7 +48,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 fun LoginScreen(
     navController: NavController,
 ){
-    var cin by remember { mutableStateOf(TextFieldValue()) }
+    var ppr by remember { mutableStateOf(TextFieldValue()) }
     var password by remember { mutableStateOf(TextFieldValue()) }
     val ctx = LocalContext.current
     Scaffold(
@@ -75,13 +75,13 @@ fun LoginScreen(
                 style = MaterialTheme.typography.h2,
             )
             CustomTextField(
-                labelText = R.string.cin_field,
+                labelText = R.string.ppr_field,
                 leadingIconId = R.drawable.person_icon ,
                 iconDescription ="Person Icon" ,
                 keyboardType = KeyboardType.Text,
                 trailingIconId = null,
-                value = cin,
-                onValueChange = {cin = it}
+                value = ppr,
+                onValueChange = {ppr = it}
             )
             CustomTextField(
                 labelText = R.string.password,
@@ -96,12 +96,17 @@ fun LoginScreen(
             CustomButton(textId = R.string.connexion_btn,
                 onClick = {
                     //for bruce and oumar comment this and work with the Comment line 100
-                    postLoginRetrofit(
-                        ctx,cin.text,password.text,navController
-                    )
-//                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
+//                     postLoginRetrofit(
+//                         ctx,cin.text,password.text,navController
+//                     )
+// //                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
 
                           },
+//                    postLoginRetrofit(
+//                        ctx,cin.text,password.text,navController
+//                    )
+                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
+                },
                 color = BlueColor,
                 textColor = TextForBlueButtonColor,
                 modifier = Modifier.fillMaxWidth()
@@ -128,7 +133,7 @@ fun LoginScreen(
 
 fun postLoginRetrofit(
     ctx: Context,
-    cin: String,
+    ppr: String,
     password: String,
     navController: NavController
 ) {
@@ -139,7 +144,7 @@ fun postLoginRetrofit(
         .build()
 
     val service = retrofit.create(RetrofitAPI::class.java)
-    val call = service.login(cin, password)
+    val call = service.login(ppr, password)
 
     call!!.enqueue(object : Callback<Patient?> {
         override fun onResponse(call: Call<Patient?>, response: Response<Patient?>) {

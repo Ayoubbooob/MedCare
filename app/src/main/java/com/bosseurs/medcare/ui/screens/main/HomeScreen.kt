@@ -56,7 +56,7 @@ fun HomeScreen(
             isUserConnected = homeUiState.isUserConnected,
             username=homeUiState.username
         )},
-        bottomBar = { FooterBarInstance(navController)}
+        bottomBar = { FooterBarInstance(navController, homeUiState)}
     ) {innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
             Text(
@@ -82,14 +82,14 @@ fun HomeScreen(
                 }
                 item {
                     MyCard(
-                        title = stringResource(R.string.unite_chirurgie_panel),
+                        title = stringResource(R.string.hopital_ibn_sina_panel),
                         backImage = painterResource(id = R.drawable.cat1),
                         onClick = {
 //                            Toast
 //                                .makeText(context, "cette route n'est pas encore disponible", Toast.LENGTH_SHORT)
 //                                .show()
 
-                            navController.navigate(Screen.ProceduresScreen.route)
+                            navController.navigate(Screen.MenuInfoHospitalScreen.route)
 
 
                         }
