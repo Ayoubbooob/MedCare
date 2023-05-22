@@ -40,7 +40,6 @@ fun ObesiteGenre(
     ) {
         var obesiteModel : obesiteModel1 = viewModel()
         Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
-            .fillMaxSize()
             .padding(6.dp)) {
             Column() {
                 Text(text = stringResource(R.string.genre_select_message), style = Typography1.subtitle1)

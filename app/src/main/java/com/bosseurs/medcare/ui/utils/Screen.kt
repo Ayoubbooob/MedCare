@@ -12,6 +12,7 @@ sealed class Screen(val route : String){
     object obesiteGenre : Screen("obesiteGenre_screen")
     object obesiteTaille : Screen("obesiteTaille_screen")
     object obesitePoid : Screen("obesitePoid_screen")
+    object obesiteResult : Screen("obesiteResult_screen")
     object PhoneVerifiedScreen : Screen("phone_verified_screen")
     object HomeScreen : Screen("home_screen/{is_user_connected}/{username}"){
         fun passArgs(isUserConnected: Boolean, username: String = "") : String{

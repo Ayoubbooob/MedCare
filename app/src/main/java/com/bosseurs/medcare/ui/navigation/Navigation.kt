@@ -18,6 +18,7 @@ import com.bosseurs.medcare.ui.screens.main.HomeUiState
 import com.bosseurs.medcare.ui.screens.main.HomeViewModel
 import com.bosseurs.medcare.ui.screens.obesite.NumberPicker
 import com.bosseurs.medcare.ui.screens.obesite.ObesiteGenre
+import com.bosseurs.medcare.ui.screens.obesite.ObesiteResult
 import com.bosseurs.medcare.ui.screens.obesite.obsiteHeight
 import com.bosseurs.medcare.ui.screens.procedures.ProcedureDetails
 import com.bosseurs.medcare.ui.screens.procedures.ProceduresScreen
@@ -61,6 +62,9 @@ fun Navigation(toggleTheme : () -> Unit) {
         composable(route = Screen.obesitePoid.route){
             val context = LocalContext.current
             NumberPicker(navController = navController , context = context)
+        }
+        composable(route = Screen.obesiteResult.route){
+            ObesiteResult(navController = navController)
         }
 //        composable(route = Screen.HomeScreen.route)
         composable(
