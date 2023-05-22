@@ -27,6 +27,7 @@ import com.bosseurs.medcare.ui.utils.Screen
 @Composable
 fun ObesiteResult(
     navController: NavController,
+    obesiteModel : obesiteModel = viewModel()
     //modifier : Modifier
     //navController: NavController = rememberNavController()
 ){
@@ -57,7 +58,7 @@ fun ObesiteResult(
             }
         }
     ) {
-        var obesiteModel : obesiteModel = viewModel()
+        //var obesiteModel : obesiteModel = viewModel()
         val obesiteUIState by obesiteModel.uiState.collectAsState()
         Column (
             modifier = Modifier

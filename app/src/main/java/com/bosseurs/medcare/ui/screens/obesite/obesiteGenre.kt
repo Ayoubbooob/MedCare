@@ -1,5 +1,6 @@
 package com.bosseurs.medcare.ui.screens.obesite
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -10,6 +11,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +30,7 @@ import com.bosseurs.medcare.ui.screens.obesite.obesiteModel as obesiteModel1
 @Composable
 fun ObesiteGenre(
     navController: NavController,
+    obesiteModel : obesiteModel1 = viewModel()
     //modifier : Modifier
     //navController: NavController = rememberNavController()
 ){
@@ -38,7 +41,8 @@ fun ObesiteGenre(
             FooterBarInstance(navController)
         }
     ) {
-        var obesiteModel : obesiteModel1 = viewModel()
+        //var obesiteModel : obesiteModel1 = viewModel()
+        val context = LocalContext.current
         Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
             .padding(6.dp)) {
             Column() {
@@ -72,6 +76,9 @@ fun ObesiteGenre(
                 size = 200 ,
                 contenteDescription = "Genre Image" ,
             )
+            val GenreUIState by obesiteModel.uiState.collectAsState()
+            //val context = LocalContext.current
+            Text(text = "${GenreUIState.genre}")
             ImageShadowContainer(
                 color = MaterialTheme.colors.onPrimary,
                 modifier = Modifier
@@ -79,7 +86,8 @@ fun ObesiteGenre(
                     .width(297.dp)
                     .size(100.dp)
                     .clickable(onClick = {
-                        obesiteModel.updateGenre(genre = true)
+                        //obesiteModel.updateGenre(genre = true)
+                        //Text(text = "hell")
                         navController.navigate(Screen.obesiteTaille.route)
                     }),
                 contente = ManImageModelInstance,
@@ -101,7 +109,7 @@ fun ObesiteGenre(
                 .height(232.dp)
                 .width(297.dp)
                 .size(100.dp)
-                .clickable(onClick =fun () {
+                .clickable(onClick = fun() {
                     obesiteModel.updateGenre(genre = false)
                     navController.navigate(Screen.obesiteTaille.route)
 

@@ -32,14 +32,17 @@ import com.bosseurs.medcare.ui.utils.Screen
 
 
 @Composable
-fun NumberPicker(context:Context  , navController: NavController) {
+fun NumberPicker(context:Context  ,
+                 navController: NavController ,
+                 obesiteModel : obesiteModel = viewModel()
+) {
 
         var number = remember { mutableStateOf(20) }
         val max=remember { mutableStateOf(400) }
         val min=remember { mutableStateOf(5) }
         Box(modifier = Modifier.fillMaxSize()
         ) {
-            var obesiteModel : obesiteModel = viewModel()
+            //var obesiteModel : obesiteModel = viewModel()
             Text(
                 text = "selectionner votre poids :",
                 modifier = Modifier
@@ -51,6 +54,7 @@ fun NumberPicker(context:Context  , navController: NavController) {
                     .fillMaxHeight()
                     .fillMaxWidth(),
                 content = {
+                    Text(text = "${obesiteModel.uiState.value}")
                     Image(painter = painterResource(id = R.drawable.weight_mesure), contentDescription ="this is image contente" )
                     HorizontalNumberPicker(
                         min = 10,

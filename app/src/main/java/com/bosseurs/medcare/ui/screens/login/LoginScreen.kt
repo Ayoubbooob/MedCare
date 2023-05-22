@@ -101,7 +101,7 @@ fun LoginScreen(
 //                     )
 // //                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
 
-                          },
+                          //},
 //                    postLoginRetrofit(
 //                        ctx,cin.text,password.text,navController
 //                    )
@@ -110,7 +110,7 @@ fun LoginScreen(
                 color = BlueColor,
                 textColor = TextForBlueButtonColor,
                 modifier = Modifier.fillMaxWidth()
-            )
+            );
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
                 ClickableText(
                     text = AnnotatedString(stringResource(id = R.string.sign_up_txt)),

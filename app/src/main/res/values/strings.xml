@@ -28,12 +28,7 @@
     <string name="language_1">Arabe</string>
     <string name="language_2">Français</string>
     <string name="language_3">English</string>
-<<<<<<< HEAD
-    <string name="continue_label">CONTINUE</string>
-    <string name="retourner_label">RETOURNER</string>
-=======
     <string name="continue_label">CONTINUER</string>
->>>>>>> 54f04ee79efb2a531c29198da057f24352db8e53
     <string name="register_email">S\'INSCRIRE AVEC UN E-MAIL</string>
     <string name="register_gmail">CONTINUER AVEC GMAIL</string>
     <string name="continue_without_connexion">CONTINUER SANS CONNEXION</string>
@@ -82,4 +77,5 @@
     <string name="procedure_medicales_menu">Procédures Médicales</string>
     <string name="service_bariatique_menu">Service Bariatique de l\'hôpital Ibn Sina</string>
     <string name="renseignements_hopital_menu">Renseignements sur l\'hôpital Ibn Sina</string>
+    <string name="retourner_label">RETOURNER</string>
 </resources>

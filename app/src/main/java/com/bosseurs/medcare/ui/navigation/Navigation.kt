@@ -1,6 +1,7 @@
 package com.bosseurs.medcare.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -38,6 +39,9 @@ fun Navigation(toggleTheme : () -> Unit) {
     navController = navController,
     startDestination = Screen.LanguageScreen.route
     ) {
+        val obesity by remember{
+
+        }
         composable(route = Screen.LanguageScreen.route){
             LanguageScreen(navController = navController)
         }

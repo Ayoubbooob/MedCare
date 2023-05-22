@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 class obesiteModel : ViewModel() {
-    private val _uiState = MutableStateFlow(obesiteState())
+    private var _uiState = MutableStateFlow(obesiteState())
     val uiState: StateFlow<obesiteState> = _uiState.asStateFlow()
 
     fun updateTaille(taille: Int) {

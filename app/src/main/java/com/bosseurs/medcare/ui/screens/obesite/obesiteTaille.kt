@@ -28,8 +28,9 @@ import com.bosseurs.medcare.ui.utils.Screen
 @Composable
 fun obsiteHeight(
     navController: NavController,
+    obesiteModel : obesiteModel = viewModel()
 ){
-    var obesiteModel : obesiteModel = viewModel()
+    //var obesiteModel : obesiteModel = viewModel()
     var targetHeight by remember {
         mutableStateOf(0)
     }
@@ -75,6 +76,10 @@ fun obsiteHeight(
         //Spacer(modifier = Modifier.height(68.dp))
 
         Row(modifier = Modifier.fillMaxWidth()) {
+            val GenreUIState by obesiteModel.uiState.collectAsState()
+            //val context = LocalContext.current
+            obesiteModel.updateGenre(genre = true)
+            Text(text = "${GenreUIState.genre}")
             Image(modifier = Modifier
                 .width(200.dp)
                 .fillMaxHeight(0.8f)
