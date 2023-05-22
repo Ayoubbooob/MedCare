@@ -131,7 +131,7 @@ fun Navigation(toggleTheme : () -> Unit) {
         composable(Screen.ProcedureDetails.route + "/{id}") { backStackEntry ->
             val id = backStackEntry.arguments?.getInt("id")
             if (id != null) {
-                ProcedureDetails(navController, id)
+                ProcedureDetails(navController, id);
             }
         }
 
