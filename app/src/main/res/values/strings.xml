@@ -25,7 +25,7 @@
     <string name="mobile_number_field">Numéro de téléphone</string>
     <string name="login_txt">Vous avez déjà un compte? Connectez-vous</string>
     <string name="Choose_language">Choisissez la langue</string>
-    <string name="language_1">Arabe</string>
+    <string name="language_1">عربي</string>
     <string name="language_2">Français</string>
     <string name="language_3">English</string>
     <string name="continue_label">CONTINUER</string>
