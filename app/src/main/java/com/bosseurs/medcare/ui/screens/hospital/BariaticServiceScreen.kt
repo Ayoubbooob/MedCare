@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.bosseurs.medcare.R
+import com.bosseurs.medcare.ui.screens.main.HomeUiState
 import com.bosseurs.medcare.ui.shared.CustomTopAppBar
 import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.theme.Typography1
@@ -24,14 +25,15 @@ import com.bosseurs.medcare.ui.theme.Typography1
 @Composable
 fun BariaticServiceScreen(
     modifier : Modifier = Modifier,
-    navController: NavController = rememberNavController()
+    navController: NavController = rememberNavController(),
+    homeState : HomeUiState = HomeUiState()
 ){
     Scaffold(
         topBar = { CustomTopAppBar(
             title = stringResource(R.string.service_bariatique_menu),
             onClick = { navController.popBackStack() },
         ) },
-        bottomBar = { FooterBarInstance(navController) }
+        bottomBar = { FooterBarInstance(navController , homeState) }
     ) {innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
             Text(

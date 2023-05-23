@@ -2,14 +2,15 @@ package com.bosseurs.medcare.ui.screens.obesite
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -40,21 +41,42 @@ fun ObesiteGenre(
         bottomBar = {
             FooterBarInstance(navController , homeUiState = HomeUiState())
             //bottomBar = { FooterBarInstance(navController, homeUiState)}
+        },
+        topBar = {
+            TopAppBar(backgroundColor = Color.White, modifier = Modifier.wrapContentWidth(align = Alignment.Start))
+            {
+                IconButton(onClick = {
+                    navController.popBackStack()
+                }) {
+                  Row() {
+                      Column(modifier = Modifier.padding(6.dp)) {
+                          Icon(
+                              imageVector = Icons.Filled.ArrowBack,
+                              contentDescription = "Back",
+                              tint = Color(0XFF090F47)
+                          )
+                      }
+                      val context = LocalContext.current
+                      Column() {
+                          Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
+                              .padding(6.dp)) {
+                              Column() {
+                                  Text(text = stringResource(R.string.genre_select_message), style = AppBarTextStyle)
+                              }
+                              Spacer(modifier = Modifier.padding(6.dp))
+                              Column() {
+                                  Text(text = stringResource(R.string.gennre_bold), style = AppBarTextStyle)
+                              }
+
+                          }
+                      }
+                  }
+                }
+            }
         }
     ) {
         //var obesiteModel : obesiteModel1 = viewModel()
-        val context = LocalContext.current
-        Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
-            .padding(6.dp)) {
-            Column() {
-                Text(text = stringResource(R.string.genre_select_message), style = AppBarTextStyle)
-            }
-            Spacer(modifier = Modifier.padding(6.dp))
-            Column() {
-                Text(text = stringResource(R.string.gennre_bold), style = AppBarTextStyle)
-            }
 
-        }
         Column (
             modifier = Modifier
                 .fillMaxWidth()
