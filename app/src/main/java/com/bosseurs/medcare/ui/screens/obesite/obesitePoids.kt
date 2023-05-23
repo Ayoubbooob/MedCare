@@ -62,7 +62,7 @@ fun NumberPicker(context:Context  ,
                                 Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
                                     .padding(6.dp)) {
                                     Column() {
-                                        Text(text = "selectionner votre poids en kg :", style = AppBarTextStyle)
+                                        Text(text = "selectionner votre poids(kg)", style = AppBarTextStyle)
                                     }
 
                                 }
