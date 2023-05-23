@@ -1,6 +1,9 @@
 package com.bosseurs.medcare.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,6 +21,7 @@ import com.bosseurs.medcare.ui.screens.login.LoginScreen
 import com.bosseurs.medcare.ui.screens.main.HomeScreen
 import com.bosseurs.medcare.ui.screens.main.HomeUiState
 import com.bosseurs.medcare.ui.screens.main.HomeViewModel
+import com.bosseurs.medcare.ui.screens.obesite.*
 import com.bosseurs.medcare.ui.screens.procedures.ProcedureDetails
 import com.bosseurs.medcare.ui.screens.procedures.ProceduresScreen
 import com.bosseurs.medcare.ui.screens.profile.ProfileScreen
@@ -29,10 +33,12 @@ import androidx.navigation.compose.rememberNavController as rememberNavControlle
 @Composable
 fun Navigation(toggleTheme : () -> Unit) {
     val navController = rememberNavController()
+    val obesity  : obesiteModel = viewModel()
     NavHost(
     navController = navController,
     startDestination = Screen.LanguageScreen.route
     ) {
+
         composable(route = Screen.LanguageScreen.route){
             LanguageScreen(navController = navController)
         }
@@ -50,6 +56,19 @@ fun Navigation(toggleTheme : () -> Unit) {
         }
         composable(route = Screen.LoginScreen.route){
             LoginScreen(navController = navController)
+        }
+        composable(route = Screen.obesiteGenre.route){
+            ObesiteGenre(navController = navController , obesiteModel = obesity)
+        }
+        composable(route = Screen.obesiteTaille.route){
+            obsiteHeight(navController = navController , obesiteModel = obesity)
+        }
+        composable(route = Screen.obesitePoid.route){
+            val context = LocalContext.current
+            NumberPicker(navController = navController , context = context ,  obesiteModel = obesity)
+        }
+        composable(route = Screen.obesiteResult.route){
+            ObesiteResult(navController = navController , obesiteModel = obesity)
         }
 //        composable(route = Screen.HomeScreen.route)
         composable(

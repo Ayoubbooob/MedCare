@@ -40,6 +40,9 @@
     <string name="greeting_homescreen">Bonjour</string>
     <string name="welcome_homescreen">Bienvenue sur MedCare</string>
     <string name="search_bar_text">Recherchez un élement</string>
+    <string name="genre_select_message">Selectionner Votre</string>
+    <string name="gennre_bold">Genre</string>
+    <string name="gennre_taille_bold">Taille</string>
 
 
     <string name="AM">AM</string>
@@ -58,6 +61,9 @@
     <string name="Mars">Mars</string>
 
     <string name="demande_rdv"> Demander un rendez-vous </string>
+    <string name="obesite_votre"> Votre</string>
+    <string name="obesite_result"> Resultat</string>
+    <string name="valider_imc"> Valider</string>
 
     <string name="info_gererales">Informations Générales</string>
     <string name="titre_info_obesite">C\'est quoi l\'Obésité?</string>
@@ -71,4 +77,5 @@
     <string name="procedure_medicales_menu">Procédures Médicales</string>
     <string name="service_bariatique_menu">Service Bariatique de l\'hôpital Ibn Sina</string>
     <string name="renseignements_hopital_menu">Renseignements sur l\'hôpital Ibn Sina</string>
+    <string name="retourner_label">RETOURNER</string>
 </resources>

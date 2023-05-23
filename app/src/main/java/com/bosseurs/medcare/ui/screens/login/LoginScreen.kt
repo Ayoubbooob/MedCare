@@ -101,7 +101,7 @@ fun LoginScreen(
 //                     )
 // //                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
 
-                          },
+                          //},
 //                    postLoginRetrofit(
 //                        ctx,cin.text,password.text,navController
 //                    )
