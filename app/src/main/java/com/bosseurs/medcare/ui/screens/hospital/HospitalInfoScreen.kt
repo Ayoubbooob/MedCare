@@ -20,6 +20,7 @@ import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.screens.information.INFO_OBESITE
 import com.bosseurs.medcare.ui.screens.information.MDDocument
 import com.bosseurs.medcare.ui.screens.information.YoutubeScreen
+import com.bosseurs.medcare.ui.screens.main.HomeUiState
 import com.bosseurs.medcare.ui.shared.CustomTopAppBar
 import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.theme.Typography1
@@ -29,14 +30,15 @@ import org.commonmark.parser.Parser
 @Composable
 fun HospitalInfoScreen(
     modifier : Modifier = Modifier,
-    navController: NavController = rememberNavController()
+    navController: NavController = rememberNavController() ,
+    homeUIState : HomeUiState = HomeUiState()
 ){
     Scaffold(
         topBar = { CustomTopAppBar(
             title = stringResource(R.string.renseignements_hopital_menu),
             onClick = { navController.popBackStack() },
         ) },
-        bottomBar = { FooterBarInstance(navController) }
+        bottomBar = { FooterBarInstance(navController , homeUIState) }
     ) {innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
             Text(

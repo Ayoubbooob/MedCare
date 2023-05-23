@@ -97,6 +97,18 @@ fun LoginScreen(
                         ctx,ppr.text,password.text,navController
                     )
 //                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
+
+//                     postLoginRetrofit(
+//                         ctx,cin.text,password.text,navController
+//                     )
+// //                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
+
+                          //},
+//                    postLoginRetrofit(
+//                        ctx,cin.text,password.text,navController
+//                    )
+//                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
+
                 },
                 color = BlueColor,
                 textColor = TextForBlueButtonColor,

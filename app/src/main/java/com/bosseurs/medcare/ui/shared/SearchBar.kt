@@ -23,6 +23,10 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 
+//Exemple d'utilisation
+//SearchBare(CustumText = "search your name")
+
+
 @Composable
 fun SearchBare(CustumText : String ) {
     val query = remember {
