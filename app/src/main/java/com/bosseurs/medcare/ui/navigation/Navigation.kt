@@ -5,6 +5,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.bosseurs.medcare.ui.httpRequest.Patient
 import com.bosseurs.medcare.ui.screens.appointment.AppointmentScreen
 import com.bosseurs.medcare.ui.screens.auth.AuthScreen
 import com.bosseurs.medcare.ui.screens.description.DescriptionScreen
@@ -17,7 +18,6 @@ import com.bosseurs.medcare.ui.screens.launch.LanguageScreen
 import com.bosseurs.medcare.ui.screens.login.LoginScreen
 import com.bosseurs.medcare.ui.screens.main.HomeScreen
 import com.bosseurs.medcare.ui.screens.main.HomeUiState
-import com.bosseurs.medcare.ui.screens.main.HomeViewModel
 import com.bosseurs.medcare.ui.screens.procedures.ProcedureDetails
 import com.bosseurs.medcare.ui.screens.procedures.ProceduresScreen
 import com.bosseurs.medcare.ui.screens.profile.ProfileScreen
@@ -52,16 +52,19 @@ fun Navigation(toggleTheme : () -> Unit) {
             LoginScreen(navController = navController)
         }
 //        composable(route = Screen.HomeScreen.route)
+
         composable(
             route = Screen.HomeScreen.route,
             arguments = listOf(
                 navArgument("is_user_connected"){type = NavType.BoolType},
                 navArgument("username"){type = NavType.StringType},
+                navArgument("id_patient"){type = NavType.StringType}
             )){
             HomeScreen(
                 navController = navController,
                 isUserConnected = it.arguments?.getBoolean("is_user_connected") == true,
-                username = it.arguments?.getString("username").toString()
+                username = it.arguments?.getString("username").toString(),
+                patientID = it.arguments?.getString("id_patient").toString()
             )
         }
 
@@ -92,8 +95,21 @@ fun Navigation(toggleTheme : () -> Unit) {
             )
         }
 
-        composable(route = Screen.AppointmentScreen.route){
-            AppointmentScreen(navController = navController)
+//        composable(route = Screen.AppointmentScreen.route){
+//            AppointmentScreen(navController = navController)
+//        }
+
+        composable(
+            route = Screen.AppointmentScreen.route,
+            arguments = listOf(
+                navArgument("is_user_connected"){type = NavType.BoolType},
+                navArgument("id_patient"){type = NavType.StringType}
+            )){
+            AppointmentScreen(
+                navController = navController,
+                isUserConnected = it.arguments?.getBoolean("is_user_connected") == true,
+                patientID = it.arguments?.getString("id_patient").toString()
+            )
         }
 
         composable(route = Screen.ProceduresScreen.route){

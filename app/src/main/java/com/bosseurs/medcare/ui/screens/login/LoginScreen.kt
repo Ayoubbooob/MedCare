@@ -1,9 +1,7 @@
 package com.bosseurs.medcare.ui.screens.login
 
 import android.annotation.SuppressLint
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -27,7 +25,6 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.httpRequest.Patient
@@ -96,16 +93,10 @@ fun LoginScreen(
             CustomButton(textId = R.string.connexion_btn,
                 onClick = {
                     //for bruce and oumar comment this and work with the Comment line 100
-//                     postLoginRetrofit(
-//                         ctx,cin.text,password.text,navController
-//                     )
-// //                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
-
-                          },
-//                    postLoginRetrofit(
-//                        ctx,cin.text,password.text,navController
-//                    )
-                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
+                    postLoginRetrofit(
+                        ctx,ppr.text,password.text,navController
+                    )
+//                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
                 },
                 color = BlueColor,
                 textColor = TextForBlueButtonColor,
@@ -137,7 +128,7 @@ fun postLoginRetrofit(
     password: String,
     navController: NavController
 ) {
-    val url = "http://192.168.1.12:8000/api/"
+    val url = "http://192.168.1.12:8000/api/patient/"
     val retrofit = Retrofit.Builder()
         .baseUrl(url)
         .addConverterFactory(GsonConverterFactory.create())
@@ -149,23 +140,21 @@ fun postLoginRetrofit(
     call!!.enqueue(object : Callback<Patient?> {
         override fun onResponse(call: Call<Patient?>, response: Response<Patient?>) {
             if (response.isSuccessful) {
-                val patient = response.body()
-                    navController.navigate(Screen.HomeScreen.passArgs(true,  patient!!.first_name))
+                // Login successful, navigate to the next screen
+                val patientResponse = response.body()
+                navController.navigate(Screen.HomeScreen.passArgs(true,patientResponse!!.first_name,
+                    patientResponse.id) )
             } else {
                 // Login failed, show error message
                 Toast.makeText(ctx, "Login failed", Toast.LENGTH_SHORT).show()
             }
         }
-
-
         override fun onFailure(call: Call<Patient?>, t: Throwable) {
-            TODO("Not yet implemented")
+            // Handle network errors here
             Toast.makeText(ctx, "Network error", Toast.LENGTH_SHORT).show()
-
         }
     })
 }
 
 //private fun NavController.navigate(route: String, : Bundle) {
-
 
