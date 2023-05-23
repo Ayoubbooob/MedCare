@@ -9,6 +9,10 @@ sealed class Screen(val route : String){
     object ProfileScreen : Screen("profile_screen")
     object SignUpScreen : Screen("signup_screen")
     object LoginScreen : Screen("login_screen")
+    object obesiteGenre : Screen("obesiteGenre_screen")
+    object obesiteTaille : Screen("obesiteTaille_screen")
+    object obesitePoid : Screen("obesitePoid_screen")
+    object obesiteResult : Screen("obesiteResult_screen")
     object PhoneVerifiedScreen : Screen("phone_verified_screen")
     object HomeScreen : Screen("home_screen/{is_user_connected}/{username}"){
         fun passArgs(isUserConnected: Boolean, username: String = "") : String{
@@ -29,11 +33,11 @@ sealed class Screen(val route : String){
     object AppointmentScreen : Screen("appointment_screen")
     object ProceduresScreen : Screen("procedures_screen")
     object ProcedureDetails : Screen("procedures_details")
-
     object MenuInfoHospitalScreen : Screen("menu_info_hospital_screen")
     object HospitalInfoScreen : Screen("hospital_info_screen")
 
     object BariaticServiceScreen : Screen("bariatic_service_screen")
+
 
 
 

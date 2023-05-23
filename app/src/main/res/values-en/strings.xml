@@ -69,4 +69,11 @@
     <string name="procedure_medicales_menu">Medical Procedures</string>
     <string name="service_bariatique_menu">Bariatric Service of Ibn Sina Hospital</string>
     <string name="renseignements_hopital_menu">Information about Ibn Sina Hospital</string>
+    <string name="genre_select_message">Select Your</string>
+    <string name="gennre_bold">Gender</string>
+    <string name="gennre_taille_bold">Height</string>
+    <string name="obesite_votre">Your</string>
+    <string name="obesite_result">Obesity Result</string>
+    <string name="valider_imc">Validate</string>
+    <string name="retourner_label">RETURN</string>
 </resources>

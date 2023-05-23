@@ -20,31 +20,31 @@ import com.bosseurs.medcare.ui.utils.Screen
 
 
 @Composable
-fun FooterBarInstance(navController: NavController, homeUiState: HomeUiState = HomeUiState()){
+fun FooterBarInstance(navController: NavController, homeUiState: HomeUiState ){
     FooterBar(navController=navController,
         homeUiState = homeUiState,
         items = listOf(
-        BottomNavItem(
-            name = "Home" ,
-            route = "home_route" ,
-            icon = Icons.Default.Home ,
-        ) ,
-        BottomNavItem(
-            name = "Home" ,
-            route = "home_route" ,
-            icon = Icons.Default.Notifications ,
-        ) ,
-        BottomNavItem(
-            name = "Home" ,
-            route = "home_route" ,
-            icon = Icons.Default.ArrowDropDown ,
-        ) ,
-        BottomNavItem(
-            name = "Home" ,
-            route = "home_route" ,
-            icon = Icons.Default.AccountBox ,
-        )
-    ))
+            BottomNavItem(
+                name = "Home" ,
+                route = "home_route" ,
+                icon = Icons.Default.Home ,
+            ) ,
+            BottomNavItem(
+                name = "Home" ,
+                route = "home_route" ,
+                icon = Icons.Default.Notifications ,
+            ) ,
+            BottomNavItem(
+                name = "Home" ,
+                route = "home_route" ,
+                icon = Icons.Default.ArrowDropDown ,
+            ) ,
+            BottomNavItem(
+                name = "Home" ,
+                route = "home_route" ,
+                icon = Icons.Default.AccountBox ,
+            )
+        ))
 }
 
 @Composable
@@ -66,7 +66,7 @@ fun FooterBar(items:List<BottomNavItem>, navController: NavController, homeUiSta
                     }else if(item.icon == Icons.Default.Home){
                         navController.popBackStack(route = Screen.HomeScreen.route, inclusive = false)
                     }
-                          } ,
+                } ,
                 icon = {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         if(item.badgeCount>0){
