@@ -48,24 +48,26 @@ fun ObesiteResult(
                 }
             }
         },
-        bottomBar = {
-            Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Bottom) {
+
+        floatingActionButton = {
+            Row(modifier = Modifier.padding(20.dp) ,  verticalAlignment = Alignment.Bottom) {
                 CustomButtonObesite(
                     textId = R.string.valider_imc, onClick = {
-                        navController.popBackStack()
+                        navController.popBackStack(route = Screen.HomeScreen.route, inclusive = false)
                     },
                     color = BlueColor, textColor = TextForBlueButtonColor , CustomWidth = 176  , CustomHeight = 50)
             }
-        }
+        } ,
+
     ) {
         //var obesiteModel : obesiteModel = viewModel()
         val obesiteUIState by obesiteModel.uiState.collectAsState()
-        Column (
+        Row (
             modifier = Modifier
                 .fillMaxWidth()
                 .fillMaxHeight(),
-            horizontalAlignment = Alignment.CenterHorizontally ,
-            verticalArrangement = Arrangement.Center
+            horizontalArrangement = Arrangement.Center ,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
                 contentAlignment = Alignment.Center,

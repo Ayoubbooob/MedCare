@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.bosseurs.medcare.R
+import com.bosseurs.medcare.ui.screens.main.HomeUiState
 import com.bosseurs.medcare.ui.shared.CustomTopAppBar
 import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.theme.Typography1
@@ -27,14 +28,15 @@ fun InfoDetailScreen(
     title: String = stringResource(id = R.string.titre_info_obesite),
     infoContentMarkdown : String = INFO_OBESITE,
     modifier : Modifier = Modifier,
-    navController: NavController = rememberNavController()
+    navController: NavController = rememberNavController() ,
+    homeUIState : HomeUiState = HomeUiState()
 ){
     Scaffold(
         topBar = { CustomTopAppBar(
             title = title,
             onClick = { navController.popBackStack() },
         ) },
-        bottomBar = { FooterBarInstance(navController) }
+        bottomBar = { FooterBarInstance(navController , homeUIState) }
     ) {innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
             Text(
