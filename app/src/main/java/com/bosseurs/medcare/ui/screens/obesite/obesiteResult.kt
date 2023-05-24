@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -43,6 +44,15 @@ fun ObesiteResult(
     //modifier : Modifier
     //navController: NavController = rememberNavController()
 ){
+    val ctx = LocalContext.current
+    val obesiteUIState by obesiteModel.uiState.collectAsState()
+    var gender : String = ""
+    if(obesiteUIState.genre){
+        gender = "male"
+    }else{
+        gender = "female"
+    }
+    obesiteModel.updateObesiteDetails(isUserConnected,patientID)
 
     Scaffold(
         //backgroundColor = MaterialTheme.colors.onBackground ,
@@ -65,10 +75,10 @@ fun ObesiteResult(
             Row(modifier = Modifier.padding(20.dp) ,  verticalAlignment = Alignment.Bottom) {
                 CustomButtonObesite(
                     textId = R.string.valider_imc, onClick = {
-                        //postImcRetrofit(
-                            //ctx,obesiteUIState.patientID,obesiteUIState.poids.toString(),obesiteUIState.taille.toString(),gender,navController
-                        //)
-                        navController.popBackStack(route = Screen.HomeScreen.route, inclusive = false)
+                        postImcRetrofit(
+                            ctx,obesiteUIState.patientID,obesiteUIState.poids.toString(),obesiteUIState.taille.toString(),gender,navController
+                        )
+                        //navController.popBackStack(route = Screen.HomeScreen.route, inclusive = false)
                     },
                     color = BlueColor, textColor = TextForBlueButtonColor , CustomWidth = 176  , CustomHeight = 50)
             }

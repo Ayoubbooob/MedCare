@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -56,7 +57,8 @@ fun HomeScreen(
     Scaffold(
         topBar = {Header(
             isUserConnected = homeUiState.isUserConnected,
-            username=homeUiState.username
+            username=homeUiState.username,
+            navController = navController
         )},
         bottomBar = { FooterBarInstance(navController, homeUiState)}
     ) {innerPadding ->
@@ -92,7 +94,8 @@ fun HomeScreen(
 //                                .makeText(context, "cette route n'est pas encore disponible", Toast.LENGTH_SHORT)
 //                                .show()
 
-                            navController.navigate(Screen.MenuInfoHospitalScreen.route)
+                            val homeUiStateJson = Gson().toJson(homeUiState)
+                            navController.navigate(Screen.MenuInfoHospitalScreen.passArgs(homeUiStateJson))
 
 
                         },
@@ -134,7 +137,9 @@ fun HomeScreen(
 fun Header(
     isUserConnected: Boolean,
     username: String,
-    modifier: Modifier = Modifier){
+    navController: NavController = rememberNavController(),
+            modifier : Modifier = Modifier,
+){
     val profilPhoto :Painter = if(isUserConnected) painterResource(R.drawable.profil_image)
     else painterResource(R.drawable.profil)
     Box(
@@ -165,11 +170,13 @@ fun Header(
                         .size(55.dp)
                         .clip(CircleShape)                       // clip to the circle shape
                 )
-                Icon(
-                    Icons.Outlined.Notifications,
-                    tint = Color.White,
-                    contentDescription = "icon"
-                )
+                IconButton(onClick = { navController.popBackStack() }) {
+                    Icon(
+                        Icons.Outlined.ArrowBack,
+                        tint = Color.White,
+                        contentDescription = "icon"
+                    )
+                }
             }
             Column() {
                 Text(

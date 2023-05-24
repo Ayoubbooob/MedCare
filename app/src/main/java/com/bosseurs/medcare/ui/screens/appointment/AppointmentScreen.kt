@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -26,6 +27,7 @@ import com.bosseurs.medcare.ui.httpRequest.RetrofitAPI
 import com.bosseurs.medcare.ui.screens.main.HomeViewModel
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomTopAppBar
+import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 import com.bosseurs.medcare.ui.theme.TextForWhiteButtonColor
@@ -49,17 +51,21 @@ fun AppointmentScreen(
     val appointmentUiState by appointmentViewModel.uiState.collectAsState()
     val ctx = LocalContext.current
     appointmentViewModel.updateAppointmentDetails(isUserConnected,patientID)
-            Column(modifier = Modifier
-            .padding(20.dp)
-            .verticalScroll(rememberScrollState()),
+    Scaffold(
+        topBar = { CustomTopAppBar(
+            onClick = {navController.popBackStack()},
+            title = stringResource(id = R.string.Rendez_vous)
+//            title = appointmentUiState.patientID
+        ) },
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(20.dp)
+                .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(20.dp),
         ) {
-            CustomTopAppBar(
-                onClick = {},
-                title = stringResource(id = R.string.Rendez_vous)
-//            title = appointmentUiState.patientID
-            )
+
             val image = painterResource(id = R.drawable.appointment)
             Image(
                 painter = image,
@@ -74,14 +80,19 @@ fun AppointmentScreen(
                 textId = R.string.demande_rdv,
                 onClick = {
                     postRequestRetrofit(
-                            ctx,appointmentUiState.patientID,navController
-                        )
+                        ctx, appointmentUiState.patientID, navController
+                    )
+//                    Toast
+//                        .makeText(ctx, "Demande en cours de traitement", Toast.LENGTH_SHORT)
+//                        .show()
+
                 },
                 color = BlueColor,
-                textColor = TextForBlueButtonColor)
+                textColor = TextForBlueButtonColor
+            )
         }
 
-
+    }
 }
 
 fun postRequestRetrofit(ctx: Context, patientID: String, navController: NavController)
@@ -117,4 +128,5 @@ fun postRequestRetrofit(ctx: Context, patientID: String, navController: NavContr
         }
     })
 }
+
 

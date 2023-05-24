@@ -38,7 +38,8 @@ fun MenuInfoHospitalScreen(
     Scaffold(
         topBar = { Header(
             isUserConnected = homeUiState.isUserConnected,
-            username= homeUiState.username
+            username= homeUiState.username,
+            navController = navController
         ) },
         bottomBar = { FooterBarInstance(navController, homeUiState) }
     ) {innerPadding ->
