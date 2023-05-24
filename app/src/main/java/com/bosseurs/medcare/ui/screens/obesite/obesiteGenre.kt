@@ -32,7 +32,9 @@ import com.bosseurs.medcare.ui.screens.obesite.obesiteModel as obesiteModel1
 @Composable
 fun ObesiteGenre(
     navController: NavController,
-    obesiteModel : obesiteModel1 = viewModel()
+    obesiteModel : obesiteModel1 = viewModel() ,
+    isUserConnected : Boolean = false ,
+    patientID : String = ""
     //modifier : Modifier
     //navController: NavController = rememberNavController()
 ){
@@ -85,7 +87,9 @@ fun ObesiteGenre(
                     .clickable(onClick = {
                         //obesiteModel.updateGenre(genre = true)
                         //Text(text = "hell")
-                        navController.navigate(Screen.obesiteTaille.route)
+                        navController.navigate(
+                            Screen.obesiteTaille.passArgs(isUserConnected , patientID)
+                        )
                     }),
                 contente = ManImageModelInstance,
             )
@@ -108,7 +112,9 @@ fun ObesiteGenre(
                 .size(100.dp)
                 .clickable(onClick = fun() {
                     obesiteModel.updateGenre(genre = false)
-                    navController.navigate(Screen.obesiteTaille.route)
+                    navController.navigate(
+                        Screen.obesiteTaille.passArgs(isUserConnected , patientID)
+                    )
 
                 }) , contente = HumanImageModelInstance)
         }

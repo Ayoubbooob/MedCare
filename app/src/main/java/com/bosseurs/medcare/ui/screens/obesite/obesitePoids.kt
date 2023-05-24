@@ -37,7 +37,9 @@ import com.bosseurs.medcare.ui.utils.Screen
 @Composable
 fun NumberPicker(context:Context  ,
                  navController: NavController ,
-                 obesiteModel : obesiteModel
+                 obesiteModel : obesiteModel ,
+                 isUserConnected : Boolean = false ,
+                 patientID : String = ""
 ) {
 
         var number = remember { mutableStateOf(20) }
@@ -75,7 +77,7 @@ fun NumberPicker(context:Context  ,
                         Row(horizontalArrangement = Arrangement.Center , modifier = Modifier.padding(13.dp)) {
 
                             CustomButtonObesite(textId = R.string.CONTINUE, onClick = {
-                                navController.navigate(Screen.obesiteResult.route)
+                                navController.navigate(Screen.obesiteResult.passArgs(isUserConnected , patientID))
                             }, color = BlueColor, textColor = TextForBlueButtonColor ,
                                 CustomWidth = 176  , CustomHeight = 50)
                         }

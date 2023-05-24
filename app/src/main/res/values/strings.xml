@@ -78,6 +78,8 @@
     <string name="procedure_medicales_menu">Procédures Médicales</string>
     <string name="service_bariatique_menu">Service Bariatique de l\'hôpital Ibn Sina</string>
     <string name="renseignements_hopital_menu">Renseignements sur l\'hôpital Ibn Sina</string>
+    <string name="cin">CIN</string>
+    <string name="cin_field">Cin</string>
     <string name="retourner_label">RETOURNER</string>
     <string name="obesity_maigreure">Maigreure</string>
     <string name="obesity_normal">Normal</string>

@@ -26,7 +26,9 @@ import com.bosseurs.medcare.ui.utils.Screen
 @Composable
 fun obsiteHeight(
     navController: NavController,
-    obesiteModel : obesiteModel
+    obesiteModel : obesiteModel,
+    isUserConnected : Boolean = false ,
+    patientID : String = ""
 ){
     //var obesiteModel : obesiteModel = viewModel()
     var targetHeight by remember {
@@ -45,7 +47,7 @@ fun obsiteHeight(
                 CustomButtonObesite(
                     textId = R.string.continue_label, onClick = {
                         obesiteModel.updateTaille(taille = targetHeight.toFloat()/100.toFloat())
-                        navController.navigate(Screen.obesitePoid.route)
+                        navController.navigate(Screen.obesitePoid.passArgs(isUserConnected , patientID))
                     },
                     color = BlueColor, textColor = TextForBlueButtonColor , CustomWidth = 176  , CustomHeight = 70)
             }

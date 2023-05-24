@@ -1,5 +1,7 @@
 package com.bosseurs.medcare.ui.screens.obesite
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -19,16 +21,25 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
+import com.bosseurs.medcare.ui.httpRequest.ImcRequest
+import com.bosseurs.medcare.ui.httpRequest.RetrofitAPI
 import com.bosseurs.medcare.ui.shared.CustomButtonObesite
 import com.bosseurs.medcare.ui.shared.shadow
 import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 import com.bosseurs.medcare.ui.utils.Screen
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 @Composable
 fun ObesiteResult(
     navController: NavController,
-    obesiteModel : obesiteModel = viewModel()
+    obesiteModel : obesiteModel = viewModel() ,
+    isUserConnected : Boolean = false ,
+    patientID : String = ""
     //modifier : Modifier
     //navController: NavController = rememberNavController()
 ){
@@ -54,6 +65,9 @@ fun ObesiteResult(
             Row(modifier = Modifier.padding(20.dp) ,  verticalAlignment = Alignment.Bottom) {
                 CustomButtonObesite(
                     textId = R.string.valider_imc, onClick = {
+                        //postImcRetrofit(
+                            //ctx,obesiteUIState.patientID,obesiteUIState.poids.toString(),obesiteUIState.taille.toString(),gender,navController
+                        //)
                         navController.popBackStack(route = Screen.HomeScreen.route, inclusive = false)
                     },
                     color = BlueColor, textColor = TextForBlueButtonColor , CustomWidth = 176  , CustomHeight = 50)
@@ -114,6 +128,47 @@ fun ObesiteResult(
 }
 
 
+fun postImcRetrofit(
+    ctx: Context,
+    patientID: String,
+    poids: String,
+    taille: String,
+    gender: String,
+    navController: NavController
+) {
+    val url = "http://192.168.1.12:8000/api/patient/$patientID/"
+    // on below line we are creating a retrofit
+    // builder and passing our base url
+    val retrofit = Retrofit.Builder()
+        .baseUrl(url)
+        // as we are sending data in json format so
+        // we have to add Gson converter factory
+        .addConverterFactory(GsonConverterFactory.create())
+        // at last we are building our retrofit builder.
+        .build()
+    // below the line is to create an instance for our retrofit api class.
+    val retrofitAPI = retrofit.create(RetrofitAPI::class.java)
+    // passing data from our text fields to our model class.
+    val dataModel = ImcRequest(poids,taille,gender)
+    // calling a method to create an update and passing our model class.
+    val call: Call<ImcRequest?>? = retrofitAPI.imc(dataModel)
+    // on below line we are executing our method.
+    call!!.enqueue(object : Callback<ImcRequest?> {
+        override fun onResponse(call: Call<ImcRequest?>, response: Response<ImcRequest?>) {
+            if (response.isSuccessful) {
+                Toast.makeText(ctx, "imc added Successfully", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(ctx, "imc request failed", Toast.LENGTH_SHORT).show()
+            }
+        }
+        override fun onFailure(call: Call<ImcRequest?>, t: Throwable) {
+            // we get error response from API.
+            Toast.makeText(ctx, "Network Error", Toast.LENGTH_SHORT).show()
+        }
+    })
+}
+
+
 
 
 @Preview(showBackground = true, showSystemUi = true)
@@ -121,3 +176,4 @@ fun ObesiteResult(
 fun ObesiteResultScreenPreview() {
     //ObesiteResult()
 }
+

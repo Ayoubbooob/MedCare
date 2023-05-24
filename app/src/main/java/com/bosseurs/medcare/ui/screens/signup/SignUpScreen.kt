@@ -30,6 +30,7 @@ import com.bosseurs.medcare.ui.httpRequest.Patient
 import com.bosseurs.medcare.ui.httpRequest.RetrofitAPI
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomTextField
+import com.bosseurs.medcare.ui.shared.CustomTopAppBar
 import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 import com.bosseurs.medcare.ui.utils.Screen
@@ -46,24 +47,14 @@ fun SignUpScreen(navController: NavController) {
     var first_name by remember { mutableStateOf(TextFieldValue()) }
     var last_name by remember { mutableStateOf(TextFieldValue()) }
     var num by remember { mutableStateOf(TextFieldValue()) }
+    var cin by remember { mutableStateOf(TextFieldValue()) }
     var ppr by remember { mutableStateOf(TextFieldValue()) }
     var password by remember { mutableStateOf(TextFieldValue()) }
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                backgroundColor = Color.White,
-                modifier = Modifier.wrapContentWidth(align = Alignment.Start)
-            ) {
-                IconButton(onClick = {}) {
-                    Icon(
-                        imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = "Back",
-                        tint = Color(0XFF090F47)
-                    )
-                }
-            }
-        }
+        topBar = { CustomTopAppBar(
+            onClick = { navController.popBackStack() },
+        ) }
     ) {
         Column(
             modifier = Modifier.padding(20.dp),
@@ -99,12 +90,20 @@ fun SignUpScreen(navController: NavController) {
                 onValueChange = { num = it }, trailingIconId = null
             )
             CustomTextField(
-                labelText = R.string.ppr_field,
+                labelText = R.string.cin_field,
                 leadingIconId = null,
                 iconDescription = null,
                 keyboardType = KeyboardType.Text,
-                value = ppr,
-                onValueChange = { ppr = it }, trailingIconId = null
+                value = cin,
+                onValueChange = { cin = it }, trailingIconId = null
+            )
+            CustomTextField(
+                    labelText = R.string.ppr_field,
+            leadingIconId = null,
+            iconDescription = null,
+            keyboardType = KeyboardType.Text,
+            value = ppr,
+            onValueChange = { ppr = it }, trailingIconId = null
             )
             CustomTextField(
                 labelText = R.string.pass_field,
@@ -116,9 +115,9 @@ fun SignUpScreen(navController: NavController) {
             )
             CustomButton(textId = R.string.new_compte_btn,
                 onClick = {
-//                    postDataUsingRetrofit(
-//                        ctx,first_name,last_name,num,cin,password,navController
-//                    )
+                    //postDataUsingRetrofit(
+                        //ctx,first_name,last_name,num,cin,ppr,password,navController
+                    //)
                     navController.navigate(Screen.LoginScreen.route)
                 }
                 ,
@@ -130,7 +129,6 @@ fun SignUpScreen(navController: NavController) {
                     text = AnnotatedString(stringResource(id = R.string.login_txt)),
                     onClick = { /* your click action here */
                         navController.navigate(Screen.LoginScreen.route)
-                        print("hello wo")
                     },
                     style = TextStyle(
                         textAlign = TextAlign.Center,
@@ -150,11 +148,12 @@ fun postDataUsingRetrofit(
     firstName: TextFieldValue,
     lastName: TextFieldValue,
     num: TextFieldValue,
-    ppr: TextFieldValue,
+    cin: TextFieldValue,
+    ppr:TextFieldValue,
     password: TextFieldValue,
     navController: NavController
 ) {
-    val url = "http://192.168.1.12:8000/api/"
+    val url = "http://192.168.1.12:8000/api/patient/"
     // on below line we are creating a retrofit
     // builder and passing our base url
     val retrofit = Retrofit.Builder()
@@ -167,7 +166,7 @@ fun postDataUsingRetrofit(
     // below the line is to create an instance for our retrofit api class.
     val retrofitAPI = retrofit.create(RetrofitAPI::class.java)
     // passing data from our text fields to our model class.
-    val dataModel = Patient(firstName.text, lastName.text,ppr.text,num.text,password.text)
+    val dataModel = Patient(firstName.text, lastName.text,cin.text,ppr.text,num.text,password.text)
     // calling a method to create an update and passing our model class.
     val call: Call<Patient?>? = retrofitAPI.register(dataModel)
     // on below line we are executing our method.
@@ -184,4 +183,3 @@ fun postDataUsingRetrofit(
         }
     })
 }
-
