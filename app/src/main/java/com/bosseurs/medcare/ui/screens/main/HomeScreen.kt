@@ -56,7 +56,7 @@ fun HomeScreen(
     Scaffold(
         topBar = {Header(
             isUserConnected = homeUiState.isUserConnected,
-            username=homeUiState.username + homeUiState.patientID
+            username=homeUiState.username
         )},
         bottomBar = { FooterBarInstance(navController, homeUiState)}
     ) {innerPadding ->
