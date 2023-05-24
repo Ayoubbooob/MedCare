@@ -1,7 +1,6 @@
 package com.bosseurs.medcare.ui.screens.obesite
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,17 +14,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
-import com.bosseurs.medcare.ui.httpRequest.AppointmentRequest
 import com.bosseurs.medcare.ui.httpRequest.ImcRequest
 import com.bosseurs.medcare.ui.httpRequest.RetrofitAPI
-import com.bosseurs.medcare.ui.screens.appointment.postRequestRetrofit
 import com.bosseurs.medcare.ui.shared.CustomButtonObesite
 import com.bosseurs.medcare.ui.shared.shadow
 import com.bosseurs.medcare.ui.theme.BlueColor
@@ -40,21 +37,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Composable
 fun ObesiteResult(
     navController: NavController,
-    obesiteModel : obesiteModel ,
-    isUserConnected: Boolean = false,
-    patientID: String = ""
+    obesiteModel : obesiteModel = viewModel() ,
+    isUserConnected : Boolean = false ,
+    patientID : String = ""
     //modifier : Modifier
     //navController: NavController = rememberNavController()
 ){
-    val ctx = LocalContext.current
-    val obesiteUIState by obesiteModel.uiState.collectAsState()
-    var gender : String = ""
-    if(obesiteUIState.genre){
-        gender = "male"
-    }else{
-        gender = "female"
-    }
-    obesiteModel.updateObesiteDetails(isUserConnected,patientID)
+
     Scaffold(
         //backgroundColor = MaterialTheme.colors.onBackground ,
         topBar = {
@@ -76,10 +65,10 @@ fun ObesiteResult(
             Row(modifier = Modifier.padding(20.dp) ,  verticalAlignment = Alignment.Bottom) {
                 CustomButtonObesite(
                     textId = R.string.valider_imc, onClick = {
-                        postImcRetrofit(
-                            ctx,obesiteUIState.patientID,obesiteUIState.poids.toString(),obesiteUIState.taille.toString(),gender,navController
-                        )
-//                        navController.popBackStack(route = Screen.HomeScreen.route, inclusive = false)
+                        //postImcRetrofit(
+                            //ctx,obesiteUIState.patientID,obesiteUIState.poids.toString(),obesiteUIState.taille.toString(),gender,navController
+                        //)
+                        navController.popBackStack(route = Screen.HomeScreen.route, inclusive = false)
                     },
                     color = BlueColor, textColor = TextForBlueButtonColor , CustomWidth = 176  , CustomHeight = 50)
             }
@@ -115,20 +104,29 @@ fun ObesiteResult(
                         .clip(MaterialTheme.shapes.medium)
                         .background(Color.Blue)
                 ) {
-                    //val result = obesiteUIState.taille*obesiteUIState.taille
+                    val result = obesiteUIState.poids.toFloat() /(obesiteUIState.taille.toFloat()*obesiteUIState.taille.toFloat())
+
                     Column() {
-                        Text(text = "Votre poids est "+obesiteUIState.poids.toString() , color = Color.White , fontSize = 20.sp)
-                        Text(text = "Votre taille est "+obesiteUIState.taille.toString(), color = Color.White , fontSize = 20.sp)
-                        Text(text = "Votre genre est "+gender , color = Color.White , fontSize = 20.sp)
-                        Text(text = "Votre patient id est "+obesiteUIState.patientID , color = Color.White , fontSize = 20.sp)
-                        Text(text = "Votre resultat est ${obesiteUIState.poids /(obesiteUIState.taille.toFloat()*obesiteUIState.taille.toFloat())}" , color = Color.White , fontSize = 20.sp)
+                        val Interpretation = when (result) {
+                            in  0.toFloat()..18.5.toFloat() -> stringResource(id = R.string.obesity_maigreure)
+                            in  18.6.toFloat()..25.toFloat() -> stringResource(id = R.string.obesity_normal)
+                            in  26.toFloat()..30.toFloat() -> stringResource(id = R.string.obesity_surpoid)
+                            in  31.toFloat()..40.toFloat() -> stringResource(id = R.string.obesity_modererd)
+                            else -> stringResource(id = R.string.obesity_severe)
+                        }
+                        Text(text = "Votre resultat est ${result}" , color = Color.White , fontSize = 20.sp)
+                        Text(text = "${Interpretation}" ,color = Color.White , fontSize = 20.sp)
+
                     }
+
                 }
             }
+
         }
 
     }
 }
+
 
 fun postImcRetrofit(
     ctx: Context,
@@ -171,8 +169,11 @@ fun postImcRetrofit(
 }
 
 
+
+
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun ObesiteResultScreenPreview() {
     //ObesiteResult()
 }
+

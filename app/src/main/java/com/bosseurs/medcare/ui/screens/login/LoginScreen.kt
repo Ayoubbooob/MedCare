@@ -96,7 +96,7 @@ fun LoginScreen(
 // //                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
 
                           //},
-//                    postLoginRetrofit(
+//                    ostLoginRetrofit(
 //                        ctx,cin.text,password.text,navController
 //                    )
                     //navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar", " "))

@@ -162,11 +162,13 @@ fun Navigation(toggleTheme : () -> Unit) {
                 navArgument("is_user_connected"){type = NavType.BoolType},
                 navArgument("id_patient"){type = NavType.StringType}
             )){
+            val context = LocalContext.current
             NumberPicker(
                 navController = navController,
                 obesiteModel = obesity,
                 isUserConnected = it.arguments?.getBoolean("is_user_connected") == true,
-                patientID = it.arguments?.getString("id_patient").toString()
+                patientID = it.arguments?.getString("id_patient").toString() ,
+                context = context
             )
         }
         composable(

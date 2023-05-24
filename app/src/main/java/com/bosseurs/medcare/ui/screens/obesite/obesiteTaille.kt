@@ -16,10 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
-import com.bosseurs.medcare.ui.shared.CustomButtonObesite
-import com.bosseurs.medcare.ui.shared.PickerScreen
-import com.bosseurs.medcare.ui.shared.PickerStyle
-import com.bosseurs.medcare.ui.shared.SelectHeightScreen
+import com.bosseurs.medcare.ui.shared.*
 import com.bosseurs.medcare.ui.theme.AppBarTextStyle
 import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
@@ -29,56 +26,28 @@ import com.bosseurs.medcare.ui.utils.Screen
 @Composable
 fun obsiteHeight(
     navController: NavController,
-    obesiteModel : obesiteModel ,
-    isUserConnected: Boolean = false,
-    patientID: String = ""
+    obesiteModel : obesiteModel,
+    isUserConnected : Boolean = false ,
+    patientID : String = ""
 ){
-    val TailleUIState by obesiteModel.uiState.collectAsState()
-    obesiteModel.updateObesiteDetails(isUserConnected,patientID)
+    //var obesiteModel : obesiteModel = viewModel()
     var targetHeight by remember {
         mutableStateOf(0)
     }
 
     Scaffold(
         topBar = {
-            TopAppBar(backgroundColor = Color.White, modifier = Modifier.wrapContentWidth(align = Alignment.Start))
-            {
-                IconButton(onClick = {
-                    navController.popBackStack()
-                }) {
-                    Row() {
-                        Column(modifier = Modifier.padding(6.dp)) {
-                            Icon(
-                                imageVector = Icons.Filled.ArrowBack,
-                                contentDescription = "Back",
-                                tint = Color(0XFF090F47)
-                            )
-                        }
-                        val context = LocalContext.current
-                        Column() {
-                            Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
-                                .padding(6.dp)) {
-                                Column() {
-                                    Text(text = stringResource(R.string.genre_select_message), style = AppBarTextStyle)
-                                }
-                                Spacer(modifier = Modifier.padding(6.dp))
-                                Column() {
-                                    Text(text = stringResource(R.string.gennre_taille_bold), style = AppBarTextStyle)
-//                                Text(text = patientID, style = AppBarTextStyle)
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
+            CustomTopAppBar(
+                title = stringResource(id = R.string.genre_select_message) +" "+  stringResource(R.string.gennre_taille_bold) ,
+                onClick = { navController.popBackStack() },
+            )
         },
         bottomBar = {
             Row(horizontalArrangement = Arrangement.Center , modifier = Modifier.padding(10.dp)) {
                 CustomButtonObesite(
                     textId = R.string.continue_label, onClick = {
                         obesiteModel.updateTaille(taille = targetHeight.toFloat()/100.toFloat())
-                        navController.navigate(Screen.obesitePoid.passArgs(true,patientID))
+                        navController.navigate(Screen.obesitePoid.passArgs(isUserConnected , patientID))
                     },
                     color = BlueColor, textColor = TextForBlueButtonColor , CustomWidth = 176  , CustomHeight = 70)
             }

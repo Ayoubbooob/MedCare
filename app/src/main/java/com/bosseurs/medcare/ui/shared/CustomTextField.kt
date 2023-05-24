@@ -50,6 +50,7 @@ fun CustomTextField(
             unfocusedIndicatorColor = TextFieldBorderColor,
             leadingIconColor = LeadingIconColor
         ),
+
         modifier = Modifier
             .fillMaxWidth(),
         trailingIcon = if(trailingIconId != null){
