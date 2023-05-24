@@ -30,6 +30,7 @@ import com.bosseurs.medcare.ui.httpRequest.Patient
 import com.bosseurs.medcare.ui.httpRequest.RetrofitAPI
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomTextField
+import com.bosseurs.medcare.ui.shared.CustomTopAppBar
 import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 import com.bosseurs.medcare.ui.utils.Screen
@@ -51,20 +52,9 @@ fun SignUpScreen(navController: NavController) {
     var password by remember { mutableStateOf(TextFieldValue()) }
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                backgroundColor = Color.White,
-                modifier = Modifier.wrapContentWidth(align = Alignment.Start)
-            ) {
-                IconButton(onClick = {}) {
-                    Icon(
-                        imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = "Back",
-                        tint = Color(0XFF090F47)
-                    )
-                }
-            }
-        }
+        topBar = { CustomTopAppBar(
+            onClick = { navController.popBackStack() },
+        ) }
     ) {
         Column(
             modifier = Modifier.padding(20.dp),
@@ -128,7 +118,7 @@ fun SignUpScreen(navController: NavController) {
                     postDataUsingRetrofit(
                         ctx,first_name,last_name,num,cin,ppr,password,navController
                     )
-//                    navController.navigate(Screen.LoginScreen.route)
+                    //navController.navigate(Screen.LoginScreen.route)
                 }
                 ,
                 color = BlueColor,

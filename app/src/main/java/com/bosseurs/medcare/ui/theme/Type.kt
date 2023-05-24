@@ -67,7 +67,7 @@ val arial = FontFamily(
 val labelTextStyle = TextStyle(
     fontFamily = arial,
     color = labelTextColor,
-    fontSize = 20.sp,
+    fontSize = 17.sp,
     fontWeight = FontWeight.W400
 )
 

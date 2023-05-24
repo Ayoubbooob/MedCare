@@ -31,6 +31,7 @@ import com.bosseurs.medcare.ui.httpRequest.Patient
 import com.bosseurs.medcare.ui.httpRequest.RetrofitAPI
 import com.bosseurs.medcare.ui.shared.CustomButton
 import com.bosseurs.medcare.ui.shared.CustomTextField
+import com.bosseurs.medcare.ui.shared.CustomTopAppBar
 import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.TextForBlueButtonColor
 import com.bosseurs.medcare.ui.utils.Screen
@@ -49,18 +50,9 @@ fun LoginScreen(
     var password by remember { mutableStateOf(TextFieldValue()) }
     val ctx = LocalContext.current
     Scaffold(
-        topBar = {
-            TopAppBar(backgroundColor = Color.White, modifier = Modifier.wrapContentWidth(align = Alignment.Start))
-            {
-                IconButton(onClick = {}) {
-                    Icon(
-                        imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = "Back",
-                        tint = Color(0XFF090F47)
-                    )
-                }
-            }
-        }
+        topBar = { CustomTopAppBar(
+            onClick = { navController.popBackStack() },
+        ) }
     ) {
         Column(modifier = Modifier
             .padding(20.dp)
@@ -107,7 +99,7 @@ fun LoginScreen(
 //                    postLoginRetrofit(
 //                        ctx,cin.text,password.text,navController
 //                    )
-//                    navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar"))
+                    //navController.navigate(Screen.HomeScreen.passArgs(true, "Oumar", " "))
 
                 },
                 color = BlueColor,

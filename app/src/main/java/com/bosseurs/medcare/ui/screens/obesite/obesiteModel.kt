@@ -1,7 +1,6 @@
 package com.bosseurs.medcare.ui.screens.obesite
 
 import androidx.lifecycle.ViewModel
-import com.bosseurs.medcare.ui.screens.main.HomeUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
