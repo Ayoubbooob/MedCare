@@ -20,6 +20,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.screens.main.HomeUiState
+import com.bosseurs.medcare.ui.shared.CustomTopAppBar
 import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.shared.ImageShadowContainer
 import com.bosseurs.medcare.ui.theme.AppBarTextStyle
@@ -43,36 +44,10 @@ fun ObesiteGenre(
             //bottomBar = { FooterBarInstance(navController, homeUiState)}
         },
         topBar = {
-            TopAppBar(backgroundColor = Color.White, modifier = Modifier.wrapContentWidth(align = Alignment.Start))
-            {
-                IconButton(onClick = {
-                    navController.popBackStack()
-                }) {
-                  Row() {
-                      Column(modifier = Modifier.padding(6.dp)) {
-                          Icon(
-                              imageVector = Icons.Filled.ArrowBack,
-                              contentDescription = "Back",
-                              tint = Color(0XFF090F47)
-                          )
-                      }
-                      val context = LocalContext.current
-                      Column() {
-                          Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
-                              .padding(6.dp)) {
-                              Column() {
-                                  Text(text = stringResource(R.string.genre_select_message), style = AppBarTextStyle)
-                              }
-                              Spacer(modifier = Modifier.padding(6.dp))
-                              Column() {
-                                  Text(text = stringResource(R.string.gennre_bold), style = AppBarTextStyle)
-                              }
-
-                          }
-                      }
-                  }
-                }
-            }
+            CustomTopAppBar(
+                title = stringResource(id = R.string.genre_select_message) +" "+ stringResource(id = R.string.gennre_bold) ,
+                onClick = { navController.popBackStack() },
+            )
         }
     ) {
         //var obesiteModel : obesiteModel1 = viewModel()

@@ -76,4 +76,10 @@
     <string name="obesite_result">Obesity Result</string>
     <string name="valider_imc">Validate</string>
     <string name="retourner_label">RETURN</string>
+    <string name="obesity_normal">Normale</string>
+    <string name="obesity_maigreure">Maigreure</string>
+    <string name="obesity_surpoid">Surpoids</string>
+    <string name="obesity_modererd">Obesité Moderé</string>
+    <string name="obesity_severe">Obesité Sevère</string>
+    <string name="poids_bold">Poids(Kg)</string>
 </resources>

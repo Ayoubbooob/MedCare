@@ -1,5 +1,7 @@
 package com.bosseurs.medcare.ui.shared
 
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
@@ -49,7 +51,7 @@ fun CustomTextField(
             unfocusedIndicatorColor = TextFieldBorderColor,
             leadingIconColor = LeadingIconColor
         ),
-        modifier = Modifier.size(height = 50.dp, width = 311.dp),
+        modifier = Modifier.fillMaxWidth(),
         trailingIcon = if(trailingIconId != null){
             {Icon(
                 painter = painterResource(trailingIconId),

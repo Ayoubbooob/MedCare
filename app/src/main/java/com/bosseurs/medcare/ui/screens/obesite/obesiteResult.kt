@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -89,9 +90,18 @@ fun ObesiteResult(
                         .clip(MaterialTheme.shapes.medium)
                         .background(Color.Blue)
                 ) {
-                    //val result = obesiteUIState.taille*obesiteUIState.taille
+                    val result = obesiteUIState.poids.toFloat() /(obesiteUIState.taille.toFloat()*obesiteUIState.taille.toFloat())
+
                     Column() {
-                        Text(text = "Votre resultat est ${obesiteUIState.poids /(obesiteUIState.taille.toFloat()*obesiteUIState.taille.toFloat())}" , color = Color.White , fontSize = 20.sp)
+                        val Interpretation = when (result) {
+                            in  0.toFloat()..18.5.toFloat() -> stringResource(id = R.string.obesity_maigreure)
+                            in  18.6.toFloat()..25.toFloat() -> stringResource(id = R.string.obesity_normal)
+                            in  26.toFloat()..30.toFloat() -> stringResource(id = R.string.obesity_surpoid)
+                            in  31.toFloat()..40.toFloat() -> stringResource(id = R.string.obesity_modererd)
+                            else -> stringResource(id = R.string.obesity_severe)
+                        }
+                        Text(text = "Votre resultat est ${result}" , color = Color.White , fontSize = 20.sp)
+                        Text(text = "${Interpretation}" ,color = Color.White , fontSize = 20.sp)
 
                     }
 

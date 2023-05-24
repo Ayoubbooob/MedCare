@@ -26,6 +26,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.CustomButtonObesite
+import com.bosseurs.medcare.ui.shared.CustomTopAppBar
 import com.bosseurs.medcare.ui.shared.HorizontalNumberPicker
 import com.bosseurs.medcare.ui.theme.AppBarTextStyle
 import com.bosseurs.medcare.ui.theme.BlueColor
@@ -44,36 +45,13 @@ fun NumberPicker(context:Context  ,
         val min=remember { mutableStateOf(5) }
         Scaffold(
             topBar = {
-                TopAppBar(backgroundColor = Color.White, modifier = Modifier.wrapContentWidth(align = Alignment.Start))
-                {
-                    IconButton(onClick = {
-                        navController.popBackStack()
-                    }) {
-                        Row() {
-                            Column(modifier = Modifier.padding(6.dp)) {
-                                Icon(
-                                    imageVector = Icons.Filled.ArrowBack,
-                                    contentDescription = "Back",
-                                    tint = Color(0XFF090F47)
-                                )
-                            }
-                            val context = LocalContext.current
-                            Column() {
-                                Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
-                                    .padding(6.dp)) {
-                                    Column() {
-                                        Text(text = "selectionner votre poids(kg)", style = AppBarTextStyle)
-                                    }
-
-                                }
-                            }
-                        }
-                    }
-                }
+                CustomTopAppBar(
+                    title = stringResource(id = R.string.genre_select_message) + " " + stringResource(id = R.string.poids_bold),
+                    onClick = { navController.popBackStack() },
+                )
             },
 
         ) {
-
             Box(modifier = Modifier.fillMaxSize()
             ) {
                 //var obesiteModel : obesiteModel = viewModel()
@@ -91,7 +69,7 @@ fun NumberPicker(context:Context  ,
                             default = 50,
                             onValueChange = { value ->
                                 obesiteModel.updatePoids(poids = value)
-                                Toast.makeText(context, value.toString(), Toast.LENGTH_SHORT).show()
+                                //Toast.makeText(context, value.toString(), Toast.LENGTH_SHORT).show()
                             }
                         )
                         Row(horizontalArrangement = Arrangement.Center , modifier = Modifier.padding(13.dp)) {
