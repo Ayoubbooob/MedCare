@@ -32,7 +32,7 @@
     <string name="continue_label">CONTINUE</string>
     <string name="register_email">SIGN UP WITH EMAIL</string>
     <string name="register_gmail">CONTINUE WITH GMAIL</string>
-    <string name="continue_without_connexion">CONTINUE WITHOUT CONNECTION</string>
+    <string name="continue_without_connexion">CONTINUE OFFLINE</string>
     <string name="message_bienvenue">Welcome to MedCare</string>
     <string name="sous_message_bienvenue">Do you want help improving your health and having a better quality of life?</string>
     <string name="phone_verified">Phone Number Verified</string>

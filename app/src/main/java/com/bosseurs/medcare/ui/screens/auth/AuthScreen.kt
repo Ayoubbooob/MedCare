@@ -99,7 +99,7 @@ fun AuthScreen(
                 color = WhiteColor,
                 textColor = TextForWhiteButtonColor,
                 onClick = {
-                    navController.navigate(Screen.HomeScreen.passArgs(false, ""))
+                    navController.navigate(Screen.HomeScreen.passArgs(false, " ", " "))
                 }
             )
         }

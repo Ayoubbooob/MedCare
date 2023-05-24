@@ -25,7 +25,7 @@ fun CustomTopAppBar(
 ) {
 
     TopAppBar(
-        backgroundColor = Color.Transparent,
+        backgroundColor = Color.White /*Color.Transparent*/,
         elevation = 0.dp,
         title = {
             Text(text = title, style = AppBarTextStyle)
