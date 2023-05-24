@@ -16,6 +16,8 @@ interface RetrofitAPI {
     ): Call<Patient?>?
     @POST("request")
     fun request(@Body appointement: AppointmentRequest?): Call<AppointmentRequest?>?
+    @POST("imc")
+    fun imc(@Body imc: ImcRequest?): Call<ImcRequest?>?
 }
 
 

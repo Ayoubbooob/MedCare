@@ -46,9 +46,9 @@ fun AppointmentScreen(
     patientID: String = "" // Add the patientID parameter
 )
 {
+    val appointmentUiState by appointmentViewModel.uiState.collectAsState()
     val ctx = LocalContext.current
     appointmentViewModel.updateAppointmentDetails(isUserConnected,patientID)
-    val appointmentUiState by appointmentViewModel.uiState.collectAsState()
             Column(modifier = Modifier
             .padding(20.dp)
             .verticalScroll(rememberScrollState()),

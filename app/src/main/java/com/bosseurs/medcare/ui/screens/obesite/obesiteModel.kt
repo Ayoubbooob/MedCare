@@ -32,4 +32,12 @@ class obesiteModel : ViewModel() {
             )
         }
     }
+    fun updateObesiteDetails(isUserConnected: Boolean,patientID : String){
+        _uiState.update { currentState ->
+            currentState.copy(
+                isUserConnected = isUserConnected,
+                patientID =patientID
+            )
+        }
+    }
 }

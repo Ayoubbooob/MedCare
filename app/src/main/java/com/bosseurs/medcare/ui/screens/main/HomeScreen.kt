@@ -104,7 +104,7 @@ fun HomeScreen(
                         title = stringResource(R.string.calcul_imc_panel),
                         backImage = painterResource(id = R.drawable.balance),
                         onClick = {
-                            navController.navigate(Screen.obesiteGenre.route)
+                            navController.navigate(Screen.obesiteGenre.passArgs(true,patientID))
                         },
                         patientID = homeUiState.patientID // Pass the patientID value
                     )
