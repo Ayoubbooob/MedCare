@@ -75,5 +75,7 @@
     <string name="obesite_votre">Your</string>
     <string name="obesite_result">Obesity Result</string>
     <string name="valider_imc">Validate</string>
+    <string name="cin">CIN</string>
+    <string name="cin_field">Cin</string>
     <string name="retourner_label">RETURN</string>
 </resources>

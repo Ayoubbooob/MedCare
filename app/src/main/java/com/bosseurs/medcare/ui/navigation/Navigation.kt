@@ -8,6 +8,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.bosseurs.medcare.ui.httpRequest.Patient
 import com.bosseurs.medcare.ui.screens.appointment.AppointmentScreen
 import com.bosseurs.medcare.ui.screens.auth.AuthScreen
 import com.bosseurs.medcare.ui.screens.description.DescriptionScreen
@@ -57,30 +58,33 @@ fun Navigation(toggleTheme : () -> Unit) {
         composable(route = Screen.LoginScreen.route){
             LoginScreen(navController = navController)
         }
-        composable(route = Screen.obesiteGenre.route){
-            ObesiteGenre(navController = navController , obesiteModel = obesity)
-        }
-        composable(route = Screen.obesiteTaille.route){
-            obsiteHeight(navController = navController , obesiteModel = obesity)
-        }
-        composable(route = Screen.obesitePoid.route){
-            val context = LocalContext.current
-            NumberPicker(navController = navController , context = context ,  obesiteModel = obesity)
-        }
-        composable(route = Screen.obesiteResult.route){
-            ObesiteResult(navController = navController , obesiteModel = obesity)
-        }
+//        composable(route = Screen.obesiteGenre.route){
+//            ObesiteGenre(navController = navController , obesiteModel = obesity)
+//        }
+//        composable(route = Screen.obesiteTaille.route){
+//            obsiteHeight(navController = navController , obesiteModel = obesity)
+//        }
+//        composable(route = Screen.obesitePoid.route){
+//            val context = LocalContext.current
+//            NumberPicker(navController = navController , context = context ,  obesiteModel = obesity)
+//        }
+//        composable(route = Screen.obesiteResult.route){
+//            ObesiteResult(navController = navController , obesiteModel = obesity)
+//        }
 //        composable(route = Screen.HomeScreen.route)
+
         composable(
             route = Screen.HomeScreen.route,
             arguments = listOf(
                 navArgument("is_user_connected"){type = NavType.BoolType},
                 navArgument("username"){type = NavType.StringType},
+                navArgument("id_patient"){type = NavType.StringType}
             )){
             HomeScreen(
                 navController = navController,
-                isUserConnected = it.arguments?.getBoolean("is_user_connected") == true,
-                username = it.arguments?.getString("username").toString()
+                isUserConnected = it.arguments?.getBoolean("is_user_connected") == true ,
+                username = it.arguments?.getString("username").toString(),
+                patientID = it.arguments?.getString("id_patient").toString()
             )
         }
 
@@ -111,10 +115,74 @@ fun Navigation(toggleTheme : () -> Unit) {
             )
         }
 
-        composable(route = Screen.AppointmentScreen.route){
-            AppointmentScreen(navController = navController)
-        }
+//        composable(route = Screen.AppointmentScreen.route){
+//            AppointmentScreen(navController = navController)
+//        }
 
+        composable(
+            route = Screen.AppointmentScreen.route,
+            arguments = listOf(
+                navArgument("is_user_connected"){type = NavType.BoolType},
+                navArgument("id_patient"){type = NavType.StringType}
+            )){
+            AppointmentScreen(
+                navController = navController,
+                isUserConnected = it.arguments?.getBoolean("is_user_connected") == true,
+                patientID = it.arguments?.getString("id_patient").toString()
+            )
+        }
+        composable(
+            route = Screen.obesiteGenre.route,
+            arguments = listOf(
+                navArgument("is_user_connected"){type = NavType.BoolType},
+                navArgument("id_patient"){type = NavType.StringType}
+            )){
+            ObesiteGenre(
+                navController = navController,
+                obesiteModel = obesity,
+                isUserConnected = it.arguments?.getBoolean("is_user_connected") == true,
+                patientID = it.arguments?.getString("id_patient").toString()
+            )
+        }
+        composable(
+            route = Screen.obesiteTaille.route,
+            arguments = listOf(
+                navArgument("is_user_connected"){type = NavType.BoolType},
+                navArgument("id_patient"){type = NavType.StringType}
+            )){
+            obsiteHeight(
+                navController = navController,
+                obesiteModel = obesity,
+                isUserConnected = it.arguments?.getBoolean("is_user_connected") == true,
+                patientID = it.arguments?.getString("id_patient").toString()
+            )
+        }
+        composable(
+            route = Screen.obesitePoid.route,
+            arguments = listOf(
+                navArgument("is_user_connected"){type = NavType.BoolType},
+                navArgument("id_patient"){type = NavType.StringType}
+            )){
+            NumberPicker(
+                navController = navController,
+                obesiteModel = obesity,
+                isUserConnected = it.arguments?.getBoolean("is_user_connected") == true,
+                patientID = it.arguments?.getString("id_patient").toString()
+            )
+        }
+        composable(
+            route = Screen.obesiteResult.route,
+            arguments = listOf(
+                navArgument("is_user_connected"){type = NavType.BoolType},
+                navArgument("id_patient"){type = NavType.StringType}
+            )){
+            ObesiteResult(
+                navController = navController,
+                obesiteModel = obesity,
+                isUserConnected = it.arguments?.getBoolean("is_user_connected") == true,
+                patientID = it.arguments?.getString("id_patient").toString()
+            )
+        }
         composable(route = Screen.ProceduresScreen.route){
             ProceduresScreen(navController = navController)
         }
@@ -131,7 +199,6 @@ fun Navigation(toggleTheme : () -> Unit) {
                 ProcedureDetails(navController, id)
             }
         }
-
         composable(route = Screen.MenuInfoHospitalScreen.route){
             MenuInfoHospitalScreen(navController = navController)
         }

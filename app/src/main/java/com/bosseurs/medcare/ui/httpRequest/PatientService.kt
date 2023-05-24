@@ -11,9 +11,13 @@ interface RetrofitAPI {
     @FormUrlEncoded
     @POST("login")
     fun login(
-        @Field("cin") cin: String,
+        @Field("ppr") ppr: String,
         @Field("password") password: String
-    ): Call<Patient?>
+    ): Call<Patient?>?
+    @POST("request")
+    fun request(@Body appointement: AppointmentRequest?): Call<AppointmentRequest?>?
+    @POST("imc")
+    fun imc(@Body imc: ImcRequest?): Call<ImcRequest?>?
 }
 
 

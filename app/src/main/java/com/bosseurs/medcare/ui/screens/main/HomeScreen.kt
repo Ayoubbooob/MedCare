@@ -31,6 +31,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.bosseurs.medcare.R
+import com.bosseurs.medcare.ui.httpRequest.Patient
 import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.theme.BlueColor
 import com.bosseurs.medcare.ui.theme.MedCareTheme
@@ -46,15 +47,16 @@ fun HomeScreen(
     navController: NavController,
     isUserConnected: Boolean = false,
     username: String = "",
-    homeViewModel: HomeViewModel = viewModel()
+    homeViewModel: HomeViewModel = viewModel(),
+    patientID : String = ""
 ) {
-    homeViewModel.updateHomeDetails(isUserConnected, username)
+    homeViewModel.updateHomeDetails(isUserConnected, username,patientID)
     val homeUiState by homeViewModel.uiState.collectAsState()
     val context = LocalContext.current
     Scaffold(
         topBar = {Header(
             isUserConnected = homeUiState.isUserConnected,
-            username=homeUiState.username
+            username=homeUiState.username + homeUiState.patientID
         )},
         bottomBar = { FooterBarInstance(navController, homeUiState)}
     ) {innerPadding ->
@@ -77,7 +79,8 @@ fun HomeScreen(
                         onClick = {
                             val homeUiStateJson = Gson().toJson(homeUiState)
                             navController.navigate(Screen.MenuInfoScreen.passArgs(homeUiStateJson))
-                        }
+                        },
+                        patientID = homeUiState.patientID // Pass the patientID value
                     )
                 }
                 item {
@@ -92,8 +95,8 @@ fun HomeScreen(
                             navController.navigate(Screen.MenuInfoHospitalScreen.route)
 
 
-                        }
-
+                        },
+                        patientID = homeUiState.patientID // Pass the patientID value
                     )
                 }
                 item {
@@ -101,8 +104,9 @@ fun HomeScreen(
                         title = stringResource(R.string.calcul_imc_panel),
                         backImage = painterResource(id = R.drawable.balance),
                         onClick = {
-                            navController.navigate(Screen.obesiteGenre.route)
-                        }
+                            navController.navigate(Screen.obesiteGenre.passArgs(true,patientID))
+                        },
+                        patientID = homeUiState.patientID // Pass the patientID value
                     )
                 }
                 item {
@@ -111,11 +115,13 @@ fun HomeScreen(
                         backImage = painterResource(id = R.drawable.appointment),
                         onClick = {
                             if(homeUiState.isUserConnected){
-                                navController.navigate(Screen.AppointmentScreen.route)
+//                                navController.navigate(Screen.AppointmentScreen.route)
+                                navController.navigate(Screen.AppointmentScreen.passArgs(true,patientID))
                             } else {
                                 navController.navigate(Screen.LoginScreen.route)
                             }
-                        }
+                        },
+                        patientID = homeUiState.patientID // Pass the patientID value
                     )
                 }
             }
@@ -185,7 +191,8 @@ fun Header(
 fun MyCard(modifier: Modifier = Modifier,
            title: String = "",
            backImage: Painter = painterResource(R.drawable.card_img1),
-           onClick: () -> Unit = {}
+           onClick: () -> Unit = {},
+           patientID: String = "" // Add the patientID parameter
 ) {
     Card(
         backgroundColor = MaterialTheme.colors.onSurface, //Ayoub a ajoute cette ligne
@@ -221,11 +228,14 @@ fun MyCard(modifier: Modifier = Modifier,
 
     }
 }
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun HomeScreenPreview() {
-    MedCareTheme() {
-        HomeScreen(navController = rememberNavController())
-    }
-}
+//
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun HomeScreenPreview() {
+//    MedCareTheme() {
+//        HomeScreen(
+//            navController = rememberNavController(),
+//            patient = it.arguments?.getSerializable("patient") as? Patient
+//        )
+//    }
+//}

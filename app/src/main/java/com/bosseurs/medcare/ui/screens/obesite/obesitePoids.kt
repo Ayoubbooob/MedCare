@@ -9,9 +9,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -34,11 +32,15 @@ import com.bosseurs.medcare.ui.utils.Screen
 
 
 @Composable
-fun NumberPicker(context:Context  ,
+fun NumberPicker(
+//    context:Context  ,
                  navController: NavController ,
-                 obesiteModel : obesiteModel
+                 obesiteModel : obesiteModel ,
+                 isUserConnected: Boolean = false,
+                 patientID: String = ""
 ) {
-
+    val PoidsUIState by obesiteModel.uiState.collectAsState()
+    obesiteModel.updateObesiteDetails(isUserConnected,patientID)
         var number = remember { mutableStateOf(20) }
         val max=remember { mutableStateOf(400) }
         val min=remember { mutableStateOf(5) }
@@ -91,13 +93,12 @@ fun NumberPicker(context:Context  ,
                             default = 50,
                             onValueChange = { value ->
                                 obesiteModel.updatePoids(poids = value)
-                                Toast.makeText(context, value.toString(), Toast.LENGTH_SHORT).show()
+//                                Toast.makeText(context, value.toString(), Toast.LENGTH_SHORT).show()
                             }
                         )
                         Row(horizontalArrangement = Arrangement.Center , modifier = Modifier.padding(13.dp)) {
-
                             CustomButtonObesite(textId = R.string.CONTINUE, onClick = {
-                                navController.navigate(Screen.obesiteResult.route)
+                                navController.navigate(Screen.obesiteResult.passArgs(true,patientID))
                             }, color = BlueColor, textColor = TextForBlueButtonColor ,
                                 CustomWidth = 176  , CustomHeight = 50)
                         }
@@ -106,10 +107,7 @@ fun NumberPicker(context:Context  ,
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = CenterHorizontally,
                 )
-
-
             }
-
         }
 
 fun onValueChange(value: Int,context:Context,) {
