@@ -40,7 +40,8 @@
     <string name="greeting_homescreen">Bonjour</string>
     <string name="welcome_homescreen">Bienvenue sur MedCare</string>
     <string name="search_bar_text">Recherchez un élement</string>
-    <string name="genre_select_message">Selectionner Votre</string>
+    <string name="genre_select_message">Choisir Votre</string>
+    <string name="poids_bold">Poids(Kg)</string>
     <string name="gennre_bold">Genre</string>
     <string name="gennre_taille_bold">Taille</string>
 
@@ -80,4 +81,9 @@
     <string name="cin">CIN</string>
     <string name="cin_field">Cin</string>
     <string name="retourner_label">RETOURNER</string>
+    <string name="obesity_maigreure">Maigreure</string>
+    <string name="obesity_normal">Normal</string>
+    <string name="obesity_surpoid">Surpoids</string>
+    <string name="obesity_modererd">Obesité Moderé</string>
+    <string name="obesity_severe">Obesité Sevère</string>
 </resources>

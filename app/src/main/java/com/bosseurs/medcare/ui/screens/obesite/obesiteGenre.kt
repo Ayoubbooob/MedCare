@@ -1,7 +1,5 @@
 package com.bosseurs.medcare.ui.screens.obesite
 
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -22,6 +20,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.screens.main.HomeUiState
+import com.bosseurs.medcare.ui.shared.CustomTopAppBar
 import com.bosseurs.medcare.ui.shared.FooterBarInstance
 import com.bosseurs.medcare.ui.shared.ImageShadowContainer
 import com.bosseurs.medcare.ui.theme.AppBarTextStyle
@@ -33,13 +32,13 @@ import com.bosseurs.medcare.ui.screens.obesite.obesiteModel as obesiteModel1
 @Composable
 fun ObesiteGenre(
     navController: NavController,
-    obesiteModel : obesiteModel1 = viewModel(),
-    isUserConnected: Boolean = false,
-    patientID: String = ""
-
+    obesiteModel : obesiteModel1 = viewModel() ,
+    isUserConnected : Boolean = false ,
+    patientID : String = ""
     //modifier : Modifier
     //navController: NavController = rememberNavController()
 ){
+
     Scaffold(
         //backgroundColor = MaterialTheme.colors.onBackground ,
         bottomBar = {
@@ -47,38 +46,10 @@ fun ObesiteGenre(
             //bottomBar = { FooterBarInstance(navController, homeUiState)}
         },
         topBar = {
-            TopAppBar(backgroundColor = Color.White, modifier = Modifier.wrapContentWidth(align = Alignment.Start))
-            {
-                IconButton(onClick = {
-                    navController.popBackStack()
-                }) {
-                  Row() {
-                      Column(modifier = Modifier.padding(6.dp)) {
-                          Icon(
-                              imageVector = Icons.Filled.ArrowBack,
-                              contentDescription = "Back",
-                              tint = Color(0XFF090F47)
-                          )
-                      }
-                      val context = LocalContext.current
-                      Column() {
-                          Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
-                              .padding(6.dp)) {
-                              Column() {
-                                  Text(text = stringResource(R.string.genre_select_message), style = AppBarTextStyle)
-                              }
-                              Spacer(modifier = Modifier.padding(6.dp))
-                              Column() {
-                                  Text(text = stringResource(R.string.gennre_bold), style = AppBarTextStyle)
-//                                  Text(text = patientID, style = AppBarTextStyle)
-
-                              }
-
-                          }
-                      }
-                  }
-                }
-            }
+            CustomTopAppBar(
+                title = stringResource(id = R.string.genre_select_message) +" "+ stringResource(id = R.string.gennre_bold) ,
+                onClick = { navController.popBackStack() },
+            )
         }
     ) {
         //var obesiteModel : obesiteModel1 = viewModel()
@@ -99,7 +70,6 @@ fun ObesiteGenre(
                 //navController.navigate(Screen.ObesiteGenreScreen.route)
             //},
             //) {
-            val context = LocalContext.current
             val Man = painterResource(R.drawable.genre_homme )
             val ManImageModelInstance = ImageModel(
                 path = Man ,
@@ -107,7 +77,6 @@ fun ObesiteGenre(
                 contenteDescription = "Genre Image" ,
             )
             val GenreUIState by obesiteModel.uiState.collectAsState()
-            obesiteModel.updateObesiteDetails(isUserConnected,patientID)
             //val context = LocalContext.current
             ImageShadowContainer(
                 color = MaterialTheme.colors.onPrimary,
@@ -116,9 +85,11 @@ fun ObesiteGenre(
                     .width(297.dp)
                     .size(100.dp)
                     .clickable(onClick = {
-                        obesiteModel.updateGenre(genre = true)
+                        //obesiteModel.updateGenre(genre = true)
                         //Text(text = "hell")
-                        navController.navigate(Screen.obesiteTaille.passArgs(true,patientID))
+                        navController.navigate(
+                            Screen.obesiteTaille.passArgs(isUserConnected , patientID)
+                        )
                     }),
                 contente = ManImageModelInstance,
             )
@@ -141,7 +112,10 @@ fun ObesiteGenre(
                 .size(100.dp)
                 .clickable(onClick = fun() {
                     obesiteModel.updateGenre(genre = false)
-                    navController.navigate(Screen.obesiteTaille.passArgs(true,patientID))
+                    navController.navigate(
+                        Screen.obesiteTaille.passArgs(isUserConnected , patientID)
+                    )
+
                 }) , contente = HumanImageModelInstance)
         }
 

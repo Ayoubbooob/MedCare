@@ -9,7 +9,9 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -24,6 +26,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.bosseurs.medcare.R
 import com.bosseurs.medcare.ui.shared.CustomButtonObesite
+import com.bosseurs.medcare.ui.shared.CustomTopAppBar
 import com.bosseurs.medcare.ui.shared.HorizontalNumberPicker
 import com.bosseurs.medcare.ui.theme.AppBarTextStyle
 import com.bosseurs.medcare.ui.theme.BlueColor
@@ -32,50 +35,25 @@ import com.bosseurs.medcare.ui.utils.Screen
 
 
 @Composable
-fun NumberPicker(
-//    context:Context  ,
+fun NumberPicker(context:Context  ,
                  navController: NavController ,
                  obesiteModel : obesiteModel ,
-                 isUserConnected: Boolean = false,
-                 patientID: String = ""
+                 isUserConnected : Boolean = false ,
+                 patientID : String = ""
 ) {
-    val PoidsUIState by obesiteModel.uiState.collectAsState()
-    obesiteModel.updateObesiteDetails(isUserConnected,patientID)
+
         var number = remember { mutableStateOf(20) }
         val max=remember { mutableStateOf(400) }
         val min=remember { mutableStateOf(5) }
         Scaffold(
             topBar = {
-                TopAppBar(backgroundColor = Color.White, modifier = Modifier.wrapContentWidth(align = Alignment.Start))
-                {
-                    IconButton(onClick = {
-                        navController.popBackStack()
-                    }) {
-                        Row() {
-                            Column(modifier = Modifier.padding(6.dp)) {
-                                Icon(
-                                    imageVector = Icons.Filled.ArrowBack,
-                                    contentDescription = "Back",
-                                    tint = Color(0XFF090F47)
-                                )
-                            }
-                            val context = LocalContext.current
-                            Column() {
-                                Row(horizontalArrangement = Arrangement.Center , verticalAlignment = Alignment.Top ,  modifier = Modifier
-                                    .padding(6.dp)) {
-                                    Column() {
-                                        Text(text = "selectionner votre poids(kg)", style = AppBarTextStyle)
-                                    }
-
-                                }
-                            }
-                        }
-                    }
-                }
+                CustomTopAppBar(
+                    title = stringResource(id = R.string.genre_select_message) + " " + stringResource(id = R.string.poids_bold),
+                    onClick = { navController.popBackStack() },
+                )
             },
 
         ) {
-
             Box(modifier = Modifier.fillMaxSize()
             ) {
                 //var obesiteModel : obesiteModel = viewModel()
@@ -93,12 +71,13 @@ fun NumberPicker(
                             default = 50,
                             onValueChange = { value ->
                                 obesiteModel.updatePoids(poids = value)
-//                                Toast.makeText(context, value.toString(), Toast.LENGTH_SHORT).show()
+                                //Toast.makeText(context, value.toString(), Toast.LENGTH_SHORT).show()
                             }
                         )
                         Row(horizontalArrangement = Arrangement.Center , modifier = Modifier.padding(13.dp)) {
+
                             CustomButtonObesite(textId = R.string.CONTINUE, onClick = {
-                                navController.navigate(Screen.obesiteResult.passArgs(true,patientID))
+                                navController.navigate(Screen.obesiteResult.passArgs(isUserConnected , patientID))
                             }, color = BlueColor, textColor = TextForBlueButtonColor ,
                                 CustomWidth = 176  , CustomHeight = 50)
                         }
@@ -107,7 +86,10 @@ fun NumberPicker(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = CenterHorizontally,
                 )
+
+
             }
+
         }
 
 fun onValueChange(value: Int,context:Context,) {
