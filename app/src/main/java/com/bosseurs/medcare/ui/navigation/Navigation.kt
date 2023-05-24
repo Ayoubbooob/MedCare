@@ -39,7 +39,6 @@ fun Navigation(toggleTheme : () -> Unit) {
     navController = navController,
     startDestination = Screen.LanguageScreen.route
     ) {
-
         composable(route = Screen.LanguageScreen.route){
             LanguageScreen(navController = navController)
         }
@@ -187,7 +186,6 @@ fun Navigation(toggleTheme : () -> Unit) {
             ProceduresScreen(navController = navController)
         }
 
-
 //        composable(route = Screen.ProcedureDetails.route) { backStackEntry ->
 //            val id = backStackEntry.arguments?.getInt("id") ?: return@composable
 //            ProcedureDetails(navController = navController, id = id)
@@ -199,8 +197,15 @@ fun Navigation(toggleTheme : () -> Unit) {
                 ProcedureDetails(navController, id)
             }
         }
-        composable(route = Screen.MenuInfoHospitalScreen.route){
-            MenuInfoHospitalScreen(navController = navController)
+        composable(
+            route = Screen.MenuInfoHospitalScreen.route,
+            arguments = listOf(
+                navArgument("home_ui_state"){type = NavType.StringType}
+            )
+        ){
+            val homeUiStateJson = it.arguments?.getString("home_ui_state").toString()
+            val homeUiState = Gson().fromJson(homeUiStateJson, HomeUiState::class.java)
+            MenuInfoHospitalScreen(navController = navController, homeUiState = homeUiState)
         }
         composable(route = Screen.HospitalInfoScreen.route){
             HospitalInfoScreen(navController = navController)
