@@ -79,12 +79,12 @@ fun AppointmentScreen(
             CustomButton(
                 textId = R.string.demande_rdv,
                 onClick = {
-//                    postRequestRetrofit(
-//                        ctx, appointmentUiState.patientID, navController
-//                    )
-                    Toast
-                        .makeText(ctx, "Demande en cours de traitement", Toast.LENGTH_SHORT)
-                        .show()
+                    postRequestRetrofit(
+                        ctx, appointmentUiState.patientID, navController
+                    )
+//                    Toast
+//                        .makeText(ctx, "Demande en cours de traitement", Toast.LENGTH_SHORT)
+//                        .show()
 
                 },
                 color = BlueColor,
